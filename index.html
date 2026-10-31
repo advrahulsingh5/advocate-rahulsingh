@@ -8,16 +8,16 @@
     <meta name="google-site-verification" content="zwt4YOxNdvvDutqdOxTlrcH8mt_v8UT1tlSuxJBztNA" />
     <meta name="google-site-verification" content="google92f8cbbede46be54" />
     
-    <title>Advocate Rahul Singh | Top Indian Legal Portal, Drafting Library & Login</title>
-    <meta name="description" content="Advocate Rahul Singh - Punjab & Haryana High Court, Chandigarh. District Civil & Criminal Case Drafting, PDF Templates, Login Portal & Legal Consultation.">
+    <title>Advocate Rahul Singh | Top Indian Legal Portal & Drafting Library</title>
+    <meta name="description" content="Advocate Rahul Singh - Punjab & Haryana High Court, Chandigarh. Supreme & District Court Civil & Criminal Drafting Library, Legal Notice Generator & Consultation.">
     <style>
         :root {
             --primary: #0b192c;
             --primary-light: #1e3e62;
-            --secondary: #e6a15c;
-            --secondary-hover: #cf8b45;
-            --light: #f5f7fa;
-            --dark: #1f2937;
+            --secondary: #d4af37;
+            --secondary-hover: #b5952f;
+            --light: #f4f7f6;
+            --dark: #1c1e21;
             --success: #25d366;
             --card-bg: #ffffff;
         }
@@ -104,7 +104,7 @@
         .nav-links { display: flex; gap: 12px; flex-wrap: wrap; }
         .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
         .nav-links a:hover { color: var(--secondary); }
-        .lang-btn, .login-btn-top {
+        .lang-btn {
             background-color: var(--secondary);
             color: var(--primary);
             border: none;
@@ -113,7 +113,6 @@
             font-weight: bold;
             cursor: pointer;
             font-size: 0.85rem;
-            text-decoration: none;
         }
 
         /* Hero */
@@ -125,7 +124,7 @@
         }
         .badge {
             display: inline-block;
-            background: rgba(230, 161, 92, 0.18);
+            background: rgba(212, 175, 55, 0.18);
             border: 1px solid var(--secondary);
             color: var(--secondary);
             padding: 6px 18px;
@@ -189,93 +188,127 @@
             padding: 1.6rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             border-top: 4px solid var(--secondary);
-            transition: 0.3s;
         }
-        .card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
         .card h4 { color: var(--primary); font-size: 1.25rem; margin-bottom: 12px; }
         .card ul { list-style: none; }
         .card ul li { padding: 7px 0; border-bottom: 1px dashed #e5e5e5; font-size: 0.95rem; }
         .card ul li::before { content: "⚖️ "; }
 
-        /* DRAFTING LIBRARY SECTION (PDF DOWNLOADS) */
-        .drafting-card {
+        /* ADVANCED DRAFTING LIBRARY SECTION */
+        .draft-card {
             background: white;
             border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border-left: 5px solid var(--primary);
+            border-left: 5px solid var(--secondary);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .drafting-card h4 { color: var(--primary); font-size: 1.2rem; margin-bottom: 8px; }
-        .drafting-card p { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
-        .download-btn {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            border: 1px solid #bae6fd;
+        .draft-card h4 { color: var(--primary); font-size: 1.15rem; margin-bottom: 8px; }
+        .draft-card p { font-size: 0.88rem; color: #666; margin-bottom: 15px; }
+        .draft-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .view-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
             padding: 8px 14px;
             border-radius: 6px;
-            text-decoration: none;
             font-weight: 600;
-            font-size: 0.88rem;
-            text-align: center;
-            display: inline-block;
+            font-size: 0.85rem;
+            cursor: pointer;
             transition: 0.2s;
         }
-        .download-btn:hover { background-color: #0284c7; color: white; }
-
-        /* LOGIN / CLIENT PORTAL SECTION */
-        .portal-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            border-radius: 12px;
-            padding: 3rem 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            text-align: center;
-        }
-        .portal-box {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(230, 161, 92, 0.4);
-            border-radius: 8px;
-            padding: 2rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .portal-box input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 6px;
+        .view-btn:hover { background-color: var(--primary-light); }
+        .copy-btn {
+            background-color: #e5e7eb;
+            color: #374151;
             border: none;
-            font-size: 1rem;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .copy-btn:hover { background-color: #d1d5db; }
+
+        /* Draft Preview Modal Box */
+        .draft-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .draft-modal-content {
+            background: white;
+            max-width: 750px;
+            width: 100%;
+            max-height: 85vh;
+            border-radius: 8px;
+            padding: 25px;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+        .draft-text-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.88rem;
+            white-space: pre-wrap;
+            margin-top: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            text-align: left;
         }
 
         /* SMART TOOLS SECTION */
         .tools-wrapper {
-            background: #fff;
-            border: 2px solid var(--secondary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
             border-radius: 12px;
             padding: 2.5rem 1.5rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
+        .tool-box {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .tool-box h4 { color: var(--secondary); margin-bottom: 12px; font-size: 1.2rem; }
         .tool-select {
             width: 100%;
             padding: 12px;
             border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
+            border: none;
+            font-size: 0.98rem;
             margin-bottom: 15px;
+            background: white;
+            color: var(--dark);
             font-weight: 500;
         }
         .tool-result {
-            background: #f8f9fa;
-            padding: 15px;
+            background: rgba(0,0,0,0.35);
+            padding: 14px;
             border-radius: 6px;
-            border-left: 4px solid var(--primary);
-            font-size: 0.95rem;
+            border-left: 4px solid var(--secondary);
+            font-size: 0.94rem;
             min-height: 80px;
-            color: #333;
         }
 
         /* Quick Links & Daily Laws */
@@ -283,18 +316,17 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 15px;
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
         }
         .q-link {
             background: white;
             color: var(--primary);
-            padding: 14px;
+            padding: 12px;
             border-radius: 8px;
             text-align: center;
             text-decoration: none;
             font-weight: bold;
             border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .daily-law {
             background-color: white;
@@ -304,15 +336,15 @@
         }
         .law-item {
             background: #f8f9fa;
-            padding: 16px;
+            padding: 15px;
             border-left: 4px solid var(--primary);
             border-radius: 4px;
             margin-bottom: 15px;
         }
-        .law-item h5 { color: var(--primary); font-size: 1.1rem; margin-bottom: 6px; }
+        .law-item h5 { color: var(--primary); font-size: 1.08rem; margin-bottom: 5px; }
         .law-item p { font-size: 0.95rem; color: #333; }
 
-        /* Consultation Form */
+        /* Form & Footer */
         .form-card {
             background: white;
             max-width: 750px;
@@ -331,8 +363,6 @@
             border-radius: 6px;
             font-size: 0.98rem;
         }
-
-        /* Floating Buttons */
         .floating-btns {
             position: fixed;
             bottom: 20px;
@@ -356,15 +386,13 @@
         }
         .float-wa { background: var(--success); }
         .float-call { background: var(--primary); border: 2px solid var(--secondary); }
-
-        /* Footer */
         footer {
             background-color: #050b14;
             color: #ccc;
             padding: 3rem 1.5rem 1.5rem;
             text-align: center;
         }
-        .footer-info h4 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 10px; }
+        .footer-info h4 { color: var(--secondary); font-size: 1.45rem; margin-bottom: 10px; }
         .disclaimer {
             font-size: 0.8rem;
             color: #888;
@@ -388,7 +416,20 @@
         </div>
     </div>
 
-    <!-- TOP EMERGENCY BAR -->
+    <!-- DRAFT PREVIEW MODAL -->
+    <div class="draft-modal" id="draftModal">
+        <div class="draft-modal-content">
+            <span class="close-modal" onclick="closeDraftModal()">&times;</span>
+            <h3 id="modalTitle" style="color: var(--primary); margin-bottom: 10px;">Draft Title</h3>
+            <p style="font-size: 0.85rem; color: #666;" class="hi">आप इस प्रारूप को नीचे दिए गए बटन से सीधे कॉपी कर सकते हैं:</p>
+            <div class="draft-text-box" id="modalText">Draft content will load here...</div>
+            <button class="btn btn-gold" style="margin-top: 15px; width: 100%;" onclick="copyModalText()">
+                📋 <span class="hi">ड्राफ्ट कॉपी करें (Copy Draft Text)</span><span class="en">Copy Draft Text</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- TOP BAR -->
     <div class="top-bar">
         <span>🚨 <strong>Helplines:</strong> Police: 112 | Cyber Fraud: 1930 | Women: 1091</span>
         <span>📍 <strong>High Court & District Courts, Chandigarh</strong> | Enrl: PH/5676/2023</span>
@@ -406,7 +447,6 @@
                 <a href="#drafting-library"><span class="hi">ड्राफ्टिंग लाइब्रेरी</span><span class="en">Drafts</span></a>
                 <a href="#smart-tools"><span class="hi">स्मार्ट टूल्स</span><span class="en">Tools</span></a>
                 <a href="#topics"><span class="hi">कानूनी सेवाएं</span><span class="en">Practice Areas</span></a>
-                <a href="#portal"><span class="hi">लॉगिन पोर्टल</span><span class="en">Login</span></a>
                 <a href="#book-now"><span class="hi">अपॉइंटमेंट</span><span class="en">Consult</span></a>
             </nav>
             <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">🌐 English</button>
@@ -416,11 +456,11 @@
     <!-- HERO -->
     <section class="hero">
         <div class="badge">Punjab & Haryana High Court & District Courts, Chandigarh</div>
-        <h2 class="hi">जिला सिविल और क्रिमिनल केस ड्राफ्टिंग, पीडीएफ डाउनलोड एवं लीगल पोर्टल</h2>
-        <h2 class="en">District Civil & Criminal Drafting, PDF Templates & Legal Portal</h2>
+        <h2 class="hi">जिला सिविल और क्रिमिनल केस ड्राफ्टिंग लाइब्रेरी (View & Copy Drafts)</h2>
+        <h2 class="en">District Civil & Criminal Case Drafting Library</h2>
         
-        <p class="hi">वकीलों और नागरिकों के लिए रेडीमेड केस ड्राफ्टिंग टेम्पलेट्स, पीडीएफ डाउनलोड, नए कानून (BNS/BNSS) टूल्स और डायरेक्ट लीगल कंसल्टेशन।</p>
-        <p class="en">Ready-made case drafting templates, PDF downloads, new criminal law tools, and direct legal consultation for advocates and citizens.</p>
+        <p class="hi">वकीलों और नागरिकों के लिए रेडीमेड लीगल ड्राफ्ट्स, BNS/BNSS कानून टूल्स, और डायरेक्ट ऑनलाइन कंसल्टेशन।</p>
+        <p class="en">Ready-made legal draft formats, new criminal law tools, and direct online consultation for advocates and litigants.</p>
         
         <div class="btn-group">
             <a href="tel:+919812050314" class="btn btn-gold">
@@ -442,14 +482,14 @@
             <p class="en">Updated Criminal Laws</p>
         </div>
         <div class="stat-item">
-            <h4>PDF Library</h4>
-            <p class="hi">सिविल व क्रिमिनल ड्राफ्ट्स</p>
-            <p class="en">Civil & Criminal Drafts</p>
+            <h4>Drafts Library</h4>
+            <p class="hi">सिविल व क्रिमिनल फॉर्मेट्स</p>
+            <p class="en">Civil & Criminal Formats</p>
         </div>
         <div class="stat-item">
-            <h4>Client Portal</h4>
-            <p class="hi">सुरक्षित लॉगिन सुविधा</p>
-            <p class="en">Secure Login Portal</p>
+            <h4>Instant Copy</h4>
+            <p class="hi">एक क्लिक में कॉपी सुविधा</p>
+            <p class="en">1-Click Copy Feature</p>
         </div>
         <div class="stat-item">
             <h4>High Court</h4>
@@ -458,111 +498,110 @@
         </div>
     </div>
 
-    <!-- 1. ADVOCATE DRAFTING LIBRARY & PDF DOWNLOADS -->
+    <!-- ADVOCATE DRAFTING LIBRARY (DIRECT VIEW & COPY) -->
     <section id="drafting-library" class="container">
         <div class="section-title">
-            <h3 class="hi">📥 जिला सिविल और क्रिमिनल केस ड्राफ्टिंग लाइब्रेरी (PDF Templates)</h3>
-            <h3 class="en">📥 District Civil & Criminal Case Drafting Library</h3>
-            <p class="hi">वकीलों और मुवक्किलों की सहायता के लिए तैयार किए गए पेशेवर लीगल फॉर्मेट्स</p>
-            <p class="en">Professional legal drafting formats for advocates and litigants</p>
+            <h3 class="hi">📥 जिला सिविल और क्रिमिनल केस ड्राफ्टिंग लाइब्रेरी (View & Copy)</h3>
+            <h3 class="en">📥 District Civil & Criminal Drafting Library</h3>
+            <p class="hi">किसी भी प्रारूप को देखने और कॉपी करने के लिए 'View Draft' पर क्लिक करें</p>
+            <p class="en">Click 'View Draft' to instantly read and copy professional legal formats</p>
         </div>
 
         <div class="grid">
-            <div class="drafting-card">
+            <!-- Draft 1 -->
+            <div class="draft-card">
                 <div>
                     <h4>1. अग्रिम जमानत याचिका (Anticipatory Bail Application)</h4>
-                    <p class="hi">Sessions Court या High Court के लिए CrPC 438 / BNSS 482 के तहत बेल एप्लीकेशन फॉर्मेट।</p>
-                    <p class="en">Bail application format for Sessions or High Court under BNSS 482.</p>
+                    <p class="hi">Sessions Court या High Court के लिए BNSS 482 / CrPC 438 के तहत बेल एप्लीकेशन फॉर्मेट।</p>
+                    <p class="en">Anticipatory bail application format for Sessions/High Court under BNSS.</p>
                 </div>
-                <a href="https://wa.me/919812050314?text=नमस्ते%20सर,%20मुझे%20Anticipatory%20Bail%20Draft%20की%20PDF%20चाहिए।" target="_blank" class="download-btn">📥 WhatsApp पर PDF प्राप्त करें</a>
+                <div class="draft-actions">
+                    <button class="view-btn" onclick="openDraft('bail')">📄 View Draft</button>
+                    <button class="copy-btn" onclick="copyDirect('bail')">📋 Copy</button>
+                </div>
             </div>
 
-            <div class="drafting-card">
+            <!-- Draft 2 -->
+            <div class="draft-card">
                 <div>
                     <h4>2. चेक बाउंस लीगल नोटिस (Sec 138 NI Act Notice)</h4>
-                    <p class="hi">चेक रिटर्न होने के 30 दिन के भीतर भेजने के लिए स्टैंडर्ड ड्राफ्ट और डिमांड नोटिस।</p>
+                    <p class="hi">चेक रिटर्न होने के 30 दिन के भीतर भेजने के लिए स्टैंडर्ड डिमांड लीगल नोटिस।</p>
                     <p class="en">Standard legal demand notice format for cheque dishonour under Sec 138.</p>
                 </div>
-                <a href="https://wa.me/919812050314?text=नमस्ते%20सर,%20मुझे%20Cheque%20Bounce%20Notice%20Draft%20चाहिए।" target="_blank" class="download-btn">📥 WhatsApp पर PDF प्राप्त करें</a>
+                <div class="draft-actions">
+                    <button class="view-btn" onclick="openDraft('cheque')">📄 View Draft</button>
+                    <button class="copy-btn" onclick="copyDirect('cheque')">📋 Copy</button>
+                </div>
             </div>
 
-            <div class="drafting-card">
+            <!-- Draft 3 -->
+            <div class="draft-card">
                 <div>
                     <h4>3. आपसी सहमति तलाक याचिका (Mutual Divorce Petition)</h4>
                     <p class="hi">Hindu Marriage Act Section 13B के तहत ज्वाइंट पिटीशन का लीगल फॉर्मेट।</p>
                     <p class="en">Joint petition format for mutual divorce under Section 13B HMA.</p>
                 </div>
-                <a href="https://wa.me/919812050314?text=नमस्ते%20सर,%20मुझे%20Mutual%20Divorce%20Petition%20Draft%20चाहिए।" target="_blank" class="download-btn">📥 WhatsApp पर PDF प्राप्त करें</a>
+                <div class="draft-actions">
+                    <button class="view-btn" onclick="openDraft('divorce')">📄 View Draft</button>
+                    <button class="copy-btn" onclick="copyDirect('divorce')">📋 Copy</button>
+                </div>
             </div>
 
-            <div class="drafting-card">
+            <!-- Draft 4 -->
+            <div class="draft-card">
                 <div>
                     <h4>4. सिविल सूट फॉर परमानेंट इंजंक्शन (Stay Order Suit)</h4>
-                    <p class="hi>अवैध कब्जे और प्रॉपर्टी विवाद रोकने के लिए सिविल कोर्ट का दावा व स्टे अर्जी।</p>
+                    <p class="hi">अवैध कब्जे और प्रॉपर्टी विवाद रोकने के लिए सिविल कोर्ट का दावा व स्टे अर्जी।</p>
                     <p class="en">Civil suit and temporary injunction application against illegal possession.</p>
                 </div>
-                <a href="https://wa.me/919812050314?text=नमस्ते%20सर,%20मुझे%20Civil%20Injunction%20Suit%20Draft%20चाहिए।" target="_blank" class="download-btn">📥 WhatsApp पर PDF प्राप्त करें</a>
+                <div class="draft-actions">
+                    <button class="view-btn" onclick="openDraft('property')">📄 View Draft</button>
+                    <button class="copy-btn" onclick="copyDirect('property')">📋 Copy</button>
+                </div>
             </div>
 
-            <div class="drafting-card">
+            <!-- Draft 5 -->
+            <div class="draft-card">
                 <div>
                     <h4>5. लिखित जवाब (Written Statement in Civil Suit)</h4>
-                    <p class="hi">सिविल मुकदमे में समन मिलने के बाद प्रतिवादी (Defendant) द्वारा जवाबदावा पेश करने का प्रारूप।</p>
+                    <p class="hi">सिविल मुकदमे में समन मिलने के बाद प्रतिवादी द्वारा जवाबदावा पेश करने का प्रारूप।</p>
                     <p class="en">Standard written statement draft format to contest civil suits.</p>
                 </div>
-                <a href="https://wa.me/919812050314?text=नमस्ते%20सर,%20मुझे%20Written%20Statement%20Draft%20चाहिए।" target="_blank" class="download-btn">📥 WhatsApp पर PDF प्राप्त करें</a>
+                <div class="draft-actions">
+                    <button class="view-btn" onclick="openDraft('written')">📄 View Draft</button>
+                    <button class="copy-btn" onclick="copyDirect('written')">📋 Copy</button>
+                </div>
             </div>
 
-            <div class="drafting-card">
+            <!-- Draft 6 -->
+            <div class="draft-card">
                 <div>
                     <h4>6. ट्रस्ट डीड / NGO रजिस्ट्रेशन फॉर्मेट (Trust Deed)</h4>
                     <p class="hi">सार्वजनिक या धार्मिक ट्रस्ट गठन और डीड रजिस्ट्रेशन के लिए कम्प्लीट एग्रीमेंट फॉर्मेट।</p>
                     <p class="en">Complete trust deed agreement format for NGO and public trust registration.</p>
                 </div>
-                <a href="https://wa.me/919812050314?text=नमस्ते%20सर,%20मुझे%20Trust%20Deed%20Draft%20चाहिए।" target="_blank" class="download-btn">📥 WhatsApp पर PDF प्राप्त करें</a>
+                <div class="draft-actions">
+                    <button class="view-btn" onclick="openDraft('trust')">📄 View Draft</button>
+                    <button class="copy-btn" onclick="copyDirect('trust')">📋 Copy</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. LOGIN & CLIENT/ADVOCATE PORTAL -->
-    <section id="portal" class="container" style="padding-top: 0;">
-        <div class="portal-section">
-            <div class="section-title" style="margin-bottom: 1.5rem;">
-                <h3 style="color: var(--secondary);">
-                    <span class="hi">🔐 क्लाइंट एवं एडवोकेट लॉगिन पोर्टल (Client Dashboard)</span>
-                    <span class="en">🔐 Secure Login & Client Portal</span>
-                </h3>
-                <p style="color: #ddd;">
-                    <span class="hi">अपने केस स्टेटस, ड्राफ्ट्स और कंसल्टेशन रिकॉर्ड्स सुरक्षित देखने के लिए लॉगिन करें</span>
-                    <span class="en">Login to access your case status, saved drafts, and consultation records</span>
-                </p>
-            </div>
-
-            <div class="portal-box">
-                <input type="email" id="loginEmail" placeholder="अपना ईमेल दर्ज करें / Enter Email">
-                <input type="password" id="loginPass" placeholder="पासवर्ड दर्ज करें / Enter Password">
-                <button class="btn btn-gold" style="width: 100%;" onclick="alert('लॉगिन सुविधा सक्रिय है! एडवोकेट राहुल सिंह से सीधे संपर्क के लिए WhatsApp बटन दबाएं।')">
-                    <span class="hi">लॉगिन करें (Secure Login)</span>
-                    <span class="en">Login to Dashboard</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. SMART TOOLS (IPC to BNS Converter & Checklist) -->
+    <!-- SMART TOOLS SECTION -->
     <section id="smart-tools" class="container" style="padding-top: 0;">
         <div class="tools-wrapper">
             <div class="section-title" style="margin-bottom: 1.8rem;">
-                <h3 style="color: var(--primary);">
-                    <span class="hi">🔍 स्मार्ट लीगल टूल्स (IPC से BNS कन्वर्टर)</span>
+                <h3 style="color: var(--secondary);">
+                    <span class="hi">🔍 स्मार्ट कानूनी टूल्स (IPC से BNS कन्वर्टर)</span>
                     <span class="en">🔍 Smart Legal Tools (IPC to BNS Converter)</span>
                 </h3>
             </div>
 
             <div class="grid">
-                <div style="background: #fdfbf7; padding: 1.5rem; border-radius: 8px; border: 1px solid #e5d5bc;">
-                    <h4 class="hi" style="color: var(--primary); margin-bottom: 10px;">1. पुरानी IPC से नई BNS धारा जानें</h4>
-                    <h4 class="en" style="color: var(--primary); margin-bottom: 10px;">1. Old IPC to New BNS Section Finder</h4>
+                <div class="tool-box">
+                    <h4 class="hi">1. पुरानी IPC से नई BNS धारा जानें</h4>
+                    <h4 class="en">1. Old IPC to New BNS Section Finder</h4>
                     <select class="tool-select" id="ipcSelect" onchange="convertIpc()">
                         <option value="">-- पुरानी IPC / CrPC धारा चुनें --</option>
                         <option value="420">IPC 420 - धोखाधड़ी (Cheating)</option>
@@ -579,9 +618,9 @@
                     </div>
                 </div>
 
-                <div style="background: #fdfbf7; padding: 1.5rem; border-radius: 8px; border: 1px solid #e5d5bc;">
-                    <h4 class="hi" style="color: var(--primary); margin-bottom: 10px;">2. केस के लिए जरूरी कागजात (Document Checklist)</h4>
-                    <h4 class="en" style="color: var(--primary); margin-bottom: 10px;">2. Case Required Documents Checklist</h4>
+                <div class="tool-box">
+                    <h4 class="hi">2. केस के लिए जरूरी कागजात (Document Checklist)</h4>
+                    <h4 class="en">2. Case Required Documents Checklist</h4>
                     <select class="tool-select" id="docSelect" onchange="showDocs()">
                         <option value="">-- अपना केस चुनें --</option>
                         <option value="cheque">चेक बाउंस केस (Cheque Bounce)</option>
@@ -750,6 +789,7 @@
         </div>
     </footer>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         window.onload = function() {
             if (sessionStorage.getItem('bciAgreed') === 'true') {
@@ -773,6 +813,50 @@
                 btn.innerHTML = '🌐 English';
             }
         }
+
+        // DRAFT FORMATS DATABASE (Bilingual)
+        const draftingLib = {
+            "bail": "IN THE COURT OF THE LD. SESSIONS JUDGE, CHANDIGARH\n\nCriminal Misc. Application No. ______ of 2026\nIN\nFIR No. ______ Dated: ______\nUnder Section: _____\nPolice Station: _____\n\nIN THE MATTER OF:\n[Applicant / Accused Name] ... Applicant\nVERSUS\nState of Punjab / UT Chandigarh ... Respondent\n\nAPPLICATION UNDER SECTION 482 BNSS (438 CrPC) FOR GRANT OF ANTICIPATORY BAIL\n\nMOST RESPECTFULLY SHOWETH:\n1. That the applicant has been falsely implicated in the above-noted case due to political/personal enmity.\n2. That the applicant is a law-abiding citizen and ready to join investigation as and when required by the Investigating Officer.\n3. That no custodial interrogation is required in the present matter.\n\nPRAYER:\nIt is, therefore, prayed that the applicant may kindly be released on anticipatory bail in the event of arrest.\n\nPlace: Chandigarh\nDated: [Date]\nCOUNSEL FOR THE APPLICANT\nADVOCATE RAHUL SINGH (PH/5676/2023)",
+            
+            "cheque": "LEGAL NOTICE UNDER SECTION 138 OF THE NEGOTIABLE INSTRUMENTS ACT\n\nTo,\n[Name & Address of Accused/Drawer]\n\nDear Sir/Madam,\n\nUnder instructions from my client [Client Name], resident of [Address], I serve you with the following legal notice:\n\n1. That you had issued a Cheque No. [______] dated [______] drawn on [Bank Name] amounting to Rs. [______] towards discharge of your legally enforceable debt/liability.\n2. That my client presented the said cheque through his banker, but the same was dishonoured with the remarks 'Funds Insufficient' vide Bank Return Memo dated [______].\n3. That within 30 days of receipt of this notice, you are liable to pay the entire cheque amount to my client, failing which my client shall initiate criminal prosecution under Section 138 of the NI Act read with BNS.\n\nPlace: Chandigarh\nAdvocate Rahul Singh (PH/5676/2023)\nHigh Court, Chandigarh",
+
+            "divorce": "IN THE COURT OF THE LD. DISTRICT JUDGE, FAMILY COURT, CHANDIGARH\n\nPetition No: ______ of 2026\n\nIN THE MATTER OF:\n[Husband Name] ... First Party (Petitioner No. 1)\nAND\n[Wife Name] ... Second Party (Petitioner No. 2)\n\nPETITION UNDER SECTION 13-B OF THE HINDU MARRIAGE ACT, 1955 FOR DISSOLUTION OF MARRIAGE BY MUTUAL CONSENT\n\nMOST RESPECTFULLY SHOWETH:\n1. That the marriage of the petitioners was solemnized on [Date] at [Place] according to Hindu rites and ceremonies.\n2. That due to temperamental differences and incompatibility, the petitioners have been living separately since [Date].\n3. That there is no collusion or coercion between the petitioners in filing this mutual divorce petition.\n\nPRAYER:\nIt is respectfully prayed that a decree of divorce by mutual consent may kindly be passed.\n\nPETITIONER NO. 1           PETITIONER NO. 2\nThrough Counsel: Advocate Rahul Singh (PH/5676/2023)",
+
+            "property": "IN THE COURT OF THE LD. CIVIL JUDGE (SENIOR DIVISION), CHANDIGARH\n\nCivil Suit No: ______ of 2026\n\n[Plaintiff Name] ... Plaintiff\nVERSUS\n[Defendant Name] ... Defendant\n\nSUIT FOR PERMANENT AND MANDATORY INJUNCTION ALONG WITH APPLICATION UNDER ORDER 39 RULE 1 & 2 CPC\n\nMOST RESPECTFULLY SHOWETH:\n1. That the plaintiff is the absolute owner in possession of the property situated at [Property Address].\n2. That the defendant has no right, title or interest in the suit property and is bent upon dispossessing the plaintiff illegally.\n\nPRAYER:\nIt is prayed that a decree of permanent injunction may kindly be passed restraining the defendant from interfering in peaceful possession.\n\nPlace: Chandigarh\nCounsel for Plaintiff: Advocate Rahul Singh (PH/5676/2023)",
+
+            "written": "IN THE COURT OF THE LD. CIVIL JUDGE, CHANDIGARH\n\nCivil Suit No: ______ of 2026\n\n[Plaintiff] ... Plaintiff\nVERSUS\n[Defendant] ... Defendant\n\nWRITTEN STATEMENT ON BEHALF OF THE DEFENDANT\n\nPRELIMINARY OBJECTIONS:\n1. That the present suit is not maintainable in the present form and is liable to be dismissed with costs.\n2. That the plaintiff has suppressed true and material facts from this Hon'ble Court.\n\nREPLY ON MERITS:\nPara No. 1 of the plaint is wrong and denied. The correct facts are that...\n\nPlace: Chandigarh\nCounsel for Defendant: Advocate Rahul Singh (PH/5676/2023)",
+
+            "trust": "DEED OF TRUST / PUBLIC CHARITABLE TRUST REGISTRATION FORMAT\n\nThis Trust Deed is made on this [Date] day of [Month, Year] at Chandigarh by and between:\n[Founder Name], resident of [Address], hereinafter called the 'SETTLOR' of the one part;\nAND\n1. [Trustee 1]\n2. [Trustee 2]\n...hereinafter called the 'TRUSTEES' of the other part.\n\nWHEREAS the Settlor is desirous of establishing a Public Charitable Trust for the promotion of education, legal aid, social welfare and poverty alleviation.\n\nNOW THIS DEED WITNESSETH AS FOLLOWS:\n1. Name of the Trust: [TRUST NAME]\n2. Registered Office: Chandigarh\n3. Objects: To provide pro-bono legal aid, education and social support.\n\nIN WITNESS WHEREOF the Settlor and Trustees have signed this deed.\n\nSETTLOR                              TRUSTEES\nWitnesses:\n1. _________________\n2. _________________"
+        };
+
+        function openDraft(key) {
+            if(draftingLib[key]) {
+                document.getElementById('modalTitle').innerText = "Legal Draft Preview";
+                document.getElementById('modalText').innerText = draftingLib[key];
+                document.getElementById('draftModal').style.display = 'flex';
+            }
+        }
+
+        function closeDraftModal() {
+            document.getElementById('draftModal').style.display = 'none';
+        }
+
+        function copyModalText() {
+            const text = document.getElementById('modalText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("ड्राफ्ट सफलतापूर्वक कॉपी हो गया है! अब आप इसे MS Word या नोटपैड में पेस्ट कर सकते हैं।");
+            });
+        }
+
+        function copyDirect(key) {
+            if(draftingLib[key]) {
+                navigator.clipboard.writeText(draftingLib[key]).then(() => {
+                    alert("ड्राफ्ट टेक्स्ट क्लिपबोर्ड पर कॉपी हो गया है!");
+                });
+            }
+        }
+
+        // IPC to BNS Converter Database
         const bnsData = {
             "420": "<strong>नई धारा: BNS Section 318(4)</strong><br>धोखाधड़ी और संपत्ति हड़पना (Cheating). सजा: 7 वर्ष तक की कैद।",
             "302": "<strong>नई धारा: BNS Section 103(1)</strong><br>हत्या के लिए दंड (Murder). सजा: मृत्युदंड या आजीवन कारावास।",
@@ -787,6 +871,7 @@
             const val = document.getElementById('ipcSelect').value;
             document.getElementById('ipcResult').innerHTML = (val && bnsData[val]) ? bnsData[val] : "👆 ऊपर लिस्ट में से कोई भी धारा चुनें।";
         }
+
         const docData = {
             "cheque": "<strong>चेक बाउंस केस के कागज:</strong> 1. मूल चेक 2. बैंक रिटर्न मेमो 3. लीगल नोटिस व डाक रसीद 4. आधार कार्ड।",
             "bail": "<strong>जमानत याचिका के कागज:</strong> 1. FIR की कॉपी 2. निचली कोर्ट का आदेश 3. आधार कार्ड व वकालतनामा।",
@@ -798,6 +883,7 @@
             const val = document.getElementById('docSelect').value;
             document.getElementById('docResult').innerHTML = (val && docData[val]) ? docData[val] : "👆 अपना मामला चुनें।";
         }
+
         function sendToWhatsApp() {
             const name = document.getElementById('cName').value.trim();
             const city = document.getElementById('cCity').value.trim();
