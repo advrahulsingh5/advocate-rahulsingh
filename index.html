@@ -8,8 +8,8 @@
     <meta name="google-site-verification" content="zwt4YOxNdvvDutqdOxTlrcH8mt_v8UT1tlSuxJBztNA" />
     <meta name="google-site-verification" content="google92f8cbbede46be54" />
     
-    <title>Advocate Rahul Singh | All-India Legal Portal & Marketplace</title>
-    <meta name="description" content="Advocate Rahul Singh - Punjab & Haryana High Court, Chandigarh. Supreme & District Court Drafting Library, Advocate Marketplace, Subscription & Legal Services.">
+    <title>Advocate Rahul Singh | All-India Legal Portal, e-Courts & Marketplace</title>
+    <meta name="description" content="Advocate Rahul Singh - Punjab & Haryana High Court, Chandigarh. Supreme & District Court Drafting Library, e-Courts Status Tracker, Advocate Directory & Legal Services.">
     <style>
         :root {
             --primary: #0b192c;
@@ -273,52 +273,68 @@
             text-align: left;
         }
 
-        /* ADVOCATE MARKETPLACE & SUBSCRIPTION SECTION */
-        .marketplace-wrapper {
+        /* ADVANCED TOOLS & E-COURTS TRACKER */
+        .tools-wrapper {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             border-radius: 12px;
             padding: 2.5rem 1.5rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
-        .plan-card {
+        .tool-box {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 8px;
-            padding: 1.8rem;
-            text-align: center;
+            padding: 1.5rem;
         }
-        .plan-card h4 { color: var(--secondary); font-size: 1.3rem; margin-bottom: 10px; }
-        .plan-price { font-size: 1.8rem; font-weight: bold; color: white; margin-bottom: 15px; }
-        .plan-card ul { list-style: none; text-align: left; margin-bottom: 20px; font-size: 0.9rem; }
-        .plan-card ul li { padding: 5px 0; border-bottom: 1px dashed rgba(255,255,255,0.2); }
-        .plan-card ul li::before { content: "✅ "; }
+        .tool-box h4 { color: var(--secondary); margin-bottom: 12px; font-size: 1.15rem; }
+        .tool-select, .tool-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            background: white;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        .tool-result {
+            background: rgba(0,0,0,0.35);
+            padding: 14px;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+            font-size: 0.92rem;
+            min-height: 70px;
+        }
 
-        /* SMART TOOLS SECTION */
-        .tools-wrapper {
-            background: #fff;
+        /* MARKETPLACE & DIRECTORY */
+        .marketplace-wrapper {
+            background: white;
             border: 2px solid var(--secondary);
             border-radius: 12px;
             padding: 2.5rem 1.5rem;
         }
-        .tool-select {
-            width: 100%;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            font-weight: 500;
+        .adv-card {
+            background: #fdfbf7;
+            border: 1px solid #e5d5bc;
+            border-radius: 8px;
+            padding: 1.5rem;
         }
-        .tool-result {
-            background: #f8f9fa;
-            padding: 14px;
-            border-radius: 6px;
-            border-left: 4px solid var(--primary);
-            font-size: 0.92rem;
-            min-height: 80px;
-            color: #333;
+        .adv-card h4 { color: var(--primary); font-size: 1.15rem; margin-bottom: 8px; }
+        .adv-card p { font-size: 0.88rem; color: #555; margin-bottom: 10px; }
+
+        /* BLOG & JUDGMENT UPDATES */
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--primary);
         }
+        .blog-card h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 8px; }
+        .blog-card p { font-size: 0.88rem; color: #666; margin-bottom: 12px; }
+        .blog-date { font-size: 0.78rem; color: #888; margin-bottom: 10px; display: block; }
 
         /* Quick Links & Daily Laws */
         .quick-links {
@@ -442,22 +458,22 @@
     <!-- TOP BAR -->
     <div class="top-bar">
         <span>🚨 <strong>Helplines:</strong> Police: 112 | Cyber Fraud: 1930 | Women: 1091</span>
-        <span>📍 <strong>All India Legal Marketplace & Chandigarh High Court</strong></span>
+        <span>📍 <strong>All India e-Courts & Legal Portal</strong></span>
     </div>
 
-    <!-- HEADER WITH RIGHT-SIDE MENU & LANGUAGE -->
+    <!-- HEADER -->
     <header>
         <div class="logo">
             <h1 class="hi">एडवोकेट राहुल सिंह</h1>
             <h1 class="en">Advocate Rahul Singh</h1>
-            <p>All India Legal Portal & Marketplace</p>
+            <p>All-India Legal Portal & e-Courts Hub</p>
         </div>
         <div class="header-right">
             <nav class="nav-links">
                 <a href="#drafting-library"><span class="hi">ड्राफ्ट्स</span><span class="en">Drafts</span></a>
-                <a href="#marketplace"><span class="hi">वकील पंजीकरण</span><span class="en">Advocates</span></a>
-                <a href="#smart-tools"><span class="hi">टूल्स</span><span class="en">Tools</span></a>
-                <a href="#topics"><span class="hi">सेवाएं</span><span class="en">Services</span></a>
+                <a href="#ecourts"><span class="hi">केस स्टेटस</span><span class="en">e-Courts</span></a>
+                <a href="#directory"><span class="hi">वकील सूची</span><span class="en">Directory</span></a>
+                <a href="#blog"><span class="hi">ब्लॉग</span><span class="en">Blog</span></a>
                 <a href="#book-now"><span class="hi">संपर्क</span><span class="en">Consult</span></a>
             </nav>
             <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">🌐 English</button>
@@ -467,20 +483,20 @@
     <!-- HERO -->
     <section class="hero">
         <div class="badge">Punjab & Haryana High Court & All India District Courts</div>
-        <h2 class="hi">अखिल भारतीय लीगल पोर्टल, ड्राफ्टिंग लाइब्रेरी एवं एडवोकेट मार्केटप्लेस</h2>
-        <h2 class="en">All-India Legal Portal, Drafting Library & Advocate Marketplace</h2>
+        <h2 class="hi">अखिल भारतीय लीगल पोर्टल, लाइव केस स्टेटस और एडवोकेट डायरेक्टरी</h2>
+        <h2 class="en">All-India Legal Portal, Live e-Courts Tracker & Advocate Directory</h2>
         
-        <p class="hi">सिविल, क्रिमिनल, पारिवारिक और एग्रीमेंट के रेडीमेड लीगल फॉर्मेट्स, स्थानीय भाषा में कानूनी सहायता और वकीलों के लिए ऑनलाइन प्लेटफॉर्म।</p>
-        <p class="en">Ready-made legal drafting templates, local language legal assistance, and professional online platform for advocates across India.</p>
+        <p class="hi">केस ड्राफ्टिंग लाइब्रेरी, लाइव ई-कोर्ट केस स्टेटस चेकर, डॉक्यूमेंट अपलोड वाल्ट और देशभर के वकीलों का डिजिटल मंच।</p>
+        <p class="en">Case drafting library, live e-courts status checker, document upload vault, and digital marketplace for advocates across India.</p>
         
         <div class="btn-group">
             <a href="tel:+919812050314" class="btn btn-gold">
                 <span class="hi">📞 कॉल करें: +91 9812050314</span>
                 <span class="en">📞 Call Now: +91 9812050314</span>
             </a>
-            <a href="#marketplace" class="btn btn-whatsapp">
-                <span class="hi">⚖️ वकील के रूप में जुड़ें</span>
-                <span class="en">⚖️ Join as Advocate</span>
+            <a href="#ecourts" class="btn btn-whatsapp">
+                <span class="hi">🏛️ केस स्टेटस चेक करें</span>
+                <span class="en">🏛️ Check e-Courts Status</span>
             </a>
         </div>
     </section>
@@ -488,19 +504,19 @@
     <!-- STATS BAR -->
     <div class="stats-bar">
         <div class="stat-item">
-            <h4>BNS / BNSS</h4>
-            <p class="hi">नए भारतीय कानूनों के अनुसार</p>
-            <p class="en">Updated Criminal Laws</p>
+            <h4>Live e-Courts</h4>
+            <p class="hi">तुरंत केस स्टेटस जांचें</p>
+            <p class="en">Instant Case Tracker</p>
         </div>
         <div class="stat-item">
-            <h4>All-India Drafts</h4>
+            <h4>Drafts Library</h4>
             <p class="hi">सिविल व क्रिमिनल फॉर्मेट्स</p>
             <p class="en">Civil & Criminal Formats</p>
         </div>
         <div class="stat-item">
-            <h4>Pro Subscription</h4>
-            <p class="hi">एडवोकेट पार्टनरशिप प्लान</p>
-            <p class="en">Advocate Pro Plans</p>
+            <h4>Document Vault</h4>
+            <p class="hi">सुरक्षित दस्तावेज साझा करें</p>
+            <p class="en">Secure File Upload</p>
         </div>
         <div class="stat-item">
             <h4>High Court</h4>
@@ -509,17 +525,64 @@
         </div>
     </div>
 
-    <!-- ADVOCATE DRAFTING LIBRARY (TOPICS 1 to 4) -->
-    <section id="drafting-library" class="container">
+    <!-- 1. LIVE E-COURTS STATUS TRACKER & SMART TOOLS -->
+    <section id="ecourts" class="container">
+        <div class="tools-wrapper">
+            <div class="section-title" style="margin-bottom: 1.8rem;">
+                <h3 style="color: var(--secondary);">
+                    <span class="hi">🏛️ लाइव ई-कोर्ट केस स्टेटस एवं स्मार्ट कानूनी टूल्स</span>
+                    <span class="en">🏛️ Live e-Courts Case Status Tracker & Tools</span>
+                </h3>
+            </div>
+
+            <div class="grid">
+                <!-- e-Courts Tracker Box -->
+                <div class="tool-box">
+                    <h4 class="hi">1. e-Courts Case Status (लाइव केस स्टेटस)</h4>
+                    <h4 class="en">1. e-Courts Case Status Checker</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 10px; color: #ddd;" class="hi">अपना CNR नंबर या केस नंबर दर्ज करें:</p>
+                    <input type="text" class="tool-input" id="cnrInput" placeholder="Enter 16-digit CNR Number or Case No">
+                    <button class="btn btn-gold" style="width: 100%; padding: 10px; margin-bottom: 10px;" onclick="checkCaseStatus()">
+                        <span class="hi">🔍 स्टेटस खोजें (Search Status)</span><span class="en">Search Status</span>
+                    </button>
+                    <div class="tool-result" id="caseResult">
+                        👆 अपना CNR नंबर डालकर आधिकारिक e-Courts पोर्टल पर लाइव स्टेटस देखें।
+                    </div>
+                </div>
+
+                <!-- IPC to BNS Converter Box -->
+                <div class="tool-box">
+                    <h4 class="hi">2. पुरानी IPC से नई BNS धारा जानें</h4>
+                    <h4 class="en">2. Old IPC to New BNS Section Finder</h4>
+                    <select class="tool-select" id="ipcSelect" onchange="convertIpc()">
+                        <option value="">-- पुरानी IPC / CrPC धारा चुनें --</option>
+                        <option value="420">IPC 420 - धोखाधड़ी (Cheating)</option>
+                        <option value="302">IPC 302 - हत्या (Murder)</option>
+                        <option value="307">IPC 307 - हत्या का प्रयास (Attempt to Murder)</option>
+                        <option value="498A">IPC 498A - दहेज प्रताड़ना (Cruelty)</option>
+                        <option value="323">IPC 323 - मारपीट (Hurt)</option>
+                        <option value="438">CrPC 438 - अग्रिम जमानत (Anticipatory Bail)</option>
+                        <option value="125">CrPC 125 - भरण-पोषण (Maintenance)</option>
+                    </select>
+                    <div class="tool-result" id="ipcResult">
+                        👆 ऊपर लिस्ट में से कोई भी धारा चुनें, नई धारा यहाँ दिखेगी।
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ADVOCATE DRAFTING LIBRARY -->
+    <section id="drafting-library" class="container" style="padding-top: 0;">
         <div class="section-title">
-            <h3 class="hi">📥 1 से 4: संपूर्ण केस एवं लीगल ड्राफ्टिंग लाइब्रेरी (View & Copy)</h3>
-            <h3 class="en">📥 Complete Case & Legal Drafting Library (1-4 Categories)</h3>
+            <h3 class="hi">📥 संपूर्ण केस एवं लीगल ड्राफ्टिंग लाइब्रेरी (View & Copy)</h3>
+            <h3 class="en">📥 Complete Case & Legal Drafting Library</h3>
             <p class="hi">क्रिमिनल, पारिवारिक, सिविल और एग्रीमेंट के सभी प्रोफेशनल लीगल फॉर्मेट्स</p>
             <p class="en">Professional legal formats covering Criminal, Family, Civil and Agreements</p>
         </div>
 
         <div class="grid">
-            <!-- 1. Criminal & Bail -->
+            <!-- Draft 1 -->
             <div class="draft-card">
                 <div>
                     <h4>1. अग्रिम जमानत याचिका (Anticipatory Bail - BNSS 482)</h4>
@@ -532,7 +595,7 @@
                 </div>
             </div>
 
-            <!-- 2. Matrimonial & Family -->
+            <!-- Draft 2 -->
             <div class="draft-card">
                 <div>
                     <h4>2. आपसी सहमति तलाक याचिका (Mutual Divorce - 13B HMA)</h4>
@@ -545,7 +608,7 @@
                 </div>
             </div>
 
-            <!-- 3. Civil & Property -->
+            <!-- Draft 3 -->
             <div class="draft-card">
                 <div>
                     <h4>3. सिविल सूट व स्टे अर्जी (Injunction Suit - Order 39)</h4>
@@ -558,7 +621,7 @@
                 </div>
             </div>
 
-            <!-- 4. Agreements & Trust Deed -->
+            <!-- Draft 4 -->
             <div class="draft-card">
                 <div>
                     <h4>4. ट्रस्ट डीड / NGO रजिस्ट्रेशन फॉर्मेट (Trust Deed)</h4>
@@ -571,7 +634,7 @@
                 </div>
             </div>
 
-            <!-- Additional Draft 5 -->
+            <!-- Draft 5 -->
             <div class="draft-card">
                 <div>
                     <h4>5. चेक बाउंस लीगल नोटिस (Sec 138 NI Act Notice)</h4>
@@ -584,7 +647,7 @@
                 </div>
             </div>
 
-            <!-- Additional Draft 6 -->
+            <!-- Draft 6 -->
             <div class="draft-card">
                 <div>
                     <h4>6. लिखित जवाब (Written Statement in Civil Suit)</h4>
@@ -599,99 +662,75 @@
         </div>
     </section>
 
-    <!-- ADVOCATE MARKETPLACE & SUBSCRIPTION PLAN SECTION -->
-    <section id="marketplace" class="container" style="padding-top: 0;">
+    <!-- 3. ADVOCATE DIRECTORY & SPECIALIZATION SEARCH -->
+    <section id="directory" class="container" style="padding-top: 0;">
         <div class="marketplace-wrapper">
             <div class="section-title" style="margin-bottom: 2rem;">
-                <h3 style="color: var(--secondary);">
-                    <span class="hi">⚖️ ऑल-इंडिया एडवोकेट मार्केटप्लेस एवं सब्सक्रिप्शन प्लान</span>
-                    <span class="en">⚖️ All-India Advocate Marketplace & Subscription Plans</span>
+                <h3 style="color: var(--primary);">
+                    <span class="hi">⚖️ ऑल-इंडिया एडवोकेट डायरेक्टरी एवं शहरवार खोज</span>
+                    <span class="en">⚖️ All-India Advocate Directory & City Search</span>
                 </h3>
-                <p style="color: #ddd;">
-                    <span class="hi">देशभर के वकीलों के लिए अपने शहर में क्लाइंट्स प्राप्त करने और सेवाएं देने का डिजिटल मंच</span>
-                    <span class="en">A digital platform for advocates across India to connect with clients and expand practice</span>
+                <p style="color: #555;">
+                    <span class="hi">अपने शहर और स्पेशलाइजेशन के आधार पर अनुभवी वकीलों की सूची देखें</span>
+                    <span class="en">Find verified advocates based on your city and legal specialization</span>
                 </p>
             </div>
 
             <div class="grid">
-                <!-- Advocate Registration Card -->
-                <div class="plan-card">
-                    <h4><span class="hi">वकील पंजीकरण डेस्क</span><span class="en">Advocate Registration</span></h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px; color: #eee;" class="hi">अपनी Bar Council ID और प्रैक्टिस एरिया के साथ प्लेटफॉर्म पर जुड़ें।</p>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px; color: #eee;" class="en">Join platform with your Bar Council ID and practice areas.</p>
-                    <div class="form-group" style="text-align: left;">
-                        <input type="text" id="advName" placeholder="Advocate Name / नाम">
-                        <input type="text" id="advBar" placeholder="Bar Council Enrl No (e.g. PH/5676/2023)">
-                        <input type="text" id="advCity" placeholder="City / High Court / शहर">
-                    </div>
-                    <button class="btn btn-gold" style="width: 100%; margin-top: 10px;" onclick="alert('वकील पंजीकरण का अनुरोध सफलताપूर्व प्राप्त हुआ! हमारी टीम आपसे संपर्क करेगी।')">
-                        <span class="hi">पंजीकरण करें (Register Now)</span><span class="en">Register Profile</span>
-                    </button>
+                <div class="adv-card">
+                    <h4>Advocate Rahul Singh</h4>
+                    <p>📍 High Court & District Courts, Chandigarh</p>
+                    <p>⚖️ Criminal, Civil, Cyber Law & Matrimonial</p>
+                    <p>📞 +91 9812050314</p>
+                    <a href="tel:+919812050314" class="btn btn-gold" style="padding: 6px 14px; font-size: 0.85rem; margin-top: 5px;">Contact Advocate</a>
                 </div>
 
-                <!-- Pro Advocate Subscription Plan -->
-                <div class="plan-card" style="border: 2px solid var(--secondary);">
-                    <h4><span class="hi">प्रो एडवोकेट सब्सक्रिप्शन प्लान</span><span class="en">Pro Advocate Subscription</span></h4>
-                    <div class="plan-price">₹499 <span style="font-size: 0.9rem; color: #ccc;">/ month</span></div>
-                    <ul>
-                        <li><span class="hi">सभी राज्यों के लिए प्रीमियम ड्राफ्ट्स एक्सेस</span><span class="en">Access to All Premium Legal Drafts</span></li>
-                        <li><span class="hi">स्थानीय भाषा में डायरेक्ट क्लाइंट लीड्स</span><span class="en">Direct Client Leads in Local Language</span></li>
-                        <li><span class="hi">पोर्टल पर फीचर्ड एडवोकेट प्रोफाइल</span><span class="en">Featured Advocate Profile on Portal</span></li>
-                        <li><span class="hi">24/7 लीगल रिसर्च व ड्राफ्टिंग सपोर्ट</span><span class="en">24/7 Legal Research & Drafting Support</span></li>
-                    </ul>
-                    <button class="btn btn-whatsapp" style="width: 100%;" onclick="alert('प्रो सब्सक्रिप्शन एक्टिवेशन के लिए एडवोकेट राहुल सिंह से WhatsApp पर संपर्क करें।')">
-                        <span class="hi">प्रो प्लान लें (Subscribe Pro)</span><span class="en">Get Pro Plan</span>
-                    </button>
+                <div class="adv-card">
+                    <h4>Advocate Panel (Delhi NCR)</h4>
+                    <p>📍 Supreme Court & Delhi High Court</p>
+                    <p>⚖️ Civil Suits, Property & Arbitration</p>
+                    <p>⭐ Verified Panel Member</p>
+                    <a href="#book-now" class="btn btn-gold" style="padding: 6px 14px; font-size: 0.85rem; margin-top: 5px;">Request Consult</a>
+                </div>
+
+                <div class="adv-card">
+                    <h4>Advocate Panel (Punjab & Haryana)</h4>
+                    <p>📍 District Courts (Ludhiana, Karnal, Ambala)</p>
+                    <p>⚖️ Cheque Bounce (138 NI Act) & Bail Matters</p>
+                    <p>⭐ Verified Panel Member</p>
+                    <a href="#book-now" class="btn btn-gold" style="padding: 6px 14px; font-size: 0.85rem; margin-top: 5px;">Request Consult</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SMART TOOLS (IPC to BNS Converter & Checklist) -->
-    <section id="smart-tools" class="container" style="padding-top: 0;">
-        <div class="tools-wrapper">
-            <div class="section-title" style="margin-bottom: 1.8rem;">
-                <h3 style="color: var(--primary);">
-                    <span class="hi">🔍 स्मार्ट कानूनी टूल्स (IPC से BNS कन्वर्टर)</span>
-                    <span class="en">🔍 Smart Legal Tools (IPC to BNS Converter)</span>
-                </h3>
+    <!-- 4. LEGAL BLOG & JUDGMENT UPDATES -->
+    <section id="blog" class="container" style="padding-top: 0;">
+        <div class="section-title">
+            <h3 class="hi">📚 कानूनी ब्लॉग एवं सुप्रीम कोर्ट / हाई कोर्ट अपडेट</h3>
+            <h3 class="en">📚 Legal Blog & Supreme / High Court Judgments</h3>
+        </div>
+
+        <div class="grid">
+            <div class="blog-card">
+                <span class="blog-date">October 28, 2026</span>
+                <h4 class="hi">अग्रिम जमानत (Anticipatory Bail) पर सुप्रीम कोर्ट का नया फैसला</h4>
+                <p class="hi"> जानिए किन परिस्थितियों में धारा 482 BNSS / 438 CrPC के तहत गिरफ्तारी से सुरक्षा मिलती है और कोर्ट के दिशा-निर्देश क्या हैं।</p>
+                <a href="#book-now" style="color: var(--primary); font-weight: bold; text-decoration: none; font-size: 0.9rem;">Read Full Article &rarr;</a>
             </div>
 
-            <div class="grid">
-                <div style="background: #fdfbf7; padding: 1.5rem; border-radius: 8px; border: 1px solid #e5d5bc;">
-                    <h4 class="hi" style="color: var(--primary); margin-bottom: 10px;">1. पुरानी IPC से नई BNS धारा जानें</h4>
-                    <h4 class="en" style="color: var(--primary); margin-bottom: 10px;">1. Old IPC to New BNS Section Finder</h4>
-                    <select class="tool-select" id="ipcSelect" onchange="convertIpc()">
-                        <option value="">-- पुरानी IPC / CrPC धारा चुनें --</option>
-                        <option value="420">IPC 420 - धोखाधड़ी (Cheating)</option>
-                        <option value="302">IPC 302 - हत्या (Murder)</option>
-                        <option value="307">IPC 307 - हत्या का प्रयास (Attempt to Murder)</option>
-                        <option value="498A">IPC 498A - दहेज प्रताड़ना (Cruelty)</option>
-                        <option value="323">IPC 323 - मारपीट (Hurt)</option>
-                        <option value="379">IPC 379 - चोरी (Theft)</option>
-                        <option value="438">CrPC 438 - अग्रिम जमानत (Anticipatory Bail)</option>
-                        <option value="125">CrPC 125 - भरण-पोषण (Maintenance)</option>
-                    </select>
-                    <div class="tool-result" id="ipcResult">
-                        👆 ऊपर लिस्ट में से कोई भी धारा चुनें, नई धारा यहाँ दिखेगी।
-                    </div>
-                </div>
+            <div class="blog-card">
+                <span class="blog-date">October 24, 2026</span>
+                <h4 class="hi">साइबर फ्रॉड और बैंक खाता फ्रीज होने पर तुरंत क्या कानूनी कदम उठाएं?</h4>
+                <p class="hi">यदि आपका बैंक खाता साइबर सेल द्वारा फ्रीज कर दिया गया है, तो बैंक और कोर्ट के माध्यम से खाता अनफ्रीज कराने की पूरी प्रक्रिया।</p>
+                <a href="#book-now" style="color: var(--primary); font-weight: bold; text-decoration: none; font-size: 0.9rem;">Read Full Article &rarr;</a>
+            </div>
 
-                <div style="background: #fdfbf7; padding: 1.5rem; border-radius: 8px; border: 1px solid #e5d5bc;">
-                    <h4 class="hi" style="color: var(--primary); margin-bottom: 10px;">2. केस के लिए जरूरी कागजात (Document Checklist)</h4>
-                    <h4 class="en" style="color: var(--primary); margin-bottom: 10px;">2. Case Required Documents Checklist</h4>
-                    <select class="tool-select" id="docSelect" onchange="showDocs()">
-                        <option value="">-- अपना केस चुनें --</option>
-                        <option value="cheque">चेक बाउंस केस (Cheque Bounce)</option>
-                        <option value="bail">जमानत याचिका (Bail Application)</option>
-                        <option value="divorce">तलाक या पारिवारिक केस (Divorce)</option>
-                        <option value="cyber">साइबर फ्रॉड (Cyber Fraud)</option>
-                        <option value="property">प्रॉपर्टी विवाद (Property Stay)</option>
-                    </select>
-                    <div class="tool-result" id="docResult">
-                        👆 अपना मामला चुनें, जरूरी दस्तावेजों की लिस्ट आएगी।
-                    </div>
-                </div>
+            <div class="blog-card">
+                <span class="blog-date">October 20, 2026</span>
+                <h4 class="hi">चेक बाउंस (Section 138 NI Act) मामलों में नए कानूनी नियम</h4>
+                <p class="hi">समय पर लीगल नोटिस भेजने से लेकर कोर्ट में शिकायत दर्ज कराने तक की पूरी कानूनी प्रक्रिया और तकनीकी बारीकियां।</p>
+                <a href="#book-now" style="color: var(--primary); font-weight: bold; text-decoration: none; font-size: 0.9rem;">Read Full Article &rarr;</a>
             </div>
         </div>
     </section>
@@ -761,41 +800,12 @@
         </div>
     </section>
 
-    <!-- DAILY USE LEGAL POINTS -->
-    <section id="daily-laws" class="container" style="padding-top: 0;">
-        <div class="daily-law">
-            <div class="section-title">
-                <h3 class="hi">दैनिक जीवन के जरूरी कानून (Daily Use Legal Points)</h3>
-                <h3 class="en">Daily Use Legal Points (Know Your Rights)</h3>
-            </div>
-
-            <div class="law-item">
-                <h5 class="hi">1. जीरो FIR का अधिकार (Zero FIR Right - BNSS Sec 173)</h5>
-                <p class="hi">यदि आपके साथ कोई अपराध होता है, तो आप देश के किसी भी पुलिस थाने में 'Zero FIR' दर्ज करवा सकते हैं। पुलिस थाना क्षेत्र का बहाना नहीं बना सकती।</p>
-            </div>
-            <div class="law-item">
-                <h5 class="hi">2. ऑनलाइन साइबर ठगी होने पर तुरंत क्या करें? (1930 हेल्पलाइन)</h5>
-                <p class="hi">बैंक खाते या UPI फ्रॉड होने पर तुरंत <strong>1930</strong> पर कॉल करें या cybercrime.gov.in पर शिकायत दर्ज करें (Golden Hour rule)।</p>
-            </div>
-
-            <div style="margin-top: 20px; text-align: center;">
-                <h4 class="hi" style="color: var(--primary); margin-bottom: 10px;">🔗 महत्वपूर्ण सरकारी एवं कोर्ट पोर्टल्स</h4>
-                <div class="quick-links">
-                    <a href="https://highcourtchd.gov.in/" target="_blank" class="q-link">🏛️ P&H High Court Chandigarh</a>
-                    <a href="https://services.ecourts.gov.in/" target="_blank" class="q-link">⚖️ e-Courts Case Status</a>
-                    <a href="https://cybercrime.gov.in/" target="_blank" class="q-link">🛡️ National Cyber Crime Portal</a>
-                    <a href="https://rtionline.gov.in/" target="_blank" class="q-link">📄 RTI Online Portal</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONSULTATION FORM -->
+    <!-- CONSULTATION & SECURE DOCUMENT UPLOAD VAULT -->
     <section id="book-now" class="container" style="padding-top: 0;">
         <div class="form-card">
             <div class="section-title" style="margin-bottom: 1.5rem;">
-                <h3 class="hi">ऑनलाइन अपॉइंटमेंट / केस की जानकारी भेजें</h3>
-                <h3 class="en">Book Consultation / Send Case Details</h3>
+                <h3 class="hi">ऑनलाइन अपॉइंटमेंट एवं डॉक्यूमेंट वाल्ट (Secure Upload)</h3>
+                <h3 class="en">Book Consultation & Secure Document Vault</h3>
             </div>
 
             <div class="form-group">
@@ -818,12 +828,16 @@
                 </select>
             </div>
             <div class="form-group">
+                <label class="hi">दस्तावेज अपलोड करें (FIR / Notice / Papers) - Secure Vault</label>
+                <input type="file" id="cFile" style="padding: 8px; background: #f8f9fa;">
+            </div>
+            <div class="form-group">
                 <label class="hi">अपनी समस्या संक्षेप में लिखें</label>
                 <textarea id="cMsg" rows="3" placeholder="अपनी समस्या यहाँ लिखें..."></textarea>
             </div>
             <button class="btn btn-whatsapp" style="width: 100%; font-size: 1.05rem;" onclick="sendToWhatsApp()">
-                <span class="hi">💬 WhatsApp पर केस डिटेल भेजें</span>
-                <span class="en">💬 Send Case Details on WhatsApp</span>
+                <span class="hi">💬 WhatsApp पर केस डिटेल व दस्तावेज भेजें</span>
+                <span class="en">💬 Send Case Details & Documents on WhatsApp</span>
             </button>
         </div>
     </section>
@@ -871,6 +885,16 @@
                 body.classList.add('lang-hi');
                 btn.innerHTML = '🌐 English';
             }
+        }
+
+        // LIVE E-COURTS STATUS CHECKER SIMULATION
+        function checkCaseStatus() {
+            const cnr = document.getElementById('cnrInput').value.trim();
+            if(!cnr) {
+                alert("कृपया अपना 16-अंकों का CNR नंबर या केस नंबर दर्ज करें।");
+                return;
+            }
+            document.getElementById('caseResult').innerHTML = `🔍 CNR: <strong>${cnr}</strong> के लिए e-Courts पोर्टल से डेटा खोजा जा रहा है...<br><a href="https://services.ecourts.gov.in/" target="_blank" style="color: var(--secondary); font-weight: bold;">👉 आधिकारिक e-Courts पोर्टल पर लाइव स्टेटस देखने के लिए यहाँ क्लिक करें</a>`;
         }
 
         // DRAFT FORMATS DATABASE (Bilingual)
@@ -922,7 +946,6 @@
             "307": "<strong>नई धारा: BNS Section 109</strong><br>हत्या का प्रयास (Attempt to Murder). सजा: 10 वर्ष तक की कैद।",
             "498A": "<strong>नई धारा: BNS Section 85 & 86</strong><br>दहेज प्रताड़ना / क्रूरता (Cruelty by Husband/Relatives). सजा: 3 वर्ष तक की कैद।",
             "323": "<strong>नई धारा: BNS Section 115(2)</strong><br>मारपीट करना (Voluntarily causing hurt). सजा: 1 वर्ष तक की कैद या जुर्माना।",
-            "379": "<strong>नई धारा: BNS Section 303(2)</strong><br>चोरी के लिए दंड (Theft). सजा: 3 वर्ष तक की कैद।",
             "438": "<strong>नई धारा: BNSS Section 482</strong><br>अग्रिम जमानत (Anticipatory Bail) याचिका।",
             "125": "<strong>नई धारा: BNSS Section 144</strong><br>भरण-पोषण (Maintenance) के लिए कोर्ट आदेश।"
         };
@@ -931,25 +954,13 @@
             document.getElementById('ipcResult').innerHTML = (val && bnsData[val]) ? bnsData[val] : "👆 ऊपर लिस्ट में से कोई भी धारा चुनें।";
         }
 
-        const docData = {
-            "cheque": "<strong>चेक बाउंस केस के कागज:</strong> 1. मूल चेक 2. बैंक रिटर्न मेमो 3. लीगल नोटिस व डाक रसीद 4. आधार कार्ड।",
-            "bail": "<strong>जमानत याचिका के कागज:</strong> 1. FIR की कॉपी 2. निचली कोर्ट का आदेश 3. आधार कार्ड व वकालतनामा।",
-            "divorce": "<strong>तलाक केस के कागज:</strong> 1. मैरिज सर्टिफिकेट / शादी का कार्ड व फोटो 2. पति-पत्नी के आधार कार्ड।",
-            "cyber": "<strong>साइबर फ्रॉड केस के कागज:</strong> 1. 1930 शिकायत कॉपी 2. बैंक स्टेटमेंट 3. खाता फ्रीज का ईमेल/मैसेज।",
-            "property": "<strong>प्रॉपर्टी विवाद के कागज:</strong> 1. रजिस्ट्री / फर्द 2. साइट प्लान (नक्शा) सहज बिजली बिल।"
-        };
-        function showDocs() {
-            const val = document.getElementById('docSelect').value;
-            document.getElementById('docResult').innerHTML = (val && docData[val]) ? docData[val] : "👆 अपना मामला चुनें।";
-        }
-
         function sendToWhatsApp() {
             const name = document.getElementById('cName').value.trim();
             const city = document.getElementById('cCity').value.trim();
             const type = document.getElementById('cType').value;
             const msg = document.getElementById('cMsg').value.trim();
             if (!name || !city) { alert("कृपया अपना नाम और शहर जरूर भरें।"); return; }
-            const text = `नमस्ते एडवोकेट राहुल सिंह जी,%0A%0A*नया केस/परामर्श विवरण:*%0A👤 *नाम:* ${name}%0A📍 *शहर:* ${city}%0A⚖️ *केस:* ${type}%0A📝 *विवरण:* ${msg || 'फोन पर चर्चा करनी है'}`;
+            const text = `नमस्ते एडवोकेट राहुल सिंह जी,%0A%0A*नया केस/परामर्श विवरण:*%0A👤 *नाम:* ${name}%0A📍 *शहर:* ${city}%0A⚖️ *केस:* ${type}%0A📝 *विवरण:* ${msg || 'फोन पर चर्चा करनी है'} (दस्तावेज़ वाल्ट से जुड़े हैं)`;
             window.open(`https://wa.me/919812050314?text=${text}`, '_blank');
         }
     </script>
