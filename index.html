@@ -1,1064 +1,1868 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Google Verification Tags -->
-    <meta name="google-site-verification" content="zwt4YOxNdvvDutqdOxTlrcH8mt_v8UT1tlSuxJBztNA" />
-    <meta name="google-site-verification" content="google92f8cbbede46be54" />
+    <meta name="google-site-verification" content="zwt4YDvNdvsOuCg0XtT1rcH0nt_v8UTt1l5uxJEzthA" />
+    <meta name="google-site-verification" content="google92f2c0b4de4bbe54" />
     
-    <title>Advocate Rahul Singh | All-India Legal Portal, e-Courts & Marketplace</title>
-    <meta name="description" content="Advocate Rahul Singh - Punjab & Haryana High Court, Chandigarh. Supreme & District Court Drafting Library, e-Courts Status Tracker, Advocate Directory & Legal Services.">
+    <title>The Indian Advocates | All-India Legal Portal, IPC to BNS Calculator, DRC & e-Courts Hub</title>
+    <meta name="description" content="The Indian Advocates - Online Legal Consultation, IPC to BNS 2023 Calculator, Document Review (DRC), Bilingual Legal Drafting Library, Live e-Courts Tracker & Legal Blogs.">
+    <meta name="keywords" content="The Indian Advocates, IPC to BNS Calculator, Online Legal Consultation, Talk to Lawyer, Document Review DRC, Legal Drafts Hindi English, Punjab and Haryana High Court, District Courts India">
+
     <style>
         :root {
             --primary: #0b192c;
             --primary-light: #1e3e62;
-            --secondary: #d4af37;
-            --secondary-hover: #b5952f;
-            --light: #f4f7f6;
-            --dark: #1c1e21;
-            --success: #25d366;
+            --accent: #d81b60;
+            --accent-hover: #ad1457;
+            --gold: #d4af37;
+            --green: #00875a;
+            --whatsapp: #25d366;
+            --purple: #6e45e2;
+            --orange: #ff7010;
+            --light-bg: #f5f7fb;
+            --dark-text: #1c1e21;
+            --muted-text: #606770;
+            --border-color: #e4e6eb;
             --card-bg: #ffffff;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
             scroll-behavior: smooth;
         }
-        body 
-        
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.7;
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.5;
+            padding-bottom: 135px;
         }
+
+        /* Language Toggle Display */
         body.lang-en .hi { display: none !important; }
         body.lang-hi .en { display: none !important; }
 
-        /* BCI Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-        }
-        .modal-box {
-            background: white;
-            max-width: 600px;
-            width: 100%;
-            border-radius: 10px;
-            border-top: 6px solid var(--secondary);
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        /* 1. Top Live Announcement Gradient Strip */
+        .promo-gradient-bar {
+            background: linear-gradient(90deg, #4f46e5 0%, #d81b60 50%, #ff7010 100%);
+            color: #fff;
             text-align: center;
+            padding: 8px 12px;
+            font-size: 0.84rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .modal-box h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.35rem; }
-        .modal-box p { font-size: 0.92rem; color: #444; margin-bottom: 20px; text-align: justify; }
-        .agree-btn {
-            background: var(--primary);
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
-            padding: 10px 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 6px;
+        .promo-gradient-bar .start-btn {
+            background: #ffffff;
+            color: var(--primary);
+            padding: 4px 14px;
+            border-radius: 99px;
+            font-weight: 700;
+            font-size: 0.78rem;
             cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
 
-        /* Top Bar */
-        .top-bar {
+        /* 2. Multi-Language Bar */
+        .lang-strip {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 7px 14px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .lang-strip::-webkit-scrollbar { display: none; }
+        .lang-item {
+            font-size: 0.88rem;
+            color: #444;
+            cursor: pointer;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+        .lang-item.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            font-weight: 700;
+        }
+
+        /* 3. Helpline Top Bar */
+        .helpline-bar {
             background: #050b14;
-            color: #ccc;
-            font-size: 0.82rem;
-            padding: 7px 5%;
+            color: #cfd8dc;
+            font-size: 0.76rem;
+            padding: 6px 14px;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
-        .top-bar span strong { color: var(--secondary); }
+        .helpline-bar strong { color: var(--gold); }
 
-        /* Header */
-        header {
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 1rem 5%;
+        /* 4. Main Sticky Header */
+        .app-header {
+            background: #ffffff;
+            padding: 12px 16px;
             position: sticky;
             top: 0;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
             gap: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
         }
-        .logo h1 { font-size: 1.4rem; color: var(--secondary); }
-        .logo p { font-size: 0.78rem; color: #ddd; }
-        .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; font-size: 0.88rem; font-weight: 500; }
-        .nav-links a:hover { color: var(--secondary); }
-        .lang-btn {
-            background-color: var(--secondary);
-            color: var(--primary);
+        .menu-btn {
+            background: none;
             border: none;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--dark-text);
             cursor: pointer;
-            font-size: 0.82rem;
         }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(rgba(11, 25, 44, 0.92), rgba(30, 62, 98, 0.94)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80') center/cover;
-            color: white;
-            text-align: center;
-            padding: 4.5rem 1.5rem;
-        }
-        .badge {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.18);
-            border: 1px solid var(--secondary);
-            color: var(--secondary);
-            padding: 6px 18px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        .hero h2 { font-size: 2.2rem; margin-bottom: 14px; color: var(--secondary); }
-        .hero p { font-size: 1.05rem; max-width: 800px; margin: 0 auto 28px; color: #eaeaea; }
-        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .btn {
-            padding: 12px 24px;
-            border-radius: 6px;
+        .brand-box {
             text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: 0.2s;
+            color: inherit;
         }
-        .btn:hover { transform: translateY(-2px); }
-        .btn-gold { background-color: var(--secondary); color: var(--primary); }
-        .btn-whatsapp { background-color: var(--success); color: white; }
-
-        /* Stats Bar */
-        .stats-bar {
-            background: white;
-            max-width: 1100px;
-            margin: -35px auto 25px;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            padding: 20px;
-            text-align: center;
-            gap: 15px;
-            position: relative;
-            z-index: 10;
-            border-bottom: 4px solid var(--secondary);
-        }
-        .stat-item h4 { color: var(--primary); font-size: 1.35rem; }
-        .stat-item p { font-size: 0.85rem; color: #555; }
-
-        /* Container & Grid */
-        .container { max-width: 1150px; margin: 0 auto; padding: 3rem 1.5rem; }
-        .section-title { text-align: center; margin-bottom: 2.5rem; }
-        .section-title h3 {
-            font-size: 1.75rem;
+        .brand-box h1 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
             color: var(--primary);
-            border-bottom: 3px solid var(--secondary);
-            display: inline-block;
-            padding-bottom: 6px;
+            text-transform: uppercase;
+            margin: 0;
         }
-        .section-title p { color: #555; margin-top: 8px; font-size: 0.95rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
-        .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.6rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border-top: 4px solid var(--secondary);
+        .brand-box p {
+            font-size: 0.72rem;
+            color: var(--muted-text);
+            margin: 0;
         }
-        .card h4 { color: var(--primary); font-size: 1.2rem; margin-bottom: 12px; }
-        .card ul { list-style: none; }
-        .card ul li { padding: 6px 0; border-bottom: 1px dashed #e5e5e5; font-size: 0.92rem; }
-        .card ul li::before { content: "⚖️ "; }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .profile-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #f0f2f5;
+            border: 1px solid #dcdfe6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
 
-        /* DRAFTING LIBRARY */
-        .draft-card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border-left: 5px solid var(--secondary);
+        /* Clean Website Header Banner */
+        .clean-brand-banner {
+            text-align: center;
+            padding: 18px 15px;
+            background: linear-gradient(90deg, #0b192c, #1e3e62);
+            color: white;
+            border-bottom: 3px solid var(--gold);
+        }
+        .clean-brand-banner h2 {
+            margin: 0;
+            font-size: 1.55rem;
+            letter-spacing: 1px;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        .clean-brand-banner p {
+            margin: 4px 0 0 0;
+            font-size: 0.82rem;
+            color: #e2e8f0;
+        }
+
+        /* Slide-out Drawer */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            display: none;
+        }
+        .drawer-overlay.open { display: block; }
+        .side-drawer {
+            position: fixed;
+            top: 0;
+            left: -310px;
+            width: 290px;
+            height: 100%;
+            background: #ffffff;
+            z-index: 2001;
+            transition: left 0.28s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.18);
+            overflow-y: auto;
         }
-        .draft-card h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 8px; }
-        .draft-card p { font-size: 0.86rem; color: #666; margin-bottom: 15px; }
-        .draft-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-        .view-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-        .copy-btn {
-            background-color: #e5e7eb;
-            color: #374151;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        /* Draft Preview Modal */
-        .draft-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 10000;
-            justify-content: center;
+        .side-drawer.open { left: 0; }
+        .drawer-top {
+            padding: 18px 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
             align-items: center;
-            padding: 20px;
+            justify-content: space-between;
         }
-        .draft-modal-content {
-            background: white;
-            max-width: 750px;
-            width: 100%;
-            max-height: 85vh;
-            border-radius: 8px;
-            padding: 25px;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .close-modal {
-            position: absolute;
-            top: 15px; right: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
+        .drawer-close {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
             cursor: pointer;
         }
-        .draft-text-box {
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            white-space: pre-wrap;
-            margin-top: 15px;
-            max-height: 380px;
-            overflow-y: auto;
-            text-align: left;
+        .drawer-nav {
+            padding: 12px 10px;
+            list-style: none;
+        }
+        .drawer-nav li a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border-radius: 10px;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            margin-bottom: 4px;
+        }
+        .drawer-nav li a:hover, .drawer-nav li a.active-item {
+            background: linear-gradient(90deg, #b83b5e, #d81b60);
+            color: #ffffff;
+        }
+        .drawer-footer {
+            padding: 14px 16px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.78rem;
+            color: var(--muted-text);
+            display: flex;
+            justify-content: space-between;
         }
 
-        /* ADVANCED TOOLS & E-COURTS TRACKER */
-        .tools-wrapper {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* 5. Hero Section */
+        .hero-section {
+            background: radial-gradient(circle at top right, #fce4ec 0%, #ede7f6 45%, #ffffff 100%);
+            padding: 22px 16px 26px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .trust-pills {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .first-badge {
+            display: inline-block;
+            background: #ffffff;
+            border: 1.5px solid #26a69a;
+            padding: 5px 14px;
+            border-radius: 99px;
+            font-size: 0.74rem;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 12px;
+        }
+        .hero-title {
+            font-size: 2rem;
+            line-height: 1.18;
+            font-weight: 800;
+            color: #0d1321;
+            margin-bottom: 12px;
+        }
+        .hero-title .highlight { color: var(--accent); }
+        .hero-sub {
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin-bottom: 16px;
+            max-width: 680px;
+        }
+        .rate-tag {
+            font-size: 1.12rem;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 16px;
+        }
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .btn-pink {
+            background: linear-gradient(180deg, #e91e63 0%, #c2185b 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 99px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+        }
+        .btn-outline-dark {
+            background: #ffffff;
+            color: #111;
+            border: 1.5px solid #cfd8dc;
+            padding: 12px 22px;
+            border-radius: 99px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .avatar-row {
+            display: flex;
+            align-items: center;
+            margin: 8px 0 14px;
+        }
+        .av-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-right: -8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #fff;
+            position: relative;
+        }
+        .av-circle::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #00e676;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .rating-summary-card {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
             border-radius: 12px;
-            padding: 2.5rem 1.5rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            max-width: 460px;
         }
-        .tool-box {
-            background: rgba(255,255,255,0.08);
+        .stat-col strong { font-size: 1.25rem; display: block; color: #111; }
+        .stat-col span { font-size: 0.76rem; color: var(--muted-text); }
+        .stat-divider { width: 1px; height: 36px; background: #e0e0e0; }
+
+        .section-block { padding: 26px 0; }
+        .section-heading {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: #111;
+        }
+        .section-sub {
+            font-size: 0.88rem;
+            color: var(--muted-text);
+            margin-bottom: 16px;
+        }
+
+        /* 6. NEW: IPC to BNS 2023 Converter & Legal Calculators Box */
+        .bns-calc-card {
+            background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+            color: #ffffff;
+            border-radius: 18px;
+            padding: 22px 18px;
+            box-shadow: 0 8px 24px rgba(11, 25, 44, 0.2);
             border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 8px;
-            padding: 1.5rem;
         }
-        .tool-box h4 { color: var(--secondary); margin-bottom: 12px; font-size: 1.15rem; }
-        .tool-select, .tool-input {
+        .bns-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.74rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .bns-search-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 14px 0;
+        }
+        .bns-input {
+            flex: 1;
+            min-width: 210px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1.5px solid #cbd5e1;
+            font-size: 0.95rem;
+            outline: none;
+            color: #111;
+        }
+        .bns-quick-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .bns-pill {
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 5px 11px;
+            border-radius: 99px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .bns-pill:hover {
+            background: var(--gold);
+            color: #0b192c;
+        }
+        .bns-result-box {
+            background: #ffffff;
+            color: #111;
+            border-radius: 14px;
+            padding: 16px;
+            border-left: 5px solid var(--gold);
+            margin-top: 10px;
+        }
+        .bns-grid-res {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+
+        /* 138 NI Act Limitation Calculator */
+        .ni-calc-box {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 18px;
+        }
+
+        /* 7. Live Chat Mockup & 3-Step Cards */
+        .chat-preview-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .chat-adv-info { display: flex; align-items: center; gap: 10px; }
+        .adv-initials {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #7c4dff;
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rate-pill {
+            background: #fce4ec;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 99px;
+        }
+        .bubble-user {
+            background: #ad1457;
+            color: #fff;
+            padding: 11px 14px;
+            border-radius: 16px 16px 4px 16px;
+            font-size: 0.86rem;
+            margin-left: auto;
+            margin-bottom: 10px;
+            max-width: 82%;
+        }
+        .bubble-lawyer {
+            background: #f1f3f5;
+            color: #111;
+            padding: 11px 14px;
+            border-radius: 16px 16px 16px 4px;
+            font-size: 0.86rem;
+            margin-right: auto;
+            margin-bottom: 10px;
+            max-width: 85%;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .step-card {
+            border-radius: 16px;
+            padding: 20px 18px;
+            color: #ffffff;
+        }
+        .step-1 { background: linear-gradient(135deg, #ff1744, #d81b60); }
+        .step-2 { background: linear-gradient(135deg, #00b09b, #00875a); }
+        .step-3 { background: linear-gradient(135deg, #7f53ac, #647dee); }
+        .step-num {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        /* 8. Add Credits & Recharge Plans */
+        .credits-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px 16px;
+            border: 1px solid var(--border-color);
+        }
+        .plan-selector-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .plan-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 14px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: #fff;
+        }
+        .plan-option.selected {
+            border-color: var(--accent);
+            background: #fff5f8;
+        }
+        .radio-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #bbb;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: transparent;
+        }
+        .plan-option.selected .radio-dot {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+        .recharge-cards-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .rc-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px 16px;
+            text-align: center;
+            position: relative;
+        }
+        .rc-badge {
+            position: absolute;
+            top: -11px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 3px 12px;
+            border-radius: 99px;
+        }
+        .rc-amount { font-size: 2rem; font-weight: 800; margin: 6px 0; }
+        .btn-green-full {
+            background: var(--green);
+            color: #fff;
+            border: none;
             width: 100%;
             padding: 12px;
-            border-radius: 6px;
-            border: none;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            background: white;
-            color: var(--dark);
-            font-weight: 500;
-        }
-        .tool-result {
-            background: rgba(0,0,0,0.35);
-            padding: 14px;
-            border-radius: 6px;
-            border-left: 4px solid var(--secondary);
-            font-size: 0.92rem;
-            min-height: 70px;
+            border-radius: 99px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
         }
 
-        /* MARKETPLACE & DIRECTORY */
-        .marketplace-wrapper {
-            background: white;
-            border: 2px solid var(--secondary);
-            border-radius: 12px;
-            padding: 2.5rem 1.5rem;
+        /* 9. Verified Advocates Cards */
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
         }
         .adv-card {
-            background: #fdfbf7;
-            border: 1px solid #e5d5bc;
-            border-radius: 8px;
-            padding: 1.5rem;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--accent);
         }
-        .adv-card h4 { color: var(--primary); font-size: 1.15rem; margin-bottom: 8px; }
-        .adv-card p { font-size: 0.88rem; color: #555; margin-bottom: 10px; }
+        .adv-card.green-top { border-top-color: var(--green); }
+        .adv-card.blue-top { border-top-color: var(--primary-light); }
+        .adv-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .adv-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #e91e63;
+            color: #fff;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .adv-card.green-top .adv-avatar { background: #00a86b; }
+        .adv-card.blue-top .adv-avatar { background: #1e3e62; }
+        .online-dot { width: 9px; height: 9px; background: #00c853; border-radius: 50%; display: inline-block; }
+        .spec-pill {
+            display: inline-block;
+            background: #fce4ec;
+            color: #ad1457;
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 6px;
+            margin-top: 3px;
+        }
+        .adv-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 10px;
+        }
+        .adv-price { font-size: 1.3rem; font-weight: 800; color: var(--accent); }
+        .chat-now-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 99px;
+            font-weight: 700;
+            cursor: pointer;
+        }
 
-        /* BLOG & JUDGMENT UPDATES */
-        .blog-card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border-top: 4px solid var(--primary);
+        /* 10. DRC Calculator */
+        .drc-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 20px 16px;
+            border: 1px solid var(--border-color);
         }
-        .blog-card h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 8px; }
-        .blog-card p { font-size: 0.88rem; color: #666; margin-bottom: 12px; }
-        .blog-date { font-size: 0.78rem; color: #888; margin-bottom: 10px; display: block; }
-
-        /* Quick Links & Daily Laws */
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-top: 1.2rem;
+        .drc-price-big { font-size: 2.2rem; font-weight: 900; }
+        .tier-table {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 8px 14px;
+            margin: 14px 0;
+            border: 1px solid #e2e8f0;
         }
-        .q-link {
-            background: white;
-            color: var(--primary);
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            border: 1px solid #ddd;
+        .tier-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px solid #e2e8f0;
             font-size: 0.9rem;
         }
-        .daily-law {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-        }
-        .law-item {
-            background: #f8f9fa;
+        .tier-row:last-child { border-bottom: none; }
+        .slider-box {
+            background: #f8fafc;
+            border-radius: 14px;
             padding: 15px;
-            border-left: 4px solid var(--primary);
-            border-radius: 4px;
-            margin-bottom: 15px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 14px;
         }
-        .law-item h5 { color: var(--primary); font-size: 1.05rem; margin-bottom: 5px; }
-        .law-item p { font-size: 0.92rem; color: #333; }
+        .page-slider { width: 100%; accent-color: var(--orange); height: 6px; cursor: pointer; margin: 10px 0; }
+        .calc-total { font-size: 1.6rem; font-weight: 900; }
+        .save-badge {
+            display: inline-block;
+            background: #e6f4ea;
+            color: #137333;
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 99px;
+            margin-top: 6px;
+        }
+        .drc-checklist { list-style: none; margin: 14px 0; }
+        .drc-checklist li { margin-bottom: 8px; font-size: 0.88rem; display: flex; gap: 8px; }
+        .drc-actions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 10px; }
+        .btn-orange {
+            background: var(--orange);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
 
-        /* Form & Footer */
-        .form-card {
-            background: white;
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            border-top: 5px solid var(--secondary);
+        /* 11. Drafting Library & Document Upload Vault */
+        .drafts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
         }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 6px; color: var(--primary); }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 11px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 0.95rem;
-        }
-        .floating-btns {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+        .draft-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            z-index: 999;
+            justify-content: space-between;
         }
-        .float-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .draft-card h4 { font-size: 0.98rem; color: var(--primary); margin-bottom: 6px; }
+        .draft-card p { font-size: 0.82rem; color: var(--muted-text); margin-bottom: 12px; }
+        .draft-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+        .btn-sm {
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--primary);
+            background: #fff;
+            color: var(--primary);
+        }
+        .btn-sm.fill { background: var(--primary); color: #fff; }
+
+        /* 12. Client Testimonials & 7 Legal Blogs */
+        .testimonial-grid {
             display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
             justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.4rem;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            margin-top: 14px;
         }
-        .float-wa { background: var(--success); }
-        .float-call { background: var(--primary); border: 2px solid var(--secondary); }
-        footer {
-            background-color: #050b14;
-            color: #ccc;
-            padding: 3rem 1.5rem 1.5rem;
+        .testi-card {
+            background: #ffffff;
+            padding: 18px;
+            border-radius: 12px;
+            width: 300px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .blog-search-box {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 99px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .blog-search-box input { border: none; outline: none; width: 100%; font-size: 0.92rem; }
+        .blog-tags-strip {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        .blog-tag { font-size: 0.84rem; color: #444; cursor: pointer; font-weight: 600; }
+        .blog-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 14px;
+            border: 1px solid var(--border-color);
+        }
+        .blog-card h3 { font-size: 1.04rem; color: var(--primary); margin-bottom: 6px; }
+        .blog-meta { font-size: 0.76rem; color: var(--muted-text); margin-bottom: 6px; }
+
+        /* 13. Footer & BCI Disclaimer */
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 28px 16px 24px;
+            margin-top: 24px;
+        }
+        .footer-cols {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 980px;
+            margin: 0 auto 20px;
+        }
+        .footer-col h4 { font-size: 0.98rem; font-weight: 800; margin-bottom: 10px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li a { color: #4a5568; text-decoration: none; font-size: 0.88rem; }
+        .bci-footer-box {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 15px;
+            font-size: 0.78rem;
+            color: #555;
+            background: #ecf0f1;
+            border-top: 1px solid #bdc3c7;
+            border-radius: 8px;
             text-align: center;
         }
-        .footer-info h4 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 10px; }
-        .disclaimer {
-            font-size: 0.78rem;
-            color: #888;
-            border-top: 1px solid #1a2f4c;
-            padding-top: 15px;
-            max-width: 900px;
-            margin: 20px auto 0;
+
+        /* Sticky Bars & Floating WhatsApp */
+        .sticky-buy-bar {
+            position: fixed;
+            bottom: 58px;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 990;
+        }
+        .sticky-price { font-size: 1.25rem; font-weight: 900; }
+        .bottom-app-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 58px;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 995;
+        }
+        .b-nav-item {
+            text-decoration: none;
+            color: #606770;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .b-nav-item.active { color: var(--accent); }
+        .b-nav-item span.ico { font-size: 1.15rem; }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 125px;
+            right: 16px;
+            width: 52px;
+            height: 52px;
+            background: var(--whatsapp);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
+            z-index: 996;
+        }
+
+        /* Modals */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .modal-backdrop.show { display: flex; }
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 440px;
+            border-radius: 18px;
+            padding: 22px 18px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+        }
+        .phone-input-row { display: flex; gap: 8px; margin: 10px 0 16px; }
+        .country-box { border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 10px 12px; font-weight: 700; }
+        .phone-field { flex: 1; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 10px 12px; font-size: 0.95rem; }
+        .draft-pre-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 0.82rem;
+            white-space: pre-wrap;
+            max-height: 290px;
+            overflow-y: auto;
+            margin: 12px 0;
         }
     </style>
 </head>
 <body class="lang-hi">
-    <!-- Clean Website Header Title -->
-    <div style="text-align: center; padding: 25px 15px; background: #2c3e50; color: white; border-radius: 8px; margin-bottom: 20px;">
-        <h1 style="margin: 0; font-size: 30px; letter-spacing: 1px; font-weight: bold;">The Indian Advocates</h1>
-        <p style="margin: 8px 0 0 0; font-size: 14px; color: #bdc3c7;">Professional Legal Services & Consultation Portal</p>
-    </div>
- 
-    <!-- DRAFT PREVIEW MODAL -->
-    <div class="draft-modal" id="draftModal">
-        <div class="draft-modal-content">
-            <span class="close-modal" onclick="closeDraftModal()">&times;</span>
-            <h3 id="modalTitle" style="color: var(--primary); margin-bottom: 10px;">Draft Title</h3>
-            <p style="font-size: 0.85rem; color: #666;" class="hi">आप इस प्रारूप को नीचे दिए गए बटन से सीधे कॉपी कर सकते हैं:</p>
-            <div class="draft-text-box" id="modalText">Draft content will load here...</div>
-            <button class="btn btn-gold" style="margin-top: 15px; width: 100%;" onclick="copyModalText()">
-                📋 <span class="hi">ड्राफ्ट कॉपी करें (Copy Draft Text)</span><span class="en">Copy Draft Text</span>
-            </button>
-        </div>
+
+    <!-- 1. Top Live Announcement Gradient Bar -->
+    <div class="promo-gradient-bar">
+        <span>🎉 <span class="hi">नया — IPC से BNS 2023 कैलकुलेटर और 24×7 लाइव वकील चैट अब उपलब्ध है!</span><span class="en">NEW — IPC to BNS 2023 Calculator & 24×7 Live Lawyer Chat is Live!</span></span>
+        <button class="start-btn" onclick="openConsultModal()">
+            <span class="hi">चैट शुरू करें →</span><span class="en">Start chatting →</span>
+        </button>
     </div>
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
+    <!-- 2. Multi-Language Selection Bar -->
+    <div class="lang-strip">
+        <button class="lang-item active" onclick="setSiteLang('hi', this)">हिंदी</button>
+        <button class="lang-item" onclick="setSiteLang('en', this)">English</button>
+        <button class="lang-item" onclick="setSiteLang('hi', this)">ਪੰਜਾਬੀ</button>
+        <button class="lang-item" onclick="setSiteLang('en', this)">বাংলা</button>
+        <button class="lang-item" onclick="setSiteLang('en', this)">தமிழ்</button>
+        <button class="lang-item" onclick="setSiteLang('en', this)">తెలుగు</button>
+        <button class="lang-item" onclick="setSiteLang('en', this)">മലയാളം</button>
+        <button class="lang-item" onclick="setSiteLang('en', this)">ગુજરાતી</button>
+        <button class="lang-item" onclick="setSiteLang('hi', this)">मराठी</button>
+    </div>
+
+    <!-- 3. Emergency Helpline Bar -->
+    <div class="helpline-bar">
         <span>🚨 <strong>Helplines:</strong> Police: 112 | Cyber Fraud: 1930 | Women: 1091</span>
-        <span>📍 <strong>All India e-Courts & Legal Portal</strong></span>
+        <span>⚖️ <strong>All India e-Courts & Legal Portal</strong></span>
     </div>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo">
-            <h1 class="hi">एडवोकेट राहुल सिंह</h1>
-            <h1 class="en">Advocate Rahul Singh</h1>
-            <p>All-India Legal Portal & e-Courts Hub</p>
+    <!-- 4. Clean Website Header Title Banner -->
+    <div class="clean-brand-banner">
+        <h2>The Indian Advocates</h2>
+        <p>Professional Legal Services, IPC-BNS Calculator, Drafting Library & e-Courts Consultation Portal</p>
+    </div>
+
+    <!-- 5. Sticky App Navigation Bar -->
+    <header class="app-header">
+        <div class="header-left">
+            <button class="menu-btn" onclick="toggleDrawer(true)">☰</button>
+            <a href="#home" class="brand-box">
+                <h1>The Indian Advocates</h1>
+                <p><span class="hi">पंजाब एवं हरियाणा हाई कोर्ट एवं अखिल भारतीय जिला अदालतें</span><span class="en">Punjab & Haryana High Court & All-India District Courts</span></p>
+            </a>
         </div>
-        <div class="header-right">
-            <nav class="nav-links">
-                <a href="#drafting-library"><span class="hi">ड्राफ्ट्स</span><span class="en">Drafts</span></a>
-                <a href="#ecourts"><span class="hi">केस स्टेटस</span><span class="en">e-Courts</span></a>
-                <a href="#directory"><span class="hi">वकील सूची</span><span class="en">Directory</span></a>
-                <a href="#blog"><span class="hi">ब्लॉग</span><span class="en">Blog</span></a>
-                <a href="#book-now"><span class="hi">संपर्क</span><span class="en">Consult</span></a>
-            </nav>
-            <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">🌐 English</button>
+        <div class="header-actions">
+            <button class="btn-sm" onclick="openAdvocateJoinModal()">
+                <span class="hi">+ वकील जुड़ें</span><span class="en">+ Join Advocate</span>
+            </button>
+            <button class="profile-btn" onclick="openConsultModal()">👤</button>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="badge">Punjab & Haryana High Court & All India District Courts</div>
-        <h2 class="hi">अखिल भारतीय लीगल पोर्टल, लाइव केस स्टेटस और एडवोकेट डायरेक्टरी</h2>
-        <h2 class="en">All-India Legal Portal, Live e-Courts Tracker & Advocate Directory</h2>
-        
-        <p class="hi">केस ड्राफ्टिंग लाइब्रेरी, लाइव ई-कोर्ट केस स्टेटस चेकर, डॉक्यूमेंट अपलोड वाल्ट और देशभर के वकीलों का डिजिटल मंच।</p>
-        <p class="en">Case drafting library, live e-courts status checker, document upload vault, and digital marketplace for advocates across India.</p>
-        
-        <div class="btn-group">
-            <a href="tel:+919812050314" class="btn btn-gold">
-                <span class="hi">📞 कॉल करें: +91 9812050314</span>
-                <span class="en">📞 Call Now: +91 9812050314</span>
-            </a>
-            <a href="#ecourts" class="btn btn-whatsapp">
-                <span class="hi">🏛️ केस स्टेटस चेक करें</span>
-                <span class="en">🏛️ Check e-Courts Status</span>
-            </a>
+    <!-- Slide-out Drawer Menu -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer(false)"></div>
+    <aside class="side-drawer" id="sideDrawer">
+        <div>
+            <div class="drawer-top">
+                <div>
+                    <strong style="font-size:1rem; color:var(--primary);">THE INDIAN ADVOCATES</strong>
+                    <div style="font-size:0.72rem; color:var(--muted-text);">Your Legal Journey Guide</div>
+                </div>
+                <button class="drawer-close" onclick="toggleDrawer(false)">✕</button>
+            </div>
+            <ul class="drawer-nav">
+                <li><a href="#home" onclick="toggleDrawer(false)"><span>🏠 Home</span><span>›</span></a></li>
+                <li><a href="#bns-calculator" class="active-item" onclick="toggleDrawer(false)"><span>⚖️ IPC to BNS 2023 Calculator</span><span>›</span></a></li>
+                <li><a href="#talk-to-lawyer" onclick="toggleDrawer(false)"><span>📞 Talk to Lawyer</span><span>›</span></a></li>
+                <li><a href="#drc-section" onclick="toggleDrawer(false)"><span>📄 Instant Document Review (DRC)</span><span>›</span></a></li>
+                <li><a href="#drafting-library" onclick="toggleDrawer(false)"><span>📝 Legal Drafting Library</span><span>›</span></a></li>
+                <li><a href="#ecourts" onclick="toggleDrawer(false)"><span>🏛️ Live e-Courts & Challans</span><span>↗</span></a></li>
+                <li><a href="#blogs" onclick="toggleDrawer(false)"><span>📖 7 Legal Blogs & Articles</span><span>›</span></a></li>
+                <li><a href="javascript:void(0)" onclick="toggleDrawer(false); openAdvocateJoinModal();"><span>👨‍⚖️ Advocates Click Here</span><span>›</span></a></li>
+            </ul>
         </div>
-    </section>
+        <div class="drawer-footer">
+            <span>© 2026 The Indian Advocates</span>
+            <span>Privacy • Terms</span>
+        </div>
+    </aside>
 
-    <!-- STATS BAR -->
-    <div class="stats-bar">
-        <div class="stat-item">
-            <h4>Live e-Courts</h4>
-            <p class="hi">तुरंत केस स्टेटस जांचें</p>
-            <p class="en">Instant Case Tracker</p>
-        </div>
-        <div class="stat-item">
-            <h4>Drafts Library</h4>
-            <p class="hi">सिविल व क्रिमिनल फॉर्मेट्स</p>
-            <p class="en">Civil & Criminal Formats</p>
-        </div>
-        <div class="stat-item">
-            <h4>Document Vault</h4>
-            <p class="hi">सुरक्षित दस्तावेज साझा करें</p>
-            <p class="en">Secure File Upload</p>
-        </div>
-        <div class="stat-item">
-            <h4>High Court</h4>
-            <p class="hi">चंडीगढ़ एवं सभी जिला न्यायालय</p>
-            <p class="en">District Courts Across India</p>
-        </div>
-    </div>
-
-    <!-- 1. LIVE E-COURTS STATUS TRACKER & SMART TOOLS -->
-    <section id="ecourts" class="container">
-        <div class="tools-wrapper">
-            <div class="section-title" style="margin-bottom: 1.8rem;">
-                <h3 style="color: var(--secondary);">
-                    <span class="hi">🏛️ लाइव ई-कोर्ट केस स्टेटस एवं स्मार्ट कानूनी टूल्स</span>
-                    <span class="en">🏛️ Live e-Courts Case Status Tracker & Tools</span>
-                </h3>
+    <!-- 6. Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="trust-pills">
+                <span>🕒 <span class="hi">24x7 विधिक परामर्श</span><span class="en">24x7 Legal Consultation</span></span>
+                <span>🛡️ <span class="hi">100% सुरक्षित एवं गोपनीय कॉल</span><span class="en">100% Secure Calls</span></span>
             </div>
 
-            <div class="grid">
-                <!-- e-Courts Tracker Box -->
-                <div class="tool-box">
-                    <h4 class="hi">1. e-Courts Case Status (लाइव केस स्टेटस)</h4>
-                    <h4 class="en">1. e-Courts Case Status Checker</h4>
-                    <p style="font-size: 0.85rem; margin-bottom: 10px; color: #ddd;" class="hi">अपना CNR नंबर या केस नंबर दर्ज करें:</p>
-                    <input type="text" class="tool-input" id="cnrInput" placeholder="Enter 16-digit CNR Number or Case No">
-                    <button class="btn btn-gold" style="width: 100%; padding: 10px; margin-bottom: 10px;" onclick="checkCaseStatus()">
-                        <span class="hi">🔍 स्टेटस खोजें (Search Status)</span><span class="en">Search Status</span>
-                    </button>
-                    <div class="tool-result" id="caseResult">
-                        👆 अपना CNR नंबर डालकर आधिकारिक e-Courts पोर्टल पर लाइव स्टेटस देखें।
-                    </div>
-                </div>
+            <div class="first-badge">👑 PUNJAB & HARYANA HIGH COURT & ALL INDIA DISTRICT COURTS</div>
 
-                <!-- IPC to BNS Converter Box -->
-                <div class="tool-box">
-                    <h4 class="hi">2. पुरानी IPC से नई BNS धारा जानें</h4>
-                    <h4 class="en">2. Old IPC to New BNS Section Finder</h4>
-                    <select class="tool-select" id="ipcSelect" onchange="convertIpc()">
-                        <option value="">-- पुरानी IPC / CrPC धारा चुनें --</option>
-                        <option value="420">IPC 420 - धोखाधड़ी (Cheating)</option>
-                        <option value="302">IPC 302 - हत्या (Murder)</option>
-                        <option value="307">IPC 307 - हत्या का प्रयास (Attempt to Murder)</option>
-                        <option value="498A">IPC 498A - दहेज प्रताड़ना (Cruelty)</option>
-                        <option value="323">IPC 323 - मारपीट (Hurt)</option>
-                        <option value="438">CrPC 438 - अग्रिम जमानत (Anticipatory Bail)</option>
-                        <option value="125">CrPC 125 - भरण-पोषण (Maintenance)</option>
-                    </select>
-                    <div class="tool-result" id="ipcResult">
-                        👆 ऊपर लिस्ट में से कोई भी धारा चुनें, नई धारा यहाँ दिखेगी।
+            <h2 class="hero-title">
+                <span class="hi">ऑनलाइन <span class="highlight">कानूनी परामर्श</span>, लाइव ई-कोर्ट्स और BNS कैलकुलेटर</span>
+                <span class="en">Online <span class="highlight">Legal</span> Consultation Anytime, Anywhere.</span>
+            </h2>
+
+            <p class="hero-sub">
+                <span class="hi">केस ड्राफ्टिंग लाइब्रेरी, IPC से BNS धारा कन्वर्टर, लाइव ई-कोर्ट्स केस स्टेटस चेकर, डॉक्यूमेंट रिव्यू (DRC) और देशभर के अनुभवी वकीलों का डिजिटल मंच।</span>
+                <span class="en">Case drafting library, IPC to BNS 2023 converter, live e-Courts status checker, document upload vault, and 24x7 online lawyer consultation.</span>
+            </p>
+
+            <div class="rate-tag">
+                <span class="hi">कानूनी परामर्श शुरू मात्र <span style="color:var(--accent);">₹31/मिनट</span> से</span>
+                <span class="en">Get Legal Consultation starting at <span style="color:var(--accent);">₹31/min</span></span>
+            </div>
+
+            <div class="hero-cta-group">
+                <button class="btn-pink" onclick="openConsultModal()">
+                    💬 <span class="hi">वकील से चैट करें →</span><span class="en">Chat with a lawyer →</span>
+                </button>
+                <a href="tel:+919812050314" class="btn-outline-dark">
+                    📞 <span class="hi">कॉल करें: +91 9812050314</span><span class="en">Call Now: +91 9812050314</span>
+                </a>
+            </div>
+
+            <div>
+                <p style="font-size:0.84rem; font-weight:600;">"More than 110+ Verified Advocates are online."</p>
+                <div class="avatar-row">
+                    <div class="av-circle" style="background:#1e3e62;">HC</div>
+                    <div class="av-circle" style="background:#d81b60;">PN</div>
+                    <div class="av-circle" style="background:#00875a;">AR</div>
+                    <div class="av-circle" style="background:#6e45e2;">VK</div>
+                    <div class="av-circle" style="background:#e65100;">SM</div>
+                </div>
+                <div class="rating-summary-card">
+                    <div class="stat-col">
+                        <strong>⭐ 4.9</strong>
+                        <span>500+ Client Reviews</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-col">
+                        <strong>10K+</strong>
+                        <span>Experienced Network</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. ADVOCATE DRAFTING LIBRARY -->
-    <section id="drafting-library" class="container" style="padding-top: 0;">
-        <div class="section-title">
-            <h3 class="hi">📥 संपूर्ण केस एवं लीगल ड्राफ्टिंग लाइब्रेरी (View & Copy)</h3>
-            <h3 class="en">📥 Complete Case & Legal Drafting Library</h3>
-            <p class="hi">क्रिमिनल, पारिवारिक, सिविल और एग्रीमेंट के सभी प्रोफेशनल लीगल फॉर्मेट्स</p>
-            <p class="en">Professional legal formats covering Criminal, Family, Civil and Agreements</p>
-        </div>
+    <div class="container">
 
-        <div class="grid">
-            <!-- Draft 1 -->
-            <div class="draft-card">
-                <div>
-                    <h4>1. अग्रिम जमानत याचिका (Anticipatory Bail - BNSS 482)</h4>
-                    <p class="hi">Sessions Court या High Court के लिए अग्रिम जमानत का स्टैंडर्ड क्रिमिनल ड्राफ्ट।</p>
-                    <p class="en">Standard criminal draft for anticipatory bail under BNSS 482.</p>
-                </div>
-                <div class="draft-actions">
-                    <button class="view-btn" onclick="openDraft('bail')">📄 View Draft</button>
-                    <button class="copy-btn" onclick="copyDirect('bail')">📋 Copy</button>
-                </div>
-            </div>
-
-            <!-- Draft 2 -->
-            <div class="draft-card">
-                <div>
-                    <h4>2. आपसी सहमति तलाक याचिका (Mutual Divorce - 13B HMA)</h4>
-                    <p class="hi">पारिवारिक न्यायालय के लिए हिंदू विवाह अधिनियम के तहत ज्वाइंट पिटीशन।</p>
-                    <p class="en">Joint petition format for mutual divorce under Section 13B HMA.</p>
-                </div>
-                <div class="draft-actions">
-                    <button class="view-btn" onclick="openDraft('divorce')">📄 View Draft</button>
-                    <button class="copy-btn" onclick="copyDirect('divorce')">📋 Copy</button>
-                </div>
-            </div>
-
-            <!-- Draft 3 -->
-            <div class="draft-card">
-                <div>
-                    <h4>3. सिविल सूट व स्टे अर्जी (Injunction Suit - Order 39)</h4>
-                    <p class="hi">अवैध कब्जे और प्रॉपर्टी विवाद रोकने के लिए सिविल कोर्ट का दावा व स्टे अर्जी।</p>
-                    <p class="en">Civil suit and temporary injunction application against illegal possession.</p>
-                </div>
-                <div class="draft-actions">
-                    <button class="view-btn" onclick="openDraft('property')">📄 View Draft</button>
-                    <button class="copy-btn" onclick="copyDirect('property')">📋 Copy</button>
-                </div>
-            </div>
-
-            <!-- Draft 4 -->
-            <div class="draft-card">
-                <div>
-                    <h4>4. ट्रस्ट डीड / NGO रजिस्ट्रेशन फॉर्मेट (Trust Deed)</h4>
-                    <p class="hi">सार्वजनिक या धार्मिक ट्रस्ट गठन और डीड रजिस्ट्रेशन के लिए कम्प्लीट एग्रीमेंट फॉर्मेट।</p>
-                    <p class="en">Complete trust deed agreement format for NGO and public trust registration.</p>
-                </div>
-                <div class="draft-actions">
-                    <button class="view-btn" onclick="openDraft('trust')">📄 View Draft</button>
-                    <button class="copy-btn" onclick="copyDirect('trust')">📋 Copy</button>
-                </div>
-            </div>
-
-            <!-- Draft 5 -->
-            <div class="draft-card">
-                <div>
-                    <h4>5. चेक बाउंस लीगल नोटिस (Sec 138 NI Act Notice)</h4>
-                    <p class="hi">चेक रिटर्न होने के 30 दिन के भीतर भेजने के लिए स्टैंडर्ड डिमांड लीगल नोटिस।</p>
-                    <p class="en">Standard legal demand notice format for cheque dishonour under Sec 138.</p>
-                </div>
-                <div class="draft-actions">
-                    <button class="view-btn" onclick="openDraft('cheque')">📄 View Draft</button>
-                    <button class="copy-btn" onclick="copyDirect('cheque')">📋 Copy</button>
-                </div>
-            </div>
-
-            <!-- Draft 6 -->
-            <div class="draft-card">
-                <div>
-                    <h4>6. लिखित जवाब (Written Statement in Civil Suit)</h4>
-                    <p class="hi">सिविल मुकदमे में समन मिलने के बाद प्रतिवादी द्वारा जवाबदावा पेश करने का प्रारूप।</p>
-                    <p class="en">Standard written statement draft format to contest civil suits.</p>
-                </div>
-                <div class="draft-actions">
-                    <button class="view-btn" onclick="openDraft('written')">📄 View Draft</button>
-                    <button class="copy-btn" onclick="copyDirect('written')">📋 Copy</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. ADVOCATE DIRECTORY & SPECIALIZATION SEARCH -->
-    <section id="directory" class="container" style="padding-top: 0;">
-        <div class="marketplace-wrapper">
-            <div class="section-title" style="margin-bottom: 2rem;">
-                <h3 style="color: var(--primary);">
-                    <span class="hi">⚖️ ऑल-इंडिया एडवोकेट डायरेक्टरी एवं शहरवार खोज</span>
-                    <span class="en">⚖️ All-India Advocate Directory & City Search</span>
-                </h3>
-                <p style="color: #555;">
-                    <span class="hi">अपने शहर और स्पेशलाइजेशन के आधार पर अनुभवी वकीलों की सूची देखें</span>
-                    <span class="en">Find verified advocates based on your city and legal specialization</span>
+        <!-- 7. IPC TO BNS 2023 CALCULATOR & 138 NI ACT LIMITATION CALCULATOR -->
+        <section class="section-block" id="bns-calculator">
+            <div class="bns-calc-card">
+                <span class="bns-badge">⚡ BHARATIYA NYAYA SANHITA (BNS) 2023 & LEGAL CALCULATOR</span>
+                <h2 style="font-size:1.45rem; font-weight:800; margin-bottom:4px;">
+                    <span class="hi">IPC से BNS धारा कन्वर्टर एवं कानूनी कैलकुलेटर</span>
+                    <span class="en">IPC to BNS Section Finder & Legal Deadline Calculator</span>
+                </h2>
+                <p style="font-size:0.86rem; color:#cfd8dc;">
+                    <span class="hi">पुरानी IPC धारा (जैसे 420, 302, 376, 498A, 307, 323, 506) लिखें और तुरंत नई BNS 2023 धारा व सजा की जानकारी पाएं:</span>
+                    <span class="en">Enter old IPC Section (e.g., 420, 302, 376, 498A, 307, 323, 506) to get the new BNS 2023 Section & Punishment:</span>
                 </p>
-            </div>
 
-            <div class="grid">
-                <div class="adv-card">
-                    <h4>Advocate Rahul Singh</h4>
-                    <p>📍 High Court & District Courts, Chandigarh</p>
-                    <p>⚖️ Criminal, Civil, Cyber Law & Matrimonial</p>
-                    <p>📞 +91 9812050314</p>
-                    <a href="tel:+919812050314" class="btn btn-gold" style="padding: 6px 14px; font-size: 0.85rem; margin-top: 5px;">Contact Advocate</a>
+                <div class="bns-search-row">
+                    <input type="text" id="ipcInput" class="bns-input" placeholder="IPC धारा लिखें (उदा. 420, 302, 498A, 307, 376, 506)..." onkeyup="convertIpcToBns()">
+                    <button class="btn-pink" style="border-radius:10px;" onclick="convertIpcToBns()">
+                        🔍 <span class="hi">BNS धारा देखें</span><span class="en">Find BNS Section</span>
+                    </button>
                 </div>
 
-                <div class="adv-card">
-                    <h4>Advocate Panel (Delhi NCR)</h4>
-                    <p>📍 Supreme Court & Delhi High Court</p>
-                    <p>⚖️ Civil Suits, Property & Arbitration</p>
-                    <p>⭐ Verified Panel Member</p>
-                    <a href="#book-now" class="btn btn-gold" style="padding: 6px 14px; font-size: 0.85rem; margin-top: 5px;">Request Consult</a>
+                <div class="bns-quick-pills">
+                    <span class="bns-pill" onclick="quickBns('420')">IPC 420 (धोखाधड़ी)</span>
+                    <span class="bns-pill" onclick="quickBns('302')">IPC 302 (हत्या)</span>
+                    <span class="bns-pill" onclick="quickBns('307')">IPC 307 (जानलेवा हमला)</span>
+                    <span class="bns-pill" onclick="quickBns('498A')">IPC 498A (दहेज उत्पीड़न)</span>
+                    <span class="bns-pill" onclick="quickBns('376')">IPC 376 (दुष्कर्म)</span>
+                    <span class="bns-pill" onclick="quickBns('323')">IPC 323 (मारपीट)</span>
+                    <span class="bns-pill" onclick="quickBns('506')">IPC 506 (जान से धमकी)</span>
+                    <span class="bns-pill" onclick="quickBns('379')">IPC 379 (चोरी)</span>
+                    <span class="bns-pill" onclick="quickBns('304A')">IPC 304A (सड़क दुर्घटना)</span>
+                    <span class="bns-pill" onclick="quickBns('438')">CrPC 438 (अग्रिम जमानत)</span>
                 </div>
 
-                <div class="adv-card">
-                    <h4>Advocate Panel (Punjab & Haryana)</h4>
-                    <p>📍 District Courts (Ludhiana, Karnal, Ambala)</p>
-                    <p>⚖️ Cheque Bounce (138 NI Act) & Bail Matters</p>
-                    <p>⭐ Verified Panel Member</p>
-                    <a href="#book-now" class="btn btn-gold" style="padding: 6px 14px; font-size: 0.85rem; margin-top: 5px;">Request Consult</a>
+                <div class="bns-result-box" id="bnsResultBox">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                        <strong style="font-size:1.1rem; color:var(--primary);" id="bnsTitle">IPC Section 420 ➔ BNS Section 318(4)</strong>
+                        <span class="spec-pill" id="bnsBailTag">Non-Bailable / Cognizable</span>
+                    </div>
+                    <p style="font-size:0.88rem; color:#333; margin-top:6px;" id="bnsDesc">
+                        <strong>अपराध (Offence):</strong> धोखाधड़ी और बेईमानी से संपत्ति हड़पना (Cheating and dishonestly inducing delivery of property).
+                    </p>
+                    <div class="bns-grid-res">
+                        <div><strong>पुरानी धारा (Old Law):</strong> <span id="bnsOldSec">IPC 420</span></div>
+                        <div><strong>नई धारा (New BNS 2023):</strong> <span id="bnsNewSec" style="color:var(--accent); font-weight:800;">BNS 318(4)</span></div>
+                        <div><strong>सजा (Punishment):</strong> <span id="bnsPunish">7 वर्ष तक कैद और जुर्माना</span></div>
+                    </div>
+                </div>
+
+                <!-- 138 NI Act Limitation Date Calculator -->
+                <div class="ni-calc-box">
+                    <h4 style="color:var(--gold); margin-bottom:6px;">📅 चेक बाउंस (Section 138 NI Act) समय-सीमा कैलकुलेटर</h4>
+                    <p style="font-size:0.8rem; color:#e2e8f0; margin-bottom:10px;">बैंक रिटर्न मेमो की तारीख चुनें — 30 दिन की नोटिस अवधि और केस फाइल करने की अंतिम तिथि जानें:</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                        <input type="date" id="memoDateInput" class="bns-input" style="max-width:220px;" onchange="calcChequeDates()">
+                        <div id="niDateOutput" style="font-size:0.85rem; font-weight:700; color:#fff;">
+                            तारीख चुनने पर नोटिस और कोर्ट फाइलिंग की अंतिम तिथि यहाँ दिखेगी।
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 4. LEGAL BLOG & JUDGMENT UPDATES -->
-    <section id="blog" class="container" style="padding-top: 0;">
-        <div class="section-title">
-            <h3 class="hi">📚 कानूनी ब्लॉग एवं सुप्रीम कोर्ट / हाई कोर्ट अपडेट</h3>
-            <h3 class="en">📚 Legal Blog & Supreme / High Court Judgments</h3>
-        </div>
-
-        <div class="grid">
-            <div class="blog-card">
-                <span class="blog-date">October 28, 2026</span>
-                <h4 class="hi">अग्रिम जमानत (Anticipatory Bail) पर सुप्रीम कोर्ट का नया फैसला</h4>
-                <p class="hi"> जानिए किन परिस्थितियों में धारा 482 BNSS / 438 CrPC के तहत गिरफ्तारी से सुरक्षा मिलती है और कोर्ट के दिशा-निर्देश क्या हैं।</p>
-                <a href="#book-now" style="color: var(--primary); font-weight: bold; text-decoration: none; font-size: 0.9rem;">Read Full Article &rarr;</a>
+        <!-- 8. Live Chat Demo & 3-Step Guide -->
+        <section class="section-block">
+            <div class="chat-preview-card">
+                <div class="chat-header">
+                    <div class="chat-adv-info">
+                        <div class="adv-initials">PN</div>
+                        <div>
+                            <strong style="font-size:0.95rem;">Verified Advocate Desk ✔️</strong>
+                            <div style="font-size:0.76rem; color:var(--green);">● Online now • Family, Property & Criminal</div>
+                        </div>
+                    </div>
+                    <span class="rate-pill">₹31/min</span>
+                </div>
+                <div class="bubble-user">My landlord is withholding my deposit / Cheque bounced. What can I do?</div>
+                <div class="bubble-lawyer">Send a written legal demand notice first. If ignored, we can file in the Court/Tribunal — I'll tell you exactly what documents to include.</div>
+                <div class="bubble-user">Can I share the agreement / documents here?</div>
+                <div style="text-align:center; font-size:0.75rem; color:var(--muted-text); margin-top:6px;">
+                    🔒 End-to-end private • Nothing leaves this chat
+                </div>
             </div>
 
-            <div class="blog-card">
-                <span class="blog-date">October 24, 2026</span>
-                <h4 class="hi">साइबर फ्रॉड और बैंक खाता फ्रीज होने पर तुरंत क्या कानूनी कदम उठाएं?</h4>
-                <p class="hi">यदि आपका बैंक खाता साइबर सेल द्वारा फ्रीज कर दिया गया है, तो बैंक और कोर्ट के माध्यम से खाता अनफ्रीज कराने की पूरी प्रक्रिया।</p>
-                <a href="#book-now" style="color: var(--primary); font-weight: bold; text-decoration: none; font-size: 0.9rem;">Read Full Article &rarr;</a>
+            <div class="steps-grid">
+                <div class="step-card step-1">
+                    <div class="step-num">1</div>
+                    <h3>Pick Consultation Plan</h3>
+                    <p>Start an instant call or chat consultation starting at just ₹299 / ₹349. 1 credit = ₹1.</p>
+                </div>
+                <div class="step-card step-2">
+                    <div class="step-num">2</div>
+                    <h3>Pick your advocate</h3>
+                    <p>Browse verified lawyers by speciality, rating and per-minute rate. Choose who fits your matter.</p>
+                </div>
+                <div class="step-card step-3">
+                    <div class="step-num">3</div>
+                    <h3>Chat in real time</h3>
+                    <p>Type, share documents and photos and get legal advice you keep.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="blog-card">
-                <span class="blog-date">October 20, 2026</span>
-                <h4 class="hi">चेक बाउंस (Section 138 NI Act) मामलों में नए कानूनी नियम</h4>
-                <p class="hi">समय पर लीगल नोटिस भेजने से लेकर कोर्ट में शिकायत दर्ज कराने तक की पूरी कानूनी प्रक्रिया और तकनीकी बारीकियां।</p>
-                <a href="#book-now" style="color: var(--primary); font-weight: bold; text-decoration: none; font-size: 0.9rem;">Read Full Article &rarr;</a>
+        <!-- 9. Add Credits / Talk to a Lawyer -->
+        <section class="section-block" id="talk-to-lawyer">
+            <div class="credits-box">
+                <h2 class="section-heading">Add credits, talk to a lawyer.</h2>
+                <p class="section-sub">Credits are used by the minute during a call. More credits, more time — every plan gives the same access.</p>
+
+                <div class="plan-selector-grid">
+                    <div class="plan-option selected" onclick="selectCreditPlan(349, this)">
+                        <span class="radio-dot">✓</span> ₹349
+                    </div>
+                    <div class="plan-option" onclick="selectCreditPlan(549, this)">
+                        <span class="radio-dot">✓</span> ₹549
+                    </div>
+                    <div class="plan-option" onclick="selectCreditPlan(1449, this)">
+                        <span class="radio-dot">✓</span> ₹1449
+                    </div>
+                    <div class="plan-option" onclick="selectCreditPlan(2449, this)">
+                        <span class="radio-dot">✓</span> ₹2449
+                    </div>
+                </div>
+
+                <div style="font-size:0.84rem; color:#444; margin-bottom:14px;">
+                    <div>🕒 All plans valid for <strong>365 days</strong></div>
+                    <div>🛡️ 100% secure payment • Instant wallet credit</div>
+                </div>
+
+                <button class="btn-pink" style="width:100%; border-radius:12px;" id="mainPlanBtn" onclick="bookSelectedPlan()">
+                    Buy ₹349 in credits
+                </button>
+
+                <div class="recharge-cards-row">
+                    <div class="rc-card">
+                        <div style="font-size:0.78rem; font-weight:700; color:#666;">Recharge ₹1449 - Recommended</div>
+                        <div class="rc-amount">₹1,449</div>
+                        <div style="color:var(--accent); font-weight:700; font-size:0.9rem;">Get ₹1,449 credits</div>
+                        <button class="btn-green-full" onclick="bookSpecificPlan(1449)">Add ₹1,449</button>
+                    </div>
+                    <div class="rc-card" style="border-color:var(--green);">
+                        <span class="rc-badge">BEST VALUE</span>
+                        <div style="font-size:0.78rem; font-weight:700; color:#666;">₹2449 RECHARGE</div>
+                        <div class="rc-amount">₹2,449</div>
+                        <div style="color:var(--accent); font-weight:700; font-size:0.9rem;">Get ₹2,449 credits</div>
+                        <button class="btn-green-full" onclick="bookSpecificPlan(2449)">Add ₹2,449</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ALL PRACTICE AREAS -->
-    <section id="topics" class="container" style="padding-top: 0;">
-        <div class="section-title">
-            <h3 class="hi">सभी प्रमुख भारतीय कानून एवं सेवाएं (Practice Areas)</h3>
-            <h3 class="en">All Indian Legal Topics (Practice Areas)</h3>
-        </div>
+        <!-- 10. 100+ Legal Expert Areas (Advocate Cards) -->
+        <section class="section-block" id="directory">
+            <h2 class="section-heading">100+ Legal expert areas</h2>
+            <p class="section-sub">Consult with experienced Lawyers across High Court, Family, Criminal, Property & Corporate law.</p>
 
-        <div class="grid">
-            <div class="card">
-                <h4 class="hi">आपराधिक मामले (Criminal Law - BNS/BNSS)</h4>
-                <h4 class="en">Criminal Law (BNS / BNSS / IPC)</h4>
-                <ul>
-                    <li>अग्रिम जमानत (Anticipatory Bail) और रेगुलर बेल</li>
-                    <li>हाई कोर्ट से झूठी FIR रद्द (Quashing) करवाना</li>
-                    <li>आपराधिक ट्रायल, अपील और रिवीजन याचिका</li>
+            <div class="adv-grid">
+                <div class="adv-card">
+                    <div class="adv-top">
+                        <div class="adv-avatar">PN</div>
+                        <div>
+                            <div style="font-weight:800;">Matrimonial & Family Specialist 🛡️ <span class="online-dot"></span></div>
+                            <span class="spec-pill">Family & Matrimonial</span>
+                        </div>
+                    </div>
+                    <div style="font-size:0.84rem; color:#444;">8+ yrs • ⭐ 4.9 • 1,240 chats</div>
+                    <div style="font-size:0.8rem; color:#666;">Hindi • English • Punjabi</div>
+                    <div class="adv-bottom">
+                        <div class="adv-price">₹30<small>/min</small></div>
+                        <button class="chat-now-btn" onclick="startWhatsAppChat('Family & Matrimonial Consultation')">Chat now</button>
+                    </div>
+                </div>
+
+                <div class="adv-card green-top">
+                    <div class="adv-top">
+                        <div class="adv-avatar">AR</div>
+                        <div>
+                            <div style="font-weight:800;">Criminal & Bail Specialist 🛡️ <span class="online-dot"></span></div>
+                            <span class="spec-pill" style="background:#e8f5e9; color:#00796b;">Criminal & BNS Defense</span>
+                        </div>
+                    </div>
+                    <div style="font-size:0.84rem; color:#444;">15+ yrs • ⭐ 4.9 • 980 chats</div>
+                    <div style="font-size:0.8rem; color:#666;">Hindi • English • Punjabi</div>
+                    <div class="adv-bottom">
+                        <div class="adv-price" style="color:var(--green);">₹55<small>/min</small></div>
+                        <button class="chat-now-btn" style="background:var(--green);" onclick="startWhatsAppChat('Criminal & Anticipatory Bail Matter')">Chat now</button>
+                    </div>
+                </div>
+
+                <div class="adv-card blue-top">
+                    <div class="adv-top">
+                        <div class="adv-avatar">HC</div>
+                        <div>
+                            <div style="font-weight:800;">High Court & Property Desk 🛡️ <span class="online-dot"></span></div>
+                            <span class="spec-pill" style="background:#e3f2fd; color:#1e3e62;">High Court Writs & Civil</span>
+                        </div>
+                    </div>
+                    <div style="font-size:0.84rem; color:#444;">12+ yrs • ⭐ 4.9 • 1,520 chats</div>
+                    <div style="font-size:0.8rem; color:#666;">Hindi • English • Punjabi</div>
+                    <div class="adv-bottom">
+                        <div class="adv-price" style="color:var(--primary-light);">₹45<small>/min</small></div>
+                        <button class="chat-now-btn" style="background:var(--primary-light);" onclick="startWhatsAppChat('High Court & Property Consultation')">Chat now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. Interactive Document Review Calculator (DRC) & Document Vault -->
+        <section class="section-block" id="drc-section">
+            <div class="drc-card">
+                <div class="first-badge" style="border-color:var(--orange); color:var(--orange);">📄 INSTANT DOCUMENT REVIEW (DRC) & UPLOAD VAULT</div>
+                <h2 class="section-heading">Line-by-line Document Review by a Lawyer</h2>
+                <p class="section-sub">An experienced lawyer reads your property agreement, contract, or notice and writes you a proper legal opinion.</p>
+
+                <div class="drc-price-big">₹499 <span style="font-size:1rem; font-weight:500; color:#666;">/ page</span></div>
+                <p style="font-size:0.83rem; color:#666;">Drops to ₹299/page once your document crosses 10 pages.</p>
+
+                <div class="tier-table">
+                    <div class="tier-row"><span>1 – 3 pages</span><strong>₹499 / page</strong></div>
+                    <div class="tier-row"><span>4 – 10 pages</span><strong>₹399 / page</strong></div>
+                    <div class="tier-row"><span>11 – 999 pages</span><strong>₹299 / page</strong></div>
+                </div>
+
+                <div class="slider-box">
+                    <div style="display:flex; justify-content:space-between; font-weight:700;">
+                        <span>How many pages?</span>
+                        <span id="pageCountLabel">42 pages</span>
+                    </div>
+                    <input type="range" min="1" max="100" value="42" class="page-slider" id="drcSlider" oninput="updateDrcCalc(this.value)">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div class="calc-total" id="drcTotalCost">₹12,558</div>
+                        <div style="font-size:0.85rem; color:#555;" id="drcBreakdown">42 × ₹299/page</div>
+                    </div>
+                    <div class="save-badge" id="drcSaveBadge">You save ₹8,400 at this rate</div>
+                </div>
+
+                <ul class="drc-checklist">
+                    <li><span style="color:var(--green); font-weight:900;">✓</span> Clause-by-clause risk report in ~5 minutes</li>
+                    <li><span style="color:var(--green); font-weight:900;">✓</span> Red / amber / green flags with plain-English & Hindi reasons</li>
+                    <li><span style="color:var(--green); font-weight:900;">✓</span> Missing-clause check against standard Indian templates</li>
+                    <li><span style="color:var(--green); font-weight:900;">✓</span> Line-by-line review by a lawyer, not just a template</li>
                 </ul>
-            </div>
-            <div class="card">
-                <h4 class="hi">साइबर क्राइम और आईटी एक्ट (Cyber Law)</h4>
-                <h4 class="en">Cyber Crime & IT Act</h4>
-                <ul>
-                    <li>ऑनलाइन बैंक फ्रॉड और UPI ठगी के मामले</li>
-                    <li>फ्रीज हुए बैंक खाते को अनफ्रीज कराना</li>
-                    <li>साइबर सेल शिकायत और कोर्ट रिलीज ऑर्डर</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h4 class="hi">पारिवारिक और वैवाहिक विवाद (Family Law)</h4>
-                <h4 class="en">Family & Matrimonial Law</h4>
-                <ul>
-                    <li>तलाक, कस्टडी और भरण-पोषण (Maintenance)</li>
-                    <li>घरेलू हिंसा (DV Act) और 498A बचाव</li>
-                    <li>कपल पुलिस प्रोटेक्शन (High Court)</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h4 class="hi">सिविल और प्रॉपर्टी विवाद (Civil & Property)</h4>
-                <h4 class="en">Civil, Property & Real Estate</h4>
-                <ul>
-                    <li>प्रॉपर्टी बंटवारा और स्टे ऑर्डर (Injunction)</li>
-                    <li>किरायेदार विवाद और इविक्शन सूट</li>
-                    <li>RERA और बिल्डर शिकायतें</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h4 class="hi">चेक बाउंस और वसूली (138 NI Act)</h4>
-                <h4 class="en">Cheque Bounce & Money Recovery</h4>
-                <ul>
-                    <li>धारा 138 NI Act चेक बाउंस मुकदमे</li>
-                    <li>कानूनी नोटिस और पैसों की वसूली</li>
-                    <li>कमर्शियल और कॉन्ट्रैक्ट विवाद</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h4 class="hi">हाई कोर्ट रिट और सर्विस मैटर्स (Writs)</h4>
-                <h4 class="en">High Court Writs & Service Law</h4>
-                <ul>
-                    <li>रिट याचिका (Article 226/227)</li>
-                    <li>सरकारी नौकरी व सर्विस विवाद</li>
-                    <li>उपभोक्ता फोरम और RTI अपील</li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
-    <!-- CONSULTATION & SECURE DOCUMENT UPLOAD VAULT -->
-    <section id="book-now" class="container" style="padding-top: 0;">
-        <div class="form-card">
-            <div class="section-title" style="margin-bottom: 1.5rem;">
-                <h3 class="hi">ऑनलाइन अपॉइंटमेंट एवं डॉक्यूमेंट वाल्ट (Secure Upload)</h3>
-                <h3 class="en">Book Consultation & Secure Document Vault</h3>
+                <div class="drc-actions">
+                    <button class="btn-outline-dark" style="border-radius:12px;" onclick="openConsultModal()">Compare</button>
+                    <button class="btn-orange" onclick="uploadDocOnWhatsApp()">📤 Upload document</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. Bilingual Legal Drafting Library (Preview, Copy, Word & PDF) -->
+        <section class="section-block" id="drafting-library">
+            <h2 class="section-heading">
+                <span class="hi">केस ड्राफ्टिंग लाइब्रेरी (Hindi & English Formats)</span>
+                <span class="en">Bilingual Legal Drafting Library (Word & PDF)</span>
+            </h2>
+            <p class="section-sub">Preview, Copy Draft Text, or Download ready-to-use Court formats in Word (.doc) and PDF.</p>
+
+            <div class="drafts-grid">
+                <div class="draft-card">
+                    <div>
+                        <h4>1. चेक बाउंस नोटिस (Section 138 NI Act Notice)</h4>
+                        <p>Statutory Legal Demand Notice in Hindi & English for Cheque Dishonour.</p>
+                    </div>
+                    <div class="draft-btns">
+                        <button class="btn-sm fill" onclick="openDraftModal('cheque')">Preview / Copy</button>
+                        <button class="btn-sm" onclick="downloadWordDraft('cheque')">Word (.doc)</button>
+                    </div>
+                </div>
+
+                <div class="draft-card">
+                    <div>
+                        <h4>2. अग्रिम / रेगुलर जमानत (Bail under BNSS 482 / CrPC 438)</h4>
+                        <p>Anticipatory & Regular Bail Petition format for Sessions & High Court.</p>
+                    </div>
+                    <div class="draft-btns">
+                        <button class="btn-sm fill" onclick="openDraftModal('bail')">Preview / Copy</button>
+                        <button class="btn-sm" onclick="downloadWordDraft('bail')">Word (.doc)</button>
+                    </div>
+                </div>
+
+                <div class="draft-card">
+                    <div>
+                        <h4>3. आपसी सहमति तलाक (Mutual Divorce Section 13B)</h4>
+                        <p>Joint Petition format for Mutual Consent Divorce in Family Court.</p>
+                    </div>
+                    <div class="draft-btns">
+                        <button class="btn-sm fill" onclick="openDraftModal('divorce')">Preview / Copy</button>
+                        <button class="btn-sm" onclick="downloadWordDraft('divorce')">Word (.doc)</button>
+                    </div>
+                </div>
+
+                <div class="draft-card">
+                    <div>
+                        <h4>4. प्रॉपर्टी एग्रीमेंट टू सेल (Agreement to Sell & GPA)</h4>
+                        <p>Bilingual Property Sale Agreement (इकरारनामा) and General Affidavit format.</p>
+                    </div>
+                    <div class="draft-btns">
+                        <button class="btn-sm fill" onclick="openDraftModal('property')">Preview / Copy</button>
+                        <button class="btn-sm" onclick="downloadWordDraft('property')">Word (.doc)</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13. Live e-Courts Tracker & Challan Hub -->
+        <section class="section-block" id="ecourts">
+            <div class="credits-box" style="background:linear-gradient(135deg,#0b192c,#1e3e62); color:#fff;">
+                <h2 style="font-size:1.35rem; margin-bottom:8px;">🏛️ Live e-Courts Case Status Tracker & Challan Portal</h2>
+                <p style="font-size:0.86rem; color:#cfd8dc; margin-bottom:14px;">केस का CNR नंबर, कोर्ट ऑर्डर, पंजाब एवं हरियाणा हाई कोर्ट कॉज लिस्ट और वाहन चालान सीधे चेक करें:</p>
+                <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                    <a href="https://services.ecourts.gov.in/" target="_blank" rel="noopener" class="btn-pink" style="padding:10px 18px; font-size:0.85rem;">🔍 e-Courts CNR Status</a>
+                    <a href="https://highcourtchd.gov.in/" target="_blank" rel="noopener" class="btn-outline-dark" style="padding:10px 18px; font-size:0.85rem;">⚖️ Punjab & Haryana High Court</a>
+                    <a href="https://echallan.parivahan.gov.in/" target="_blank" rel="noopener" class="btn-outline-dark" style="padding:10px 18px; font-size:0.85rem;">🚓 Check Vehicle Challans</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14. Client Testimonials Section (From Your Original App) -->
+        <section class="section-block">
+            <h2 class="section-heading" style="text-align:center;">⭐ Client Testimonials & Reviews</h2>
+            <div class="testimonial-grid">
+                <div class="testi-card">
+                    <p style="color:#e67e22; font-size:1rem; margin-bottom:6px;">★★★★★</p>
+                    <p style="font-size:0.88rem; font-style:italic; color:#34495e; margin-bottom:8px;">"Exceptional legal guidance and very prompt support for High Court & District Court matters."</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#7f8c8d;">— Rajesh Kumar</p>
+                </div>
+                <div class="testi-card">
+                    <p style="color:#e67e22; font-size:1rem; margin-bottom:6px;">★★★★★</p>
+                    <p style="font-size:0.88rem; font-style:italic; color:#34495e; margin-bottom:8px;">"Very transparent consultation and accurate legal drafting. Highly recommended platform."</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#7f8c8d;">— Amit Sharma</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 15. Your Original 7 Legal Blogs + Search Filter -->
+        <section class="section-block" id="blogs">
+            <h2 class="section-heading">कानूनी लेख एवं जानकारियां (Trending Legal Blogs)</h2>
+
+            <div class="blog-search-box">
+                <span>🔍</span>
+                <input type="text" id="blogSearchInput" placeholder="Search blogs (Cheque Bounce, Divorce, Property, Cyber 1930, MACT, Bail)..." onkeyup="filterBlogs()">
             </div>
 
-            <div class="form-group">
-                <label class="hi">आपका नाम (Your Name) *</label>
-                <input type="text" id="cName" placeholder="अपना नाम लिखें">
+            <div class="blog-tags-strip">
+                <span class="blog-tag" onclick="quickFilterBlog('')">All Blogs (7)</span>
+                <span class="blog-tag" onclick="quickFilterBlog('138')">1. Cheque Bounce</span>
+                <span class="blog-tag" onclick="quickFilterBlog('Divorce')">2. Mutual Divorce</span>
+                <span class="blog-tag" onclick="quickFilterBlog('प्रॉपर्टी')">3. Property Law</span>
+                <span class="blog-tag" onclick="quickFilterBlog('1930')">4. Cyber Fraud</span>
+                <span class="blog-tag" onclick="quickFilterBlog('MACT')">5. MACT Claim</span>
+                <span class="blog-tag" onclick="quickFilterBlog('Bail')">6. Anticipatory Bail</span>
+                <span class="blog-tag" onclick="quickFilterBlog('कंज्यूमर')">7. Consumer Court</span>
             </div>
-            <div class="form-group">
-                <label class="hi">शहर / जिला (City / District) *</label>
-                <input type="text" id="cCity" placeholder="जैसे: चंडीगढ़, पंचकूला, करनाल...">
-            </div>
-            <div class="form-group">
-                <label class="hi">मामले का प्रकार (Case Category) *</label>
-                <select id="cType">
-                    <option value="Criminal / Bail">आपराधिक / जमानत मामला</option>
-                    <option value="Cyber Crime">साइबर क्राइम / बैंक खाता फ्रीज</option>
-                    <option value="Family / Divorce">पारिवारिक / तलाक मामला</option>
-                    <option value="Property / Civil">प्रॉपर्टी / सिविल विवाद</option>
-                    <option value="Cheque Bounce">चेक बाउंस / वसूली</option>
-                    <option value="Drafting Inquiry">ड्राफ्टिंग / लीगल नोटिस</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="hi">दस्तावेज अपलोड करें (FIR / Notice / Papers) - Secure Vault</label>
-                <input type="file" id="cFile" style="padding: 8px; background: #f8f9fa;">
-            </div>
-            <div class="form-group">
-                <label class="hi">अपनी समस्या संक्षेप में लिखें</label>
-                <textarea id="cMsg" rows="3" placeholder="अपनी समस्या यहाँ लिखें..."></textarea>
-            </div>
-            <button class="btn btn-whatsapp" style="width: 100%; font-size: 1.05rem;" onclick="sendToWhatsApp()">
-                <span class="hi">💬 WhatsApp पर केस डिटेल व दस्तावेज भेजें</span>
-                <span class="en">💬 Send Case Details & Documents on WhatsApp</span>
-            </button>
-        </div>
-    </section>
 
-    <!-- FLOATING BUTTONS -->
-    <div class="floating-btns">
-        <a href="tel:+919812050314" class="float-btn float-call">📞</a>
-        <a href="https://wa.me/919812050314?text=नमस्ते%20एडवोकेट%20राहुल%20सिंह%20जी,%20मुझे%20कानूनी%20सलाह%20चाहिए।" class="float-btn float-wa">💬</a>
+            <div id="blogsContainer">
+                <!-- Blog 1 -->
+                <div class="blog-card">
+                    <div class="blog-meta">📅 The Indian Advocates Legal Desk • NI Act Section 138</div>
+                    <h3>1. चेक बाउंस (Section 138 NI Act) होने पर कानूनी कार्रवाई और प्रक्रिया</h3>
+                    <p style="font-size:0.88rem; color:#333; margin-bottom:8px;">चेक बाउंस होने की स्थिति में बैंक से रिटर्न मेमो मिलने के 30 दिनों के भीतर वकील के माध्यम से कानूनी नोटिस भेजना अनिवार्य है। 15 दिनों में भुगतान न होने पर कोर्ट में केस दायर किया जाता है।</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#2980b9;">संपर्क एवं परामर्श: +91 9812050314</p>
+                </div>
+
+                <!-- Blog 2 -->
+                <div class="blog-card">
+                    <div class="blog-meta">📅 Family Law Desk • Section 13B Hindu Marriage Act</div>
+                    <h3>2. पारिवारिक विवाद और आपसी सहमति से तलाक (Mutual Divorce)</h3>
+                    <p style="font-size:0.88rem; color:#333; margin-bottom:8px;">पति-पत्नी की आपसी रजामंदी और समझौते के आधार पर फैमिली कोर्ट में संयुक्त याचिका दायर कर कम से कम समय में तलाक की प्रक्रिया पूरी की जा सकती है।</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#2980b9;">संपर्क एवं परामर्श: +91 9812050314</p>
+                </div>
+
+                <!-- Blog 3 -->
+                <div class="blog-card">
+                    <div class="blog-meta">📅 Civil & Property Desk • Specific Relief Act</div>
+                    <h3>3. प्रॉपर्टी खरीद-फरोख्त और 'एग्रीमेंट टू सेल' (Agreement to Sell) के नियम</h3>
+                    <p style="font-size:0.88rem; color:#333; margin-bottom:8px;">जमीन या मकान के अनुबंध और बयाना से जुड़े विवादों में कानूनी अधिकारों की सुरक्षा और कोर्ट से स्टे व रजिस्ट्री कराने की प्रक्रिया।</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#2980b9;">संपर्क एवं परामर्श: +91 9812050314</p>
+                </div>
+
+                <!-- Blog 4 -->
+                <div class="blog-card">
+                    <div class="blog-meta">📅 Cyber Crime Portal • Helpline 1930</div>
+                    <h3>4. ऑनलाइन ठगी या साइबर फ्रॉड होने पर तुरंत क्या कदम उठाएं</h3>
+                    <p style="font-size:0.88rem; color:#333; margin-bottom:8px;">वित्तीय धोखाधड़ी होने पर तुरंत साइबर हेल्पलाइन 1930 पर कॉल करें और बैंक खाता फ्रीज/अनफ्रीज कराने के लिए कोर्ट के आदेश की प्रक्रिया जानें।</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#2980b9;">संपर्क एवं परामर्श: +91 9812050314</p>
+                </div>
+
+                <!-- Blog 5 -->
+                <div class="blog-card">
+                    <div class="blog-meta">📅 Motor Accident Claims • MACT Tribunal</div>
+                    <h3>5. सड़क दुर्घटना के बाद मोटर एक्सीडेंट क्लेम (MACT) कैसे लें</h3>
+                    <p style="font-size:0.88rem; color:#333; margin-bottom:8px;">दुर्घटना के मामलों में बीमा कंपनी से उचित मुआवजा प्राप्त करने की पूरी कानूनी प्रक्रिया और आवश्यक दस्तावेज़।</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#2980b9;">संपर्क एवं परामर्श: +91 9812050314</p>
+                </div>
+
+                <!-- Blog 6 -->
+                <div class="blog-card">
+                    <div class="blog-meta">📅 Criminal Defense • BNSS Section 482 / CrPC 438</div>
+                    <h3>6. अग्रिम जमानत (Anticipatory Bail) के कानूनी प्रावधान</h3>
+                    <p style="font-size:0.88rem; color:#333; margin-bottom:8px;">गिरफ्तारी की आशंका या झूठे मुकदमों में सेशंस कोर्ट और हाई कोर्ट के माध्यम से अग्रिम सुरक्षा प्राप्त करने के अधिकार।</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#2980b9;">संपर्क एवं परामर्श: +91 9812050314</p>
+                </div>
+
+                <!-- Blog 7 -->
+                <div class="blog-card">
+                    <div class="blog-meta">📅 Consumer Protection • District & State Commission</div>
+                    <h3>7. कंज्यूमर कोर्ट में घटिया सामान या सेवा की शिकायत</h3>
+                    <p style="font-size:0.88rem; color:#333; margin-bottom:8px;">दोषपूर्ण उत्पाद या सेवा मिलने पर उपभोक्ता आयोग के समक्ष हर्जाने और रिफंड की मांग करने की प्रक्रिया।</p>
+                    <p style="font-size:0.82rem; font-weight:700; color:#2980b9;">संपर्क एवं परामर्श: +91 9812050314</p>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="footer-info">
-            <h4 class="hi">एडवोकेट राहुल सिंह</h4>
-            <p>📍 Punjab & Haryana High Court & District Courts, Chandigarh - 160001</p>
-            <p>📞 Mobile / WhatsApp: <a href="tel:+919812050314" style="color: var(--secondary); text-decoration: none;">+91 9812050314</a></p>
-            <p>✉️ Email: <a href="mailto:rahulkalkandha251@gmail.com" style="color: var(--secondary); text-decoration: none;">rahulkalkandha251@gmail.com</a></p>
+    <!-- 16. Footer & Clean BCI Disclaimer Line -->
+    <footer class="site-footer">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="#bns-calculator">IPC to BNS 2023 Calculator</a></li>
+                    <li><a href="#directory">Property & Matrimonial</a></li>
+                    <li><a href="#talk-to-lawyer">Ask Lawyer 24×7</a></li>
+                    <li><a href="#drc-section">Document Review (DRC)</a></li>
+                    <li><a href="#ecourts">Check Challans & e-Courts</a></li>
+                    <li><a href="javascript:void(0)" onclick="openAdvocateJoinModal()"><strong>Lawyers click here</strong></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support & Legal</h4>
+                <ul>
+                    <li><a href="tel:+919812050314">📞 +91-9812050314</a></li>
+                    <li><a href="https://wa.me/919812050314" target="_blank" rel="noopener">💬 WhatsApp Support</a></li>
+                    <li><a href="#drafting-library">Legal Drafting Library</a></li>
+                    <li><a href="#blogs">7 Legal Blogs</a></li>
+                    <li><a href="#home">Privacy Policy & Terms</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="disclaimer">
-            <p><strong>Bar Council of India Disclaimer:</strong> As per BCI rules, advocates are not permitted to solicit work or advertise. This website is meant solely for legal awareness and informational purposes.</p>
-            <p style="margin-top: 10px;">© 2026 Advocate Rahul Singh (Enrollment No: PH/5676/2023). All Rights Reserved.</p>
+
+        <!-- BCI Footer Disclaimer -->
+        <div class="bci-footer-box">
+            <span class="hi">ब्लॉग या वेबसाइट के नियमों (BCI नियम 36) के अनुसार, यह पोर्टल (<strong>The Indian Advocates</strong>) केवल विधिक जानकारी और जन-जागरूकता हेतु है। विज्ञापन या प्रचार पूर्णतः प्रतिबंधित है।</span>
+            <span class="en">As per BCI rules, this website (<strong>The Indian Advocates</strong>) is for informational and legal awareness purposes only and does not constitute advertisement or solicitation.</span>
+            <div style="margin-top:6px; font-weight:700; color:#2c3e50;">© 2026 THE INDIAN ADVOCATES • All Rights Reserved.</div>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- Sticky Bottom Price Bar -->
+    <div class="sticky-buy-bar">
+        <div>
+            <span class="sticky-price" id="stickyPriceText">₹349</span>
+            <span style="font-size:0.74rem; color:var(--muted-text); display:block;">24×7 Expert Legal Consultation</span>
+        </div>
+        <button class="btn-pink" style="padding:10px 20px; font-size:0.88rem; border-radius:10px;" onclick="bookSelectedPlan()">
+            <span id="stickyBtnText">Buy ₹349 in credits</span>
+        </button>
+    </div>
+
+    <!-- Bottom 5-Tab App Bar -->
+    <nav class="bottom-app-nav">
+        <a href="#home" class="b-nav-item active" onclick="setActiveTab(this)">
+            <span class="ico">🏠</span><span>Home</span>
+        </a>
+        <a href="#talk-to-lawyer" class="b-nav-item" onclick="setActiveTab(this)">
+            <span class="ico">📞</span><span>Talk to Lawyer</span>
+        </a>
+        <a href="#bns-calculator" class="b-nav-item" onclick="setActiveTab(this)">
+            <span class="ico">⚖️</span><span>BNS Calc</span>
+        </a>
+        <a href="#drc-section" class="b-nav-item" onclick="setActiveTab(this)">
+            <span class="ico">📄</span><span>DRC</span>
+        </a>
+        <a href="#blogs" class="b-nav-item" onclick="setActiveTab(this)">
+            <span class="ico">📖</span><span>Blogs</span>
+        </a>
+    </nav>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919812050314?text=Hello%20The%20Indian%20Advocates%2C%20I%20need%20legal%20consultation." target="_blank" rel="noopener" class="whatsapp-float">
+        💬
+    </a>
+
+    <!-- MODAL 1: Fast Login / OTP Modal -->
+    <div class="modal-backdrop" id="consultModal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeConsultModal()">✕</button>
+            <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:6px;">Get Legal Help. Fast & Secure.</h3>
+            <p style="font-size:0.86rem; color:var(--muted-text); margin-bottom:14px;">Consult verified lawyers anytime, anywhere with complete confidentiality.</p>
+
+            <label style="font-size:0.84rem; font-weight:700;">Enter mobile number</label>
+            <div class="phone-input-row">
+                <div class="country-box">🇮🇳 +91</div>
+                <input type="tel" id="clientPhoneInput" class="phone-field" placeholder="Phone number" maxlength="10">
+            </div>
+
+            <label style="font-size:0.84rem; font-weight:700;">Brief Legal Issue</label>
+            <input type="text" id="clientIssueInput" class="phone-field" style="width:100%; margin:8px 0 14px;" placeholder="e.g. Property, Divorce, Bail, 138 NI Act">
+
+            <button class="btn-pink" style="width:100%; border-radius:12px;" onclick="submitClientConnect()">
+                Connect via WhatsApp / OTP
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Advocate Join Modal -->
+    <div class="modal-backdrop" id="advJoinModal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeAdvocateJoinModal()">✕</button>
+            <h3 style="font-size:1.25rem; font-weight:800; margin-bottom:6px;">Join The Indian Advocates Directory</h3>
+            <p style="font-size:0.84rem; color:var(--muted-text); margin-bottom:12px;">Register as a Verified Partner Advocate across India.</p>
+
+            <input type="text" id="advName" class="phone-field" style="width:100%; margin-bottom:10px;" placeholder="Advocate Full Name">
+            <input type="text" id="advEnrollment" class="phone-field" style="width:100%; margin-bottom:10px;" placeholder="Bar Council Enrollment No.">
+            <input type="text" id="advCourt" class="phone-field" style="width:100%; margin-bottom:10px;" placeholder="High Court / District Court & City">
+            <input type="text" id="advSpec" class="phone-field" style="width:100%; margin-bottom:14px;" placeholder="Practice Areas & Languages">
+
+            <button class="btn-pink" style="width:100%; border-radius:12px;" onclick="submitAdvocateRegistration()">
+                Submit Registration
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Draft Preview Modal -->
+    <div class="modal-backdrop" id="draftModal">
+        <div class="modal-card" style="max-width:550px;">
+            <button class="modal-close-btn" onclick="closeDraftModal()">✕</button>
+            <h3 id="draftModalTitle" style="font-size:1.1rem; font-weight:800; color:var(--primary);">Draft Preview</h3>
+            <div class="draft-pre-box" id="draftModalContent"></div>
+            <div style="display:flex; gap:10px;">
+                <button class="btn-pink" style="flex:1; border-radius:10px; padding:10px;" onclick="copyCurrentDraft()">📋 Copy Draft Text</button>
+                <button class="btn-outline-dark" style="flex:1; border-radius:10px; padding:10px;" onclick="window.print()">🖨️ Print / PDF</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        window.onload = function() {
-            if (sessionStorage.getItem('bciAgreed') === 'true') {
-                document.getElementById('bciModal').style.display = 'none';
-            }
+        const ADMIN_WHATSAPP = "919812050314";
+        let currentSelectedPlan = 349;
+
+        // Complete IPC to BNS 2023 Database
+        const IPC_BNS_DB = {
+            "302": { old: "IPC 302", bns: "BNS Section 103(1)", title: "Murder (हत्या का दंड)", punish: "मृत्युदंड या आजीवन कारावास और जुर्माना (Death or Life Imprisonment)", bail: "Non-Bailable / Cognizable" },
+            "307": { old: "IPC 307", bns: "BNS Section 109", title: "Attempt to Murder (हत्या का प्रयास)", punish: "10 वर्ष तक कैद या आजीवन कारावास + जुर्माना", bail: "Non-Bailable / Cognizable" },
+            "304A": { old: "IPC 304A", bns: "BNS Section 106(1)", title: "Causing Death by Negligence / Hit & Run (लापरवाही से मृत्यु)", punish: "5 वर्ष तक का कारावास और जुर्माना (Hit & Run में 10 वर्ष तक)", bail: "Bailable / Cognizable" },
+            "323": { old: "IPC 323", bns: "BNS Section 115(2)", title: "Voluntarily Causing Hurt (जानबूझकर साधारण चोट पहुंचाना)", punish: "1 वर्ष तक कैद या ₹10,000 तक जुर्माना या दोनों", bail: "Bailable / Non-Cognizable" },
+            "326": { old: "IPC 326", bns: "BNS Section 118(2)", title: "Grievous Hurt by Dangerous Weapons (खतरनाक हथियार से गंभीर चोट)", punish: "आजीवन कारावास या 10 वर्ष तक कैद", bail: "Non-Bailable / Cognizable" },
+            "354": { old: "IPC 354", bns: "BNS Section 74", title: "Outraging Modesty of Woman (महिला की लज्जा भंग करना)", punish: "1 से 5 वर्ष तक का कारावास और जुर्माना", bail: "Non-Bailable / Cognizable" },
+            "376": { old: "IPC 376", bns: "BNS Section 64", title: "Punishment for Rape (दुष्कर्म के लिए दंड)", punish: "न्यूनतम 10 वर्ष से आजीवन कारावास और जुर्माना", bail: "Non-Bailable / Cognizable" },
+            "379": { old: "IPC 379", bns: "BNS Section 303(2)", title: "Theft (चोरी के लिए दंड)", punish: "3 वर्ष तक कैद या जुर्माना (प्रथम छोटे अपराध में सामुदायिक सेवा विकल्प)", bail: "Non-Bailable / Cognizable" },
+            "406": { old: "IPC 406", bns: "BNS Section 316(2)", title: "Criminal Breach of Trust (अमानत में खयानत)", punish: "5 वर्ष तक का कारावास या जुर्माना या दोनों", bail: "Non-Bailable / Cognizable" },
+            "420": { old: "IPC 420", bns: "BNS Section 318(4)", title: "Cheating & Dishonestly Inducing Delivery of Property (धोखाधड़ी व ठगी)", punish: "7 वर्ष तक का कारावास और जुर्माना", bail: "Non-Bailable / Cognizable" },
+            "498A": { old: "IPC 498A", bns: "BNS Section 85 & 86", title: "Cruelty by Husband or Relatives (दहेज व पारिवारिक क्रूरता)", punish: "3 वर्ष तक का कारावास और जुर्माना", bail: "Non-Bailable / Cognizable" },
+            "506": { old: "IPC 506", bns: "BNS Section 351(2)/(3)", title: "Criminal Intimidation (जान से मारने की धमकी)", punish: "2 से 7 वर्ष तक का कारावास या जुर्माना", bail: "Bailable" },
+            "34": { old: "IPC 34", bns: "BNS Section 3(5)", title: "Common Intention (साझा इरादा)", punish: "मूल अपराध के समान दंड", bail: "As per main offence" },
+            "120B": { old: "IPC 120B", bns: "BNS Section 61(2)", title: "Criminal Conspiracy (आपराधिक षड्यंत्र)", punish: "मूल अपराध के अनुसार दंड", bail: "As per main offence" },
+            "438": { old: "CrPC 438", bns: "BNSS Section 482", title: "Anticipatory Bail (गिरफ्तारी से पूर्व अग्रिम जमानत)", punish: "सेशंस कोर्ट एवं हाई कोर्ट द्वारा जमानत का प्रावधान", bail: "Bail Provision" }
         };
-        function closeBciModal() {
-            document.getElementById('bciModal').style.display = 'none';
-            sessionStorage.setItem('bciAgreed', 'true');
-        }
-        function toggleLanguage() {
-            const body = document.body;
-            const btn = document.getElementById('langBtn');
-            if (body.classList.contains('lang-hi')) {
-                body.classList.remove('lang-hi');
-                body.classList.add('lang-en');
-                btn.innerHTML = '🌐 हिंदी';
+
+        function convertIpcToBns() {
+            const raw = document.getElementById('ipcInput').value.trim().toUpperCase().replace("IPC", "").replace("CRPC", "").trim();
+            if (!raw) return;
+            const match = IPC_BNS_DB[raw];
+            if (match) {
+                document.getElementById('bnsTitle').innerText = match.old + " ➔ " + match.bns;
+                document.getElementById('bnsBailTag').innerText = match.bail;
+                document.getElementById('bnsDesc').innerHTML = "<strong>अपराध (Offence):</strong> " + match.title;
+                document.getElementById('bnsOldSec').innerText = match.old;
+                document.getElementById('bnsNewSec').innerText = match.bns;
+                document.getElementById('bnsPunish').innerText = match.punish;
             } else {
-                body.classList.remove('lang-en');
-                body.classList.add('lang-hi');
-                btn.innerHTML = '🌐 English';
+                document.getElementById('bnsTitle').innerText = "Section " + raw + " (Custom Query)";
+                document.getElementById('bnsDesc').innerHTML = "इस विशिष्ट धारा पर तुरंत सटीक BNS/BNSS मिलान के लिए नीचे चैट बटन दबाएं या मुख्य धारा (420, 302, 498A, 376, 307, 506, 438) चुनें।";
             }
         }
 
-        // LIVE E-COURTS STATUS CHECKER SIMULATION
-        function checkCaseStatus() {
-            const cnr = document.getElementById('cnrInput').value.trim();
-            if(!cnr) {
-                alert("कृपया अपना 16-अंकों का CNR नंबर या केस नंबर दर्ज करें।");
-                return;
-            }
-            document.getElementById('caseResult').innerHTML = `🔍 CNR: <strong>${cnr}</strong> के लिए e-Courts पोर्टल से डेटा खोजा जा रहा है...<br><a href="https://services.ecourts.gov.in/" target="_blank" style="color: var(--secondary); font-weight: bold;">👉 आधिकारिक e-Courts पोर्टल पर लाइव स्टेटस देखने के लिए यहाँ क्लिक करें</a>`;
+        function quickBns(code) {
+            document.getElementById('ipcInput').value = code;
+            convertIpcToBns();
         }
 
-        // DRAFT FORMATS DATABASE (Bilingual)
-        const draftingLib = {
-            "bail": "IN THE COURT OF THE LD. SESSIONS JUDGE, CHANDIGARH\n\nCriminal Misc. Application No. ______ of 2026\nIN\nFIR No. ______ Dated: ______\nUnder Section: _____\nPolice Station: _____\n\nIN THE MATTER OF:\n[Applicant / Accused Name] ... Applicant\nVERSUS\nState of Punjab / UT Chandigarh ... Respondent\n\nAPPLICATION UNDER SECTION 482 BNSS (438 CrPC) FOR GRANT OF ANTICIPATORY BAIL\n\nMOST RESPECTFULLY SHOWETH:\n1. That the applicant has been falsely implicated in the above-noted case due to political/personal enmity.\n2. That the applicant is a law-abiding citizen and ready to join investigation as and when required by the Investigating Officer.\n3. That no custodial interrogation is required in the present matter.\n\nPRAYER:\nIt is, therefore, prayed that the applicant may kindly be released on anticipatory bail in the event of arrest.\n\nPlace: Chandigarh\nDated: [Date]\nCOUNSEL FOR THE APPLICANT\nADVOCATE RAHUL SINGH (PH/5676/2023)",
-            
-            "divorce": "IN THE COURT OF THE LD. DISTRICT JUDGE, FAMILY COURT, CHANDIGARH\n\nPetition No: ______ of 2026\n\nIN THE MATTER OF:\n[Husband Name] ... First Party (Petitioner No. 1)\nAND\n[Wife Name] ... Second Party (Petitioner No. 2)\n\nPETITION UNDER SECTION 13-B OF THE HINDU MARRIAGE ACT, 1955 FOR DISSOLUTION OF MARRIAGE BY MUTUAL CONSENT\n\nMOST RESPECTFULLY SHOWETH:\n1. That the marriage of the petitioners was solemnized on [Date] at [Place] according to Hindu rites and ceremonies.\n2. That due to temperamental differences and incompatibility, the petitioners have been living separately since [Date].\n3. That there is no collusion or coercion between the petitioners in filing this mutual divorce petition.\n\nPRAYER:\nIt is respectfully prayed that a decree of divorce by mutual consent may kindly be passed.\n\nPETITIONER NO. 1           PETITIONER NO. 2\nThrough Counsel: Advocate Rahul Singh (PH/5676/2023)",
+        // 138 NI Act Date Calculator
+        function calcChequeDates() {
+            const val = document.getElementById('memoDateInput').value;
+            if (!val) return;
+            const memoDate = new Date(val);
+            const noticeDeadline = new Date(memoDate);
+            noticeDeadline.setDate(noticeDeadline.getDate() + 30);
 
-            "property": "IN THE COURT OF THE LD. CIVIL JUDGE (SENIOR DIVISION), CHANDIGARH\n\nCivil Suit No: ______ of 2026\n\n[Plaintiff Name] ... Plaintiff\nVERSUS\n[Defendant Name] ... Defendant\n\nSUIT FOR PERMANENT AND MANDATORY INJUNCTION ALONG WITH APPLICATION UNDER ORDER 39 RULE 1 & 2 CPC\n\nMOST RESPECTFULLY SHOWETH:\n1. That the plaintiff is the absolute owner in possession of the property situated at [Property Address].\n2. That the defendant has no right, title or interest in the suit property and is bent upon dispossessing the plaintiff illegally.\n\nPRAYER:\nIt is prayed that a decree of permanent injunction may kindly be passed restraining the defendant from interfering in peaceful possession.\n\nPlace: Chandigarh\nCounsel for Plaintiff: Advocate Rahul Singh (PH/5676/2023)",
+            const caseFilingStart = new Date(noticeDeadline);
+            caseFilingStart.setDate(caseFilingStart.getDate() + 15);
 
-            "trust": "DEED OF TRUST / PUBLIC CHARITABLE TRUST REGISTRATION FORMAT\n\nThis Trust Deed is made on this [Date] day of [Month, Year] at Chandigarh by and between:\n[Founder Name], resident of [Address], hereinafter called the 'SETTLOR' of the one part;\nAND\n1. [Trustee 1]\n2. [Trustee 2]\n...hereinafter called the 'TRUSTEES' of the other part.\n\nWHEREAS the Settlor is desirous of establishing a Public Charitable Trust for the promotion of education, legal aid, social welfare and poverty alleviation.\n\nNOW THIS DEED WITNESSETH AS FOLLOWS:\n1. Name of the Trust: [TRUST NAME]\n2. Registered Office: Chandigarh\n3. Objects: To provide pro-bono legal aid, education and social support.\n\nIN WITNESS WHEREOF the Settlor and Trustees have signed this deed.\n\nSETTLOR                              TRUSTEES\nWitnesses:\n1. _________________\n2. _________________",
+            const fmt = d => d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+            document.getElementById('niDateOutput').innerHTML =
+                "✅ 30-दिन नोटिस की अंतिम तिथि: <span style='color:#ffd54f;'>" + fmt(noticeDeadline) + "</span> | ⚖️ 15-दिन भुगतान अवधि समाप्ति: <span style='color:#00e676;'>" + fmt(caseFilingStart) + "</span>";
+        }
 
-            "cheque": "LEGAL NOTICE UNDER SECTION 138 OF THE NEGOTIABLE INSTRUMENTS ACT\n\nTo,\n[Name & Address of Accused/Drawer]\n\nDear Sir/Madam,\n\nUnder instructions from my client [Client Name], resident of [Address], I serve you with the following legal notice:\n\n1. That you had issued a Cheque No. [______] dated [______] drawn on [Bank Name] amounting to Rs. [______] towards discharge of your legally enforceable debt/liability.\n2. That my client presented the said cheque through his banker, but the same was dishonoured with the remarks 'Funds Insufficient' vide Bank Return Memo dated [______].\n3. That within 30 days of receipt of this notice, you are liable to pay the entire cheque amount to my client, failing which my client shall initiate criminal prosecution under Section 138 of the NI Act read with BNS.\n\nPlace: Chandigarh\nAdvocate Rahul Singh (PH/5676/2023)\nHigh Court, Chandigarh",
+        function setSiteLang(lang, btn) {
+            document.body.className = "lang-" + lang;
+            document.querySelectorAll('.lang-item').forEach(el => el.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+        }
 
-            "written": "IN THE COURT OF THE LD. CIVIL JUDGE, CHANDIGARH\n\nCivil Suit No: ______ of 2026\n\n[Plaintiff] ... Plaintiff\nVERSUS\n[Defendant] ... Defendant\n\nWRITTEN STATEMENT ON BEHALF OF THE DEFENDANT\n\nPRELIMINARY OBJECTIONS:\n1. That the present suit is not maintainable in the present form and is liable to be dismissed with costs.\n2. That the plaintiff has suppressed true and material facts from this Hon'ble Court.\n\nREPLY ON MERITS:\nPara No. 1 of the plaint is wrong and denied. The correct facts are that...\n\nPlace: Chandigarh\nCounsel for Defendant: Advocate Rahul Singh (PH/5676/2023)"
+        function toggleDrawer(open) {
+            document.getElementById('sideDrawer').classList.toggle('open', open);
+            document.getElementById('drawerOverlay').classList.toggle('open', open);
+        }
+
+        function selectCreditPlan(amount, el) {
+            currentSelectedPlan = amount;
+            document.querySelectorAll('.plan-option').forEach(box => box.classList.remove('selected'));
+            if (el) el.classList.add('selected');
+            document.getElementById('mainPlanBtn').innerText = "Buy ₹" + amount + " in credits";
+            document.getElementById('stickyPriceText').innerText = "₹" + amount;
+            document.getElementById('stickyBtnText').innerText = "Buy ₹" + amount + " in credits";
+        }
+
+        function bookSelectedPlan() { bookSpecificPlan(currentSelectedPlan); }
+        function bookSpecificPlan(amount) {
+            const msg = encodeURIComponent("Hello The Indian Advocates, I want to book the ₹" + amount + " Legal Consultation Plan.");
+            window.open("https://wa.me/" + ADMIN_WHATSAPP + "?text=" + msg, "_blank");
+        }
+        function startWhatsAppChat(topic) {
+            const msg = encodeURIComponent("Hello The Indian Advocates, I need consultation regarding: " + topic);
+            window.open("https://wa.me/" + ADMIN_WHATSAPP + "?text=" + msg, "_blank");
+        }
+
+        function updateDrcCalc(pages) {
+            pages = parseInt(pages, 10);
+            document.getElementById('pageCountLabel').innerText = pages + (pages === 1 ? " page" : " pages");
+            let rate = 499;
+            if (pages >= 4 && pages <= 10) rate = 399;
+            else if (pages >= 11) rate = 299;
+            const total = pages * rate;
+            const saved = (pages * 499) - total;
+            document.getElementById('drcTotalCost').innerText = "₹" + total.toLocaleString('en-IN');
+            document.getElementById('drcBreakdown').innerText = pages + " × ₹" + rate + "/page";
+            const badge = document.getElementById('drcSaveBadge');
+            badge.style.display = saved > 0 ? "inline-block" : "none";
+            badge.innerText = "You save ₹" + saved.toLocaleString('en-IN') + " at this rate";
+        }
+
+        function uploadDocOnWhatsApp() {
+            const pages = document.getElementById('drcSlider').value;
+            const cost = document.getElementById('drcTotalCost').innerText;
+            const msg = encodeURIComponent("Hello The Indian Advocates, I want to upload a document (" + pages + " pages, Fee: " + cost + ") for Document Review (DRC).");
+            window.open("https://wa.me/" + ADMIN_WHATSAPP + "?text=" + msg, "_blank");
+        }
+
+        function openConsultModal() { document.getElementById('consultModal').classList.add('show'); }
+        function closeConsultModal() { document.getElementById('consultModal').classList.remove('show'); }
+        function submitClientConnect() {
+            const phone = document.getElementById('clientPhoneInput').value.trim();
+            const issue = document.getElementById('clientIssueInput').value.trim() || "Legal Consultation";
+            const msg = encodeURIComponent("Hello The Indian Advocates,\nClient Phone: " + phone + "\nIssue: " + issue + "\nSelected Plan: ₹" + currentSelectedPlan);
+            window.open("https://wa.me/" + ADMIN_WHATSAPP + "?text=" + msg, "_blank");
+            closeConsultModal();
+        }
+
+        function openAdvocateJoinModal() { document.getElementById('advJoinModal').classList.add('show'); }
+        function closeAdvocateJoinModal() { document.getElementById('advJoinModal').classList.remove('show'); }
+        function submitAdvocateRegistration() {
+            const name = document.getElementById('advName').value.trim();
+            const enr = document.getElementById('advEnrollment').value.trim();
+            const court = document.getElementById('advCourt').value.trim();
+            const spec = document.getElementById('advSpec').value.trim();
+            const msg = encodeURIComponent("New Advocate Registration:\nName: " + name + "\nBar Council No: " + enr + "\nCourt: " + court + "\nSpeciality: " + spec);
+            window.open("https://wa.me/" + ADMIN_WHATSAPP + "?text=" + msg, "_blank");
+            closeAdvocateJoinModal();
+        }
+
+        const DRAFTS_DB = {
+            cheque: {
+                title: "Section 138 NI Act - Legal Demand Notice (Hindi & English)",
+                text: `LEGAL DEMAND NOTICE UNDER SECTION 138 OF NI ACT, 1881\n\nTo,\n[Name & Address of Drawer]\n\nSubject: Statutory Notice under Section 138 of Negotiable Instruments Act for dishonour of Cheque No. [____] for Rs. [____].\n\n1. That you issued Cheque No. [____] dated [____] for Rs. [____] towards legally enforceable debt.\n2. That the cheque was dishonoured with remarks "Insufficient Funds" vide Return Memo dated [____].\n3. You are called upon to pay Rs. [____] within 15 days of receipt of this notice, failing which criminal complaint under Section 138 NI Act shall be filed.\n\n--- हिंदी प्रारूप ---\nधारा 138 NI Act के तहत कानूनी डिमांड नोटिस: चेक संख्या [____] राशि रु. [____] के बाउंस होने पर नोटिस प्राप्ति के 15 दिनों के भीतर भुगतान करें, अन्यथा न्यायालय में मुकदमा दायर किया जाएगा।`
+            },
+            bail: {
+                title: "Anticipatory Bail Application (BNSS Section 482 / CrPC 438)",
+                text: `IN THE COURT OF SESSIONS JUDGE / HON'BLE HIGH COURT\n\nAnticipatory Bail Application under Section 482 of Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023 (Earlier Section 438 CrPC)\n\nIn the matter of:\n[Applicant Name] ...Petitioner\nVersus\nState ...Respondent\nFIR No. [____] | Under BNS Sections: [____] | Police Station: [____]\n\n1. That the petitioner has been falsely implicated in the above FIR.\n2. That the petitioner is ready to join investigation and abide by all conditions of the Hon'ble Court.\nPrayer: Grant Anticipatory Bail to the petitioner in the interest of justice.`
+            },
+            divorce: {
+                title: "Mutual Consent Divorce Petition (Section 13-B HMA)",
+                text: `IN THE COURT OF PRINCIPAL JUDGE, FAMILY COURT\n\nJoint Petition under Section 13-B of Hindu Marriage Act, 1955 for Dissolution of Marriage by Mutual Consent.\n\n1. Petitioner No. 1 (Husband)\n2. Petitioner No. 2 (Wife)\n\nBoth parties have mutually settled all claims regarding alimony, maintenance, and istridhan and pray for a decree of divorce by mutual consent.`
+            },
+            property: {
+                title: "Agreement to Sell Property (प्रॉपर्टी इकरारनामा)",
+                text: `AGREEMENT TO SELL (इकरारनामा बय)\n\nExecuted between Seller (First Party) and Buyer (Second Party) regarding Property [Details].\nTotal Sale Consideration: Rs. [____]\nEarnest Money Received (बयाना राशि): Rs. [____]\nTarget Date for Sale Deed Registration: [Date].`
+            }
         };
 
-        function openDraft(key) {
-            if(draftingLib[key]) {
-                document.getElementById('modalTitle').innerText = "Legal Draft Preview";
-                document.getElementById('modalText').innerText = draftingLib[key];
-                document.getElementById('draftModal').style.display = 'flex';
-            }
+        function openDraftModal(key) {
+            const item = DRAFTS_DB[key];
+            if (!item) return;
+            document.getElementById('draftModalTitle').innerText = item.title;
+            document.getElementById('draftModalContent').innerText = item.text;
+            document.getElementById('draftModal').classList.add('show');
+        }
+        function closeDraftModal() { document.getElementById('draftModal').classList.remove('show'); }
+        function copyCurrentDraft() {
+            navigator.clipboard.writeText(document.getElementById('draftModalContent').innerText);
+            alert("Draft copied!");
+        }
+        function downloadWordDraft(key) {
+            const item = DRAFTS_DB[key];
+            const blob = new Blob(['\ufeff', item.title + "\n\n" + item.text], { type: 'application/msword' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = key + "_TheIndianAdvocates.doc";
+            a.click();
         }
 
-        function closeDraftModal() {
-            document.getElementById('draftModal').style.display = 'none';
-        }
-
-        function copyModalText() {
-            const text = document.getElementById('modalText').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("ड्राफ्ट सफलतापूर्वक कॉपी हो गया है! अब आप इसे MS Word या नोटपैड में पेस्ट कर सकते हैं।");
+        function filterBlogs() {
+            const q = document.getElementById('blogSearchInput').value.toLowerCase();
+            document.querySelectorAll('#blogsContainer .blog-card').forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(q) ? 'block' : 'none';
             });
         }
-
-        function copyDirect(key) {
-            if(draftingLib[key]) {
-                navigator.clipboard.writeText(draftingLib[key]).then(() => {
-                    alert("ड्राफ्ट टेक्स्ट क्लिपबोर्ड पर कॉपी हो गया है!");
-                });
-            }
+        function quickFilterBlog(kw) {
+            document.getElementById('blogSearchInput').value = kw;
+            filterBlogs();
         }
-
-        // IPC to BNS Converter Database
-        const bnsData = {
-            "420": "<strong>नई धारा: BNS Section 318(4)</strong><br>धोखाधड़ी और संपत्ति हड़पना (Cheating). सजा: 7 वर्ष तक की कैद।",
-            "302": "<strong>नई धारा: BNS Section 103(1)</strong><br>हत्या के लिए दंड (Murder). सजा: मृत्युदंड या आजीवन कारावास।",
-            "307": "<strong>नई धारा: BNS Section 109</strong><br>हत्या का प्रयास (Attempt to Murder). सजा: 10 वर्ष तक की कैद।",
-            "498A": "<strong>नई धारा: BNS Section 85 & 86</strong><br>दहेज प्रताड़ना / क्रूरता (Cruelty by Husband/Relatives). सजा: 3 वर्ष तक की कैद।",
-            "323": "<strong>नई धारा: BNS Section 115(2)</strong><br>मारपीट करना (Voluntarily causing hurt). सजा: 1 वर्ष तक की कैद या जुर्माना।",
-            "438": "<strong>नई धारा: BNSS Section 482</strong><br>अग्रिम जमानत (Anticipatory Bail) याचिका।",
-            "125": "<strong>नई धारा: BNSS Section 144</strong><br>भरण-पोषण (Maintenance) के लिए कोर्ट आदेश।"
-        };
-        function convertIpc() {
-            const val = document.getElementById('ipcSelect').value;
-            document.getElementById('ipcResult').innerHTML = (val && bnsData[val]) ? bnsData[val] : "👆 ऊपर लिस्ट में से कोई भी धारा चुनें।";
+        function setActiveTab(el) {
+            document.querySelectorAll('.b-nav-item').forEach(i => i.classList.remove('active'));
+            el.classList.add('active');
         }
-
-        function sendToWhatsApp() {
-            const name = document.getElementById('cName').value.trim();
-            const city = document.getElementById('cCity').value.trim();
-            const type = document.getElementById('cType').value;
-            const msg = document.getElementById('cMsg').value.trim();
-            if (!name || !city) { alert("कृपया अपना नाम और शहर जरूर भरें।"); return; }
-            const text = `नमस्ते एडवोकेट राहुल सिंह जी,%0A%0A*नया केस/परामर्श विवरण:*%0A👤 *नाम:* ${name}%0A📍 *शहर:* ${city}%0A⚖️ *केस:* ${type}%0A📝 *विवरण:* ${msg || 'फोन पर चर्चा करनी है'} (दस्तावेज़ वाल्ट से जुड़े हैं)`;
-            window.open(`https://wa.me/919812050314?text=${text}`, '_blank');
-        }
-    </script> 
-    <!-- UPI Payment Section Start -->
-<div class="upi-payment-section" style="text-align: center; padding: 20px; background: #f9f9f9; border-radius: 10px; margin: 20px auto; max-width: 400px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <h3 style="color: #333; margin-bottom: 10px;">Legal Consultation Fee Payment</h3>
-    <p style="color: #666; font-size: 14px; margin-bottom: 15px;">Scan to pay with any UPI app (GPay, PhonePe, Paytm)</p>
-    
-    <!-- QR Code Image -->
-    <img src="qr-code.jpg" alt="Rahul Singh UPI QR Code" style="width: 200px; height: 200px; border-radius: 8px; border: 1px solid #ddd; padding: 5px; background: #fff;">
-    
-    <div style="margin-top: 15px;">
-        <p style="font-weight: bold; color: #444; margin: 5px 0;">Rahul Singh</p>
-        <p style="color: #555; font-size: 14px; margin: 5px 0;">UPI ID: <span style="background: #eef; padding: 3px 6px; border-radius: 4px; font-family: monospace;">rahulkalkandha251-2@okhdfcbank</span></p>
-        <p style="color: #777; font-size: 13px; margin: 5px 0;">Punjab National Bank</p>
-    </div>
-</div>
-<!-- UPI Payment Section End -->
-   <!-- Client Testimonials Section Start -->
-<div class="testimonials-section" style="padding: 30px 20px; background: #ffffff; text-align: center; margin: 20px auto; max-width: 800px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-    <h3 style="color: #2c3e50; margin-bottom: 5px; font-size: 24px;">Client Testimonials & Reviews</h3>
-    <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 25px;">What our valued clients say about our legal services</p>
-    
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <!-- Testimonial 1 -->
-        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; width: 280px; text-align: left; border-left: 4px solid #3498db;">
-            <p style="color: #e67e22; font-size: 16px; margin: 0 0 10px 0;">⭐⭐⭐⭐⭐</p>
-            <p style="color: #34495e; font-size: 14px; font-style: italic; margin: 0 0 15px 0;">"Exceptional legal guidance and prompt response. Highly professional advocate in Chandigarh!"</p>
-            <p style="color: #7f8c8d; font-size: 13px; font-weight: bold; margin: 0;">— Rajesh Kumar</p>
-        </div>
-
-        <!-- Testimonial 2 -->
-        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; width: 280px; text-align: left; border-left: 4px solid #3498db;">
-            <p style="color: #e67e22; font-size: 16px; margin: 0 0 10px 0;">⭐⭐⭐⭐⭐</p>
-            <p style="color: #34495e; font-size: 14px; font-style: italic; margin: 0 0 15px 0;">"Very transparent consultation and genuine advice on property matters. Highly recommended."</p>
-            <p style="color: #7f8c8d; font-size: 13px; font-weight: bold; margin: 0;">— Amit Sharma</p>
-        </div>
-    </div>
-</div>
-<!-- Client Testimonials Section End -->
-  <!-- All Legal Blogs Section Start -->
-<div style="max-width: 800px; margin: 30px auto; padding: 20px; font-family: Arial, sans-serif;">
-    <h2 style="text-align: center; color: #2c3e50; margin-bottom: 25px;">कानूनी लेख एवं जानकारियां (Legal Blogs)</h2>
-
-    <!-- Blog 1 -->
-    <div style="background: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #2980b9;">
-        <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 8px;">1. चेक बाउंस (Section 138 NI Act) होने पर कानूनी कार्रवाई</h3>
-        <p style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Advocate Rahul Singh | Bar Council Reg. No.: PH/5676/2023</p>
-        <p style="color: #333; font-size: 14px; margin-bottom: 10px;">चेक बाउंस होने की स्थिति में बैंक से रिटर्न मेमो मिलने के 30 दिनों के भीतर कानूनी नोटिस भेजना अनिवार्य है।</p>
-        <p style="color: #2980b9; font-size: 13px; font-weight: bold; margin: 0;">संपर्क करें: 9812050314</p>
-    </div>
-
-    <!-- Blog 2 -->
-    <div style="background: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #2980b9;">
-        <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 8px;">2. पारिवारिक विवाद और आपसी सहमति से तलाक (Mutual Divorce)</h3>
-        <p style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Advocate Rahul Singh | Bar Council Reg. No.: PH/5676/2023</p>
-        <p style="color: #333; font-size: 14px; margin-bottom: 10px;">पति-पत्नी की रजामंदी और आपसी समझौते के आधार पर कोर्ट में म्यूचुअल डिवोर्स की प्रक्रिया पूरी की जाती है।</p>
-        <p style="color: #2980b9; font-size: 13px; font-weight: bold; margin: 0;">संपर्क करें: 9812050314</p>
-    </div>
-
-    <!-- Blog 3 -->
-    <div style="background: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #2980b9;">
-        <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 8px;">3. प्रॉपर्टी खरीद-फरोख्त और 'एग्रीमेंट टू सेल' के नियम</h3>
-        <p style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Advocate Rahul Singh | Bar Council Reg. No.: PH/5676/2023</p>
-        <p style="color: #333; font-size: 14px; margin-bottom: 10px;">जमीन या मकान के अनुबंध और बयाना से जुड़े विवादों में कानूनी अधिकारों की सुरक्षा कैसे करें।</p>
-        <p style="color: #2980b9; font-size: 13px; font-weight: bold; margin: 0;">संपर्क करें: 9812050314</p>
-    </div>
-
-    <!-- Blog 4 -->
-    <div style="background: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #2980b9;">
-        <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 8px;">4. ऑनलाइन ठगी या साइबर फ्रॉड होने पर तुरंत क्या कदम उठाएं</h3>
-        <p style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Advocate Rahul Singh | Bar Council Reg. No.: PH/5676/2023</p>
-        <p style="color: #333; font-size: 14px; margin-bottom: 10px;">वित्तीय धोखाधड़ी होने पर तुरंत साइबर हेल्पलाइन 1930 पर कॉल करें और बैंक को सूचित करें।</p>
-        <p style="color: #2980b9; font-size: 13px; font-weight: bold; margin: 0;">संपर्क करें: 9812050314</p>
-    </div>
-
-    <!-- Blog 5 -->
-    <div style="background: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #2980b9;">
-        <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 8px;">5. सड़क दुर्घटना के बाद मोटर एक्सीडेंट क्लेम (MACT)</h3>
-        <p style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Advocate Rahul Singh | Bar Council Reg. No.: PH/5676/2023</p>
-        <p style="color: #333; font-size: 14px; margin-bottom: 10px;">दुर्घटना के मामलों में बीमा कंपनी से उचित मुआवजा प्राप्त करने की पूरी कानूनी प्रक्रिया।</p>
-        <p style="color: #2980b9; font-size: 13px; font-weight: bold; margin: 0;">संपर्क करें: 9812050314</p>
-    </div>
-
-    <!-- Blog 6 -->
-    <div style="background: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #2980b9;">
-        <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 8px;">6. अग्रिम जमानत (Anticipatory Bail) के कानूनी प्रावधान</h3>
-        <p style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Advocate Rahul Singh | Bar Council Reg. No.: PH/5676/2023</p>
-        <p style="color: #333; font-size: 14px; margin-bottom: 10px;">गिरफ्तारी की आशंका या झूठे मुकदमों में कोर्ट के माध्यम से अग्रिम सुरक्षा प्राप्त करने के आधार।</p>
-        <p style="color: #2980b9; font-size: 13px; font-weight: bold; margin: 0;">संपर्क करें: 9812050314</p>
-    </div>
-
-    <!-- Blog 7 -->
-    <div style="background: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #2980b9;">
-        <h3 style="color: #2c3e50; font-size: 18px; margin-bottom: 8px;">7. कंज्यूमर कोर्ट में घटिया सामान या सेवा की शिकायत</h3>
-        <p style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Advocate Rahul Singh | Bar Council Reg. No.: PH/5676/2023</p>
-        <p style="color: #333; font-size: 14px; margin-bottom: 10px;">दोषपूर्ण उत्पाद या सेवा मिलने पर उपभोक्ता आयोग के समक्ष हर्जाने की मांग करने की प्रक्रिया।</p>
-        <p style="color: #2980b9; font-size: 13px; font-weight: bold; margin: 0;">संपर्क करें: 9812050314</p>
-    </div>
-</div>
-<!-- All Legal Blogs Section End -->
-    <!-- BCI Footer Disclaimer -->
-    <div style="text-align: center; padding: 15px; font-size: 12px; color: #7f8c8d; background: #ecf0f1; border-top: 1px solid #bdc3c7; margin-top: 20px;">
-        <span class="hi">ब्लॉग या वेबसाइट के नियमों के अनुसार, यह पोर्टल केवल विधिक जानकारी हेतु है। विज्ञापन या प्रचार प्रतिबंधित है।</span>
-        <span class="en">As per BCI rules, this website is for informational purposes only and does not constitute advertisement.</span>
-    </div>
+    </script>
+</body>
+</html>
