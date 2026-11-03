@@ -4,243 +4,388 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101b35">
+<meta name="theme-color" content="#0b192c">
 <title>The Indian Advocates | Complete Legal Ecosystem</title>
+
 <style>
 :root {
-  --navy:#101b35;
-  --gold:#d6ad60;
-  --light:#f5f6fa;
+  --navy:#0b192c;
+  --blue:#1e3e62;
+  --pink:#d81b60;
+  --gold:#d4af37;
+  --bg:#f4f6f9;
   --white:#fff;
-  --text:#26334b;
+  --text:#243247;
+  --muted:#68778b;
 }
-* { box-sizing:border-box; }
-body {
-  margin:0;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
   font-family:Arial,sans-serif;
+  background:var(--bg);
   color:var(--text);
-  background:var(--light);
+  line-height:1.6;
 }
-header {
+header{
   background:var(--navy);
   color:white;
-  padding:17px 6%;
+  padding:15px 5%;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  flex-wrap:wrap;
+  align-items:center;
   gap:15px;
+  flex-wrap:wrap;
 }
-.logo {font-size:21px;font-weight:bold;color:var(--gold);}
-nav {display:flex;gap:17px;flex-wrap:wrap;}
-nav a {color:white;text-decoration:none;font-size:14px;}
-button,.btn {
-  background:var(--gold);
-  color:#101b35;
-  border:0;
-  border-radius:7px;
-  padding:11px 17px;
-  cursor:pointer;
-  font-weight:bold;
-  text-decoration:none;
+.brand{font-size:21px;font-weight:bold}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:14px}
+button,.btn{
+  border:0;border-radius:8px;padding:11px 17px;
+  cursor:pointer;font-weight:bold;
 }
-.hero {
-  background:linear-gradient(120deg,#101b35,#263c64);
-  color:white;
-  padding:85px 7%;
-  text-align:center;
+.primary{background:var(--pink);color:white}
+.secondary{background:var(--blue);color:white}
+.hero{
+  padding:65px 7%;text-align:center;color:white;
+  background:linear-gradient(135deg,#0b192c,#1e3e62);
 }
-.hero h1 {font-size:clamp(32px,5vw,52px);margin:0 0 20px;}
-.hero p {font-size:18px;line-height:1.7;max-width:720px;margin:0 auto 28px;}
-section {padding:55px 7%;}
-.section-title{text-align:center;margin-bottom:30px;}
-.section-title h2{color:var(--navy);font-size:30px;}
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+.hero h1{font-size:clamp(30px,5vw,48px);margin:15px 0}
+.hero p{max-width:720px;margin:0 auto 22px;color:#e5eaf2}
+.tag{
+  display:inline-block;background:#ffffff18;
+  padding:7px 14px;border-radius:30px;font-size:12px;
 }
-.card {
-  background:white;
-  border-radius:12px;
-  padding:25px;
-  box-shadow:0 5px 20px #17233b0d;
+.container{max-width:1100px;margin:auto;padding:35px 18px}
+.section-title{text-align:center;margin-bottom:25px}
+.section-title h2{color:var(--navy);font-size:27px}
+.section-title p{color:var(--muted)}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
 }
-.card h3 {color:var(--navy);}
-.card p {line-height:1.6;color:#596579;}
-.card a {color:#9a702e;font-weight:bold;}
-.search {
-  display:flex;
-  max-width:700px;
-  margin:25px auto;
-  gap:8px;
+.card{
+  background:white;padding:22px;border-radius:14px;
+  box-shadow:0 4px 18px #10243a0d;border:1px solid #e8edf3;
 }
-.search input {
-  flex:1;
-  min-width:0;
-  padding:14px;
-  border:1px solid #ccd2dd;
-  border-radius:7px;
+.card h3{color:var(--navy);margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px;margin-bottom:14px}
+.icon{font-size:30px;margin-bottom:10px}
+input,select,textarea{
+  width:100%;padding:12px;margin:7px 0 13px;
+  border:1px solid #d7deea;border-radius:8px;
+  font:inherit;background:white;
 }
-input,select,textarea {
-  width:100%;
-  padding:12px;
-  margin:7px 0 14px;
-  border:1px solid #ccd2dd;
-  border-radius:7px;
+label{font-size:14px;font-weight:bold}
+.tool-result{
+  background:#f1f5fa;padding:12px;border-radius:8px;
+  margin-top:12px;display:none;
 }
-.form-box {max-width:550px;margin:auto;background:white;padding:25px;border-radius:12px;}
-footer {
-  background:var(--navy);
-  color:white;
-  padding:35px 7%;
-  text-align:center;
-  line-height:1.8;
+.notice{
+  background:#fff7df;border-left:4px solid var(--gold);
+  padding:14px;margin:15px 0;border-radius:6px;font-size:13px;
 }
-.small {font-size:12px;color:#778196;}
-@media(max-width:600px) {
-  header {justify-content:center;text-align:center;}
-  nav {justify-content:center;}
-  .hero {padding:60px 6%;}
-  section {padding:40px 6%;}
-  .search {flex-direction:column;}
+footer{
+  background:var(--navy);color:white;text-align:center;
+  padding:30px 15px;margin-top:30px;
+}
+footer p{font-size:13px;color:#cbd5e1}
+.menu-button{display:none}
+@media(max-width:700px){
+  header{align-items:flex-start}
+  nav{width:100%;gap:12px}
+  nav a{font-size:12px}
+  .hero{padding:48px 18px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">THE INDIAN ADVOCATES</div>
+  <div class="brand">⚖ The Indian Advocates</div>
   <nav>
-    <a href="#home" data-en="Home" data-hi="होम">Home</a>
-    <a href="#services" data-en="Services" data-hi="सेवाएँ">Services</a>
-    <a href="#research" data-en="Research" data-hi="कानूनी शोध">Research</a>
-    <a href="#advocates" data-en="Advocates" data-hi="अधिवक्ता">Advocates</a>
-    <a href="#login" data-en="Login" data-hi="लॉगिन">Login</a>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#research">Legal Research</a>
+    <a href="#advocates">Advocates</a>
+    <a href="#register">Register</a>
   </nav>
-  <button onclick="toggleLanguage()" id="langBtn">हिन्दी</button>
+  <button class="primary" onclick="toggleLanguage()">हिंदी / EN</button>
 </header>
 
-<main>
 <section class="hero" id="home">
-  <h1 data-en="One Platform. Complete Legal Ecosystem."
-      data-hi="एक प्लेटफॉर्म। सम्पूर्ण कानूनी व्यवस्था।">
-    One Platform. Complete Legal Ecosystem.
-  </h1>
-  <p data-en="Technology for Justice. Knowledge for Everyone. Connect with legal professionals and explore legal knowledge."
-     data-hi="न्याय के लिए तकनीक। सभी के लिए कानूनी ज्ञान। अधिवक्ताओं से जुड़ें और कानूनी जानकारी प्राप्त करें।">
-    Technology for Justice. Knowledge for Everyone.
-    Connect with legal professionals and explore legal knowledge.
+  <span class="tag">LEGAL TECHNOLOGY PLATFORM</span>
+  <h1 id="heroTitle">Your Legal Journey, Simplified.</h1>
+  <p id="heroText">
+    Connect with advocates, explore legal resources, manage enquiries
+    and access useful legal tools from one platform.
   </p>
-  <a class="btn" href="#services">Explore Platform</a>
+  <a class="btn primary" href="#register">Get Started</a>
+  <a class="btn secondary" href="#services">Explore Services</a>
 </section>
 
-<section id="services">
+<section class="container" id="services">
   <div class="section-title">
-    <h2 data-en="Complete Legal Services" data-hi="सम्पूर्ण कानूनी सेवाएँ">Complete Legal Services</h2>
-    <p data-en="A connected ecosystem for advocates, students and citizens."
-       data-hi="अधिवक्ताओं, विद्यार्थियों और नागरिकों के लिए एक साझा मंच।">
-       A connected ecosystem for advocates, students and citizens.
-    </p>
+    <h2>Our Legal Services</h2>
+    <p>One platform for your legal needs</p>
   </div>
   <div class="grid">
-    <div class="card"><h3>⚖ Advocate Portal</h3><p>Advocate registration, profile management and verification workflow.</p></div>
-    <div class="card"><h3>📚 Legal Research</h3><p>Search judgments, court decisions and legal materials from verified sources.</p></div>
-    <div class="card"><h3>✍ Drafting Studio</h3><p>Organise drafts for CWP, CM applications, replies and legal notices.</p></div>
-    <div class="card"><h3>📅 Case Diary</h3><p>Plan hearings, tasks, appointments and case-related reminders.</p></div>
-    <div class="card"><h3>🎓 Law Academy</h3><p>Learning resources, quizzes and landmark judgment studies.</p></div>
-    <div class="card"><h3>🔐 Document Vault</h3><p>A planned private document management facility for registered users.</p></div>
+    <div class="card">
+      <div class="icon">👨‍⚖️</div>
+      <h3>Advocate Portal</h3>
+      <p>Advocate registration and profile management.</p>
+      <a href="#advocates">Explore Advocates →</a>
+    </div>
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>Legal Judgments & Bare Acts</h3>
+      <p>Access legal research resources and official sources.</p>
+      <a href="#research">Explore Research →</a>
+    </div>
+    <div class="card">
+      <div class="icon">✍️</div>
+      <h3>AI Drafting Studio</h3>
+      <p>Prepare draft outlines for legal documents.</p>
+      <a href="#drafting">Open Drafting Studio →</a>
+    </div>
+    <div class="card">
+      <div class="icon">📅</div>
+      <h3>Case Diary</h3>
+      <p>Plan case dates and maintain reminders.</p>
+      <a href="#diary">Open Case Diary →</a>
+    </div>
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h3>Law Academy</h3>
+      <p>Learning resources for legal education.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔐</div>
+      <h3>Document Vault</h3>
+      <p>Secure document storage will be enabled through the backend.</p>
+    </div>
   </div>
 </section>
 
-<section id="research">
+<section class="container" id="calculator">
+  <div class="section-title">
+    <h2>IPC to BNS Reference Tool</h2>
+    <p>Illustrative section references – verify the applicable law.</p>
+  </div>
+  <div class="card">
+    <label>Select an IPC section</label>
+    <select id="ipc">
+      <option value="">Choose section</option>
+      <option value="420">IPC 420</option>
+      <option value="302">IPC 302</option>
+      <option value="307">IPC 307</option>
+      <option value="498A">IPC 498A</option>
+    </select>
+    <button class="primary" onclick="convertIPC()">Find Reference</button>
+    <div class="tool-result" id="ipcResult"></div>
+    <div class="notice">
+      This is not a complete or authoritative conversion table.
+      Offence definitions and applicability must be checked against
+      the Bharatiya Nyaya Sanhita, 2023 and official legal sources.
+    </div>
+  </div>
+</section>
+
+<section class="container" id="courtfee">
+  <div class="section-title">
+    <h2>Court Fee Information</h2>
+    <p>Enter your claim value to begin checking applicable fees.</p>
+  </div>
+  <div class="card">
+    <label>Claim value (₹)</label>
+    <input type="number" id="claim" min="0" placeholder="Enter claim value">
+    <button class="primary" onclick="courtFee()">Check</button>
+    <div class="tool-result" id="feeResult"></div>
+    <div class="notice">
+      Court fees depend on the state, court, nature of relief and
+      applicable legislation. No universal percentage is used here.
+      Confirm the amount with the relevant court registry or advocate.
+    </div>
+  </div>
+</section>
+
+<section class="container" id="research">
   <div class="section-title">
     <h2>Legal Research</h2>
-    <p>Find legal material using official sources.</p>
+    <p>Search official legal resources</p>
   </div>
-  <div class="search">
-    <input id="searchInput" placeholder="Enter case title, citation or subject">
-    <button onclick="searchLegal()">Search</button>
+  <div class="card">
+    <label>Search legal topic or case citation</label>
+    <input id="legalQuery" placeholder="Example: Article 21 or case citation">
+    <button class="primary" onclick="legalSearch()">Search Resources</button>
+    <div class="tool-result" id="searchResult"></div>
+    <p style="margin-top:12px">
+      Official resources:
+      <a href="https://www.sci.gov.in/" target="_blank" rel="noopener">Supreme Court of India</a> |
+      <a href="https://www.indiacode.nic.in/" target="_blank" rel="noopener">India Code</a> |
+      <a href="https://ecourts.gov.in/" target="_blank" rel="noopener">eCourts</a>
+    </p>
   </div>
-  <p id="searchMessage" style="text-align:center"></p>
-  <p class="small" style="text-align:center">
-    Search integration is not connected yet. No fabricated judgments are displayed.
-  </p>
 </section>
 
-<section id="advocates">
+<section class="container" id="drafting">
+  <div class="section-title">
+    <h2>AI Drafting Studio</h2>
+    <p>Create a basic draft outline for review by an advocate.</p>
+  </div>
+  <div class="card">
+    <label>Document type</label>
+    <select id="docType">
+      <option>Legal Notice</option>
+      <option>Representation</option>
+      <option>Affidavit Outline</option>
+      <option>Application Outline</option>
+    </select>
+    <label>Brief facts</label>
+    <textarea id="facts" rows="5" placeholder="Enter relevant facts..."></textarea>
+    <button class="primary" onclick="makeDraft()">Prepare Draft Outline</button>
+    <div class="tool-result" id="draftResult"></div>
+  </div>
+</section>
+
+<section class="container" id="diary">
+  <div class="section-title">
+    <h2>Case Diary</h2>
+    <p>Basic local reminder planner (not cloud-synced).</p>
+  </div>
+  <div class="card">
+    <label>Case title</label>
+    <input id="caseTitle" placeholder="Enter case title">
+    <label>Next date</label>
+    <input id="caseDate" type="date">
+    <button class="primary" onclick="addCase()">Add Reminder</button>
+    <div id="caseList" style="margin-top:15px"></div>
+  </div>
+</section>
+
+<section class="container" id="advocates">
   <div class="section-title">
     <h2>Advocate Directory</h2>
-    <p>Advocate profiles will appear after verification.</p>
+    <p>Only verified and consented advocate profiles should be published.</p>
   </div>
-  <div class="grid">
-    <div class="card">
-      <h3>Verified Advocate Directory</h3>
-      <p>Registration and verification workflow is planned for the secure backend.</p>
-    </div>
-    <div class="card">
-      <h3>Consultation Requests</h3>
-      <p>Clients will be able to submit appointment enquiries after secure integration.</p>
-    </div>
+  <div class="card">
+    <h3>Advocate listings are being prepared</h3>
+    <p>No sample names, ratings or unverified profiles are displayed.</p>
+    <a href="#register">Register interest →</a>
   </div>
 </section>
 
-<section id="login">
+<section class="container" id="register">
   <div class="section-title">
-    <h2>Join The Indian Advocates</h2>
-    <p>Client and Advocate registration interface preview.</p>
+    <h2>Registration & Enquiry</h2>
+    <p>Submit your interest for platform access.</p>
   </div>
-  <div class="form-box">
-    <form onsubmit="showLoginMessage(event)">
-      <label>Full Name</label>
-      <input required placeholder="Enter your full name">
-      <label>Mobile Number</label>
-      <input required type="tel" pattern="[0-9]{10}" placeholder="10 digit mobile number">
-      <label>Account Type</label>
-      <select required>
-        <option value="">Select account type</option>
+  <div class="card">
+    <form id="registrationForm">
+      <label>Full name</label>
+      <input id="fullName" required placeholder="Your full name">
+      <label>Mobile number</label>
+      <input id="phone" required inputmode="numeric" pattern="[0-9]{10}" placeholder="10-digit mobile number">
+      <label>Register as</label>
+      <select id="role">
         <option>Client</option>
         <option>Advocate</option>
+        <option>Law Student</option>
       </select>
-      <button type="submit">Continue</button>
-      <p id="loginMessage" class="small"></p>
+      <button class="primary" type="submit">Submit Enquiry</button>
     </form>
-    <p class="small">Demo interface only. No OTP is sent and no account is created by this form.</p>
+    <div class="notice">
+      This demonstration form does not transmit or securely store your
+      information. Do not enter confidential case details or documents.
+      Backend integration is required before collecting real user data.
+    </div>
+    <div id="formMessage"></div>
   </div>
 </section>
-</main>
 
 <footer>
-  <h3>THE INDIAN ADVOCATES</h3>
-  <p>One Platform. Complete Legal Ecosystem.</p>
-  <p>Technology for Justice. Knowledge for Everyone.</p>
-  <p class="small">Legal information is educational and is not a substitute for advice from a qualified advocate.</p>
+  <h3>The Indian Advocates</h3>
+  <p>Legal Technology Platform</p>
+  <p>Information on this platform is not a substitute for legal advice.</p>
   <p>© 2026 The Indian Advocates</p>
 </footer>
 
 <script>
 let hindi = false;
 
-function toggleLanguage() {
+function toggleLanguage(){
   hindi = !hindi;
-  document.documentElement.lang = hindi ? "hi" : "en";
-  document.querySelectorAll("[data-en]").forEach(el => {
-    el.textContent = hindi ? el.dataset.hi : el.dataset.en;
-  });
-  document.getElementById("langBtn").textContent = hindi ? "English" : "हिन्दी";
+  document.getElementById("heroTitle").textContent = hindi
+    ? "आपकी कानूनी यात्रा, अब आसान।"
+    : "Your Legal Journey, Simplified.";
+  document.getElementById("heroText").textContent = hindi
+    ? "वकीलों से जुड़ें, कानूनी संसाधन देखें और अपनी कानूनी जरूरतों को समझें।"
+    : "Connect with advocates, explore legal resources, manage enquiries and access useful legal tools from one platform.";
 }
 
-function searchLegal() {
-  const q = document.getElementById("searchInput").value.trim();
-  document.getElementById("searchMessage").textContent =
-    q ? "Legal search backend is not connected yet." : "Please enter a search term.";
+function convertIPC(){
+  const section = document.getElementById("ipc").value;
+  const references = {
+    "420":"BNS Section 318(4) – Cheating and dishonestly inducing delivery of property",
+    "302":"BNS Section 103 – Punishment for murder",
+    "307":"BNS Section 109 – Attempt to murder",
+    "498A":"BNS Section 85 – Cruelty by husband or relatives"
+  };
+  const result = document.getElementById("ipcResult");
+  result.style.display = "block";
+  result.textContent = references[section] ||
+    "Select a section. This limited tool does not cover every offence.";
 }
 
-function showLoginMessage(event) {
-  event.preventDefault();
-  document.getElementById("loginMessage").textContent =
-    "Demo only: secure OTP authentication must be connected before registration.";
+function courtFee(){
+  const value = Number(document.getElementById("claim").value);
+  const result = document.getElementById("feeResult");
+  result.style.display = "block";
+  result.textContent = value > 0
+    ? "Claim value entered: ₹" + value.toLocaleString("en-IN") +
+      ". The applicable court fee must be checked for the relevant jurisdiction and relief."
+    : "Please enter a valid claim value.";
 }
+
+function legalSearch(){
+  const query = document.getElementById("legalQuery").value.trim();
+  const result = document.getElementById("searchResult");
+  result.style.display = "block";
+  result.textContent = query
+    ? "For this search, consult the official resources linked above. Live legal database search is not yet connected."
+    : "Please enter a search topic or case citation.";
+}
+
+function makeDraft(){
+  const type = document.getElementById("docType").value;
+  const facts = document.getElementById("facts").value.trim();
+  const result = document.getElementById("draftResult");
+  result.style.display = "block";
+  result.textContent = facts
+    ? type + " – Draft preparation outline\n\nFacts provided:\n" +
+      facts + "\n\nThis is only an initial outline. Applicable law, facts, documents and court rules must be checked by a qualified advocate."
+    : "Please enter the relevant facts.";
+}
+
+function addCase(){
+  const title = document.getElementById("caseTitle").value.trim();
+  const date = document.getElementById("caseDate").value;
+  if(!title || !date){
+    alert("Please enter case title and date.");
+    return;
+  }
+  const item = document.createElement("p");
+  item.textContent = title + " — " + date;
+  document.getElementById("caseList").appendChild(item);
+  document.getElementById("caseTitle").value = "";
+  document.getElementById("caseDate").value = "";
+}
+
+document.getElementById("registrationForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  document.getElementById("formMessage").textContent =
+    "Demo only: form received in this browser. No information was sent to a server.";
+  this.reset();
+});
 </script>
 
 </body>
