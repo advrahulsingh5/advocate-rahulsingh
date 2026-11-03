@@ -67,6 +67,13 @@ CREATE TABLE IF NOT EXISTS enquiries (
   status TEXT NOT NULL DEFAULT 'PENDING',
   created_at TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS admin_credentials (
+  user_id TEXT PRIMARY KEY REFERENCES users(id),
+  email TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  created_at TEXT NOT NULL
+);
 `);
 
 const sns = new SNSClient({
@@ -76,6 +83,13 @@ const sns = new SNSClient({
 const otpLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 3,
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+const adminLoginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 5,
   standardHeaders: true,
   legacyHeaders: false
 });
@@ -96,7 +110,13 @@ function auth(req, res, next) {
   const token = header.startsWith("Bearer ") ? header.slice(7) : "";
 
   try {
-    req.user = jwt.verify(token, process.env.JWT_SECRET);
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (!payload.sub || !payload.role) {
+      return res.status(401).json({ error: "Invalid authentication token" });
+    }
+
+    req.user = payload;
     next();
   } catch {
     return res.status(401).json({ error: "Authentication required" });
@@ -112,6 +132,201 @@ function allow(...roles) {
   };
 }
 
+// Secure Admin Login
+app.post("/api/admin/login", adminLoginLimiter, async (req, res) => {
+  try {
+    const email = String(req.body.email || "").trim().toLowerCase();
+    const password = String(req.body.password || "");
+
+    if (!email || !password || email.length > 254 || password.length > 200) {
+      return res.status(400).json({
+        error: "Valid email and password are required"
+      });
+    }
+
+    const credentials = db.prepare(`
+      SELECT user_id, email, password_hash
+      FROM admin_credentials
+      WHERE email = ?
+    `).get(email);
+
+    if (!credentials) {
+      return res.status(401).json({
+        error: "Invalid admin email or password"
+      });
+    }
+
+    const valid = await bcrypt.compare(
+      password,
+      credentials.password_hash
+    );
+
+    if (!valid) {
+      return res.status(401).json({
+        error: "Invalid admin email or password"
+      });
+    }
+
+    const admin = db.prepare(`
+      SELECT id, name, phone, role, verified
+      FROM users
+      WHERE id = ?
+    `).get(credentials.user_id);
+
+    if (!admin || admin.role !== "ADMIN" || admin.verified !== 1) {
+      return res.status(403).json({
+        error: "Admin account is not authorized"
+      });
+    }
+
+    const token = jwt.sign(
+      { sub: admin.id, role: "ADMIN" },
+      process.env.JWT_SECRET,
+      { expiresIn: "30m" }
+    );
+
+    return res.json({
+      message: "Admin login successful",
+      token,
+      admin: {
+        id: admin.id,
+        name: admin.name,
+        email: credentials.email
+      }
+    });
+
+  } catch (error) {
+    console.error("Admin login error:", error);
+    return res.status(500).json({
+      error: "Admin login failed"
+    });
+  }
+});
+
+// Admin Dashboard Summary
+app.get("/api/admin/dashboard", auth, allow("ADMIN"), (req, res) => {
+  try {
+    const totalUsers = db.prepare(
+      "SELECT COUNT(*) AS count FROM users"
+    ).get().count;
+
+    const totalClients = db.prepare(
+      "SELECT COUNT(*) AS count FROM users WHERE role='CLIENT'"
+    ).get().count;
+
+    const totalAdvocates = db.prepare(
+      "SELECT COUNT(*) AS count FROM users WHERE role='ADVOCATE'"
+    ).get().count;
+
+    const pendingAdvocates = db.prepare(
+      "SELECT COUNT(*) AS count FROM advocate_profiles WHERE verification_status='PENDING'"
+    ).get().count;
+
+    const totalEnquiries = db.prepare(
+      "SELECT COUNT(*) AS count FROM enquiries"
+    ).get().count;
+
+    const pendingEnquiries = db.prepare(
+      "SELECT COUNT(*) AS count FROM enquiries WHERE status='PENDING'"
+    ).get().count;
+
+    res.json({
+      totalUsers,
+      totalClients,
+      totalAdvocates,
+      pendingAdvocates,
+      totalEnquiries,
+      pendingEnquiries
+    });
+  } catch (error) {
+    console.error("Dashboard error:", error);
+    res.status(500).json({ error: "Could not load dashboard" });
+  }
+});
+
+// Admin: View advocate profiles
+app.get("/api/admin/advocates", auth, allow("ADMIN"), (req, res) => {
+  const status = String(req.query.status || "PENDING").toUpperCase();
+
+  if (!["PENDING", "APPROVED", "REJECTED", "ALL"].includes(status)) {
+    return res.status(400).json({ error: "Invalid status filter" });
+  }
+
+  const rows = status === "ALL"
+    ? db.prepare(`
+        SELECT u.id, u.name, u.phone, p.bar_council,
+        p.enrollment_number, p.practice_area, p.verification_status
+        FROM advocate_profiles p
+        JOIN users u ON u.id = p.user_id
+        ORDER BY u.created_at DESC
+      `).all()
+    : db.prepare(`
+        SELECT u.id, u.name, u.phone, p.bar_council,
+        p.enrollment_number, p.practice_area, p.verification_status
+        FROM advocate_profiles p
+        JOIN users u ON u.id = p.user_id
+        WHERE p.verification_status = ?
+        ORDER BY u.created_at DESC
+      `).all(status);
+
+  res.json(rows);
+});
+
+// Admin: Approve or reject advocate
+app.post("/api/admin/advocates/:userId/decision", auth, allow("ADMIN"), (req, res) => {
+  const status = String(req.body.status || "").toUpperCase();
+
+  if (!["APPROVED", "REJECTED"].includes(status)) {
+    return res.status(400).json({
+      error: "Status must be APPROVED or REJECTED"
+    });
+  }
+
+  const result = db.prepare(`
+    UPDATE advocate_profiles
+    SET verification_status = ?
+    WHERE user_id = ?
+  `).run(status, req.params.userId);
+
+  if (result.changes === 0) {
+    return res.status(404).json({ error: "Advocate profile not found" });
+  }
+
+  res.json({ message: "Advocate profile updated", status });
+});
+
+// Admin: View all enquiries
+app.get("/api/admin/enquiries", auth, allow("ADMIN"), (req, res) => {
+  const rows = db.prepare(`
+    SELECT e.id, e.subject, e.message, e.status, e.created_at,
+    u.name AS client_name, u.phone AS client_phone
+    FROM enquiries e
+    JOIN users u ON u.id = e.client_id
+    ORDER BY e.created_at DESC
+  `).all();
+
+  res.json(rows);
+});
+
+// Admin: Update enquiry status
+app.post("/api/admin/enquiries/:id/status", auth, allow("ADMIN"), (req, res) => {
+  const status = String(req.body.status || "").toUpperCase();
+
+  if (!["PENDING", "IN_PROGRESS", "RESOLVED", "REJECTED"].includes(status)) {
+    return res.status(400).json({ error: "Invalid enquiry status" });
+  }
+
+  const result = db.prepare(`
+    UPDATE enquiries SET status = ? WHERE id = ?
+  `).run(status, req.params.id);
+
+  if (result.changes === 0) {
+    return res.status(404).json({ error: "Enquiry not found" });
+  }
+
+  res.json({ message: "Enquiry status updated", status });
+});
+
 app.get("/api/health", (req, res) => {
   res.json({
     status: "ok",
@@ -120,7 +335,6 @@ app.get("/api/health", (req, res) => {
 });
 
 // Send OTP through AWS SNS.
-// Configure AWS credentials and enable SMS before using this endpoint.
 app.post("/api/auth/send-otp", otpLimiter, async (req, res) => {
   try {
     const phone = String(req.body.phone || "");
@@ -198,17 +412,19 @@ app.post("/api/auth/verify-otp", async (req, res) => {
     const existing = db.prepare(
       "SELECT * FROM users WHERE phone=?"
     ).get(phone);
-if (existing && existing.role === "ADMIN") {
-  return res.status(403).json({
-    error: "Admin must use the secure Admin Login."
-  });
-}
 
-if (existing && existing.role !== role) {
-  return res.status(403).json({
-    error: "This phone number is registered with a different account type."
-  });
-}
+    if (existing && existing.role === "ADMIN") {
+      return res.status(403).json({
+        error: "Admin must use the secure Admin Login."
+      });
+    }
+
+    if (existing && existing.role !== role) {
+      return res.status(403).json({
+        error: "This phone number is registered with a different account type."
+      });
+    }
+
     let user;
 
     if (existing) {
@@ -253,8 +469,10 @@ app.post("/api/advocates/profile", auth, allow("ADVOCATE"), (req, res) => {
   const enrollmentNumber = String(req.body.enrollmentNumber || "").trim();
   const practiceArea = String(req.body.practiceArea || "").trim();
 
-  if (!barCouncil || !enrollmentNumber || !practiceArea) {
-    return res.status(400).json({ error: "All profile fields are required" });
+  if (!barCouncil || !enrollmentNumber || !practiceArea ||
+      barCouncil.length > 200 || enrollmentNumber.length > 100 ||
+      practiceArea.length > 200) {
+    return res.status(400).json({ error: "Valid profile fields are required" });
   }
 
   db.prepare(`
