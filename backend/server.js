@@ -198,7 +198,17 @@ app.post("/api/auth/verify-otp", async (req, res) => {
     const existing = db.prepare(
       "SELECT * FROM users WHERE phone=?"
     ).get(phone);
+if (existing && existing.role === "ADMIN") {
+  return res.status(403).json({
+    error: "Admin must use the secure Admin Login."
+  });
+}
 
+if (existing && existing.role !== role) {
+  return res.status(403).json({
+    error: "This phone number is registered with a different account type."
+  });
+}
     let user;
 
     if (existing) {
