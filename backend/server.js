@@ -9,6 +9,7 @@ const Database = require("better-sqlite3");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const OpenAI = require("openai");
 const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns");
 
 const app = express();
@@ -21,6 +22,10 @@ if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
 if (!process.env.FRONTEND_URL) {
   throw new Error("Set FRONTEND_URL in environment");
 }
+
+const openai = process.env.OPENAI_API_KEY
+  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  : null;
 
 app.use(helmet());
 app.use(cors({
@@ -99,6 +104,13 @@ const apiLimiter = rateLimit({
   limit: 100
 });
 
+const aiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
 app.use("/api", apiLimiter);
 
 function validPhone(phone) {
@@ -113,26 +125,32 @@ function auth(req, res, next) {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!payload.sub || !payload.role) {
-      return res.status(401).json({ error: "Invalid authentication token" });
+      return res.status(401).json({
+        error: "Invalid authentication token"
+      });
     }
 
     req.user = payload;
     next();
   } catch {
-    return res.status(401).json({ error: "Authentication required" });
+    return res.status(401).json({
+      error: "Authentication required"
+    });
   }
 }
 
 function allow(...roles) {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      return res.status(403).json({ error: "Access denied" });
+      return res.status(403).json({
+        error: "Access denied"
+      });
     }
     next();
   };
 }
 
-// Secure Admin Login
+// SECURE ADMIN LOGIN
 app.post("/api/admin/login", adminLoginLimiter, async (req, res) => {
   try {
     const email = String(req.body.email || "").trim().toLowerCase();
@@ -203,7 +221,7 @@ app.post("/api/admin/login", adminLoginLimiter, async (req, res) => {
   }
 });
 
-// Admin Dashboard Summary
+// ADMIN DASHBOARD SUMMARY
 app.get("/api/admin/dashboard", auth, allow("ADMIN"), (req, res) => {
   try {
     const totalUsers = db.prepare(
@@ -240,16 +258,20 @@ app.get("/api/admin/dashboard", auth, allow("ADMIN"), (req, res) => {
     });
   } catch (error) {
     console.error("Dashboard error:", error);
-    res.status(500).json({ error: "Could not load dashboard" });
+    res.status(500).json({
+      error: "Could not load dashboard"
+    });
   }
 });
 
-// Admin: View advocate profiles
+// ADMIN: VIEW ADVOCATES
 app.get("/api/admin/advocates", auth, allow("ADMIN"), (req, res) => {
   const status = String(req.query.status || "PENDING").toUpperCase();
 
   if (!["PENDING", "APPROVED", "REJECTED", "ALL"].includes(status)) {
-    return res.status(400).json({ error: "Invalid status filter" });
+    return res.status(400).json({
+      error: "Invalid status filter"
+    });
   }
 
   const rows = status === "ALL"
@@ -272,7 +294,7 @@ app.get("/api/admin/advocates", auth, allow("ADMIN"), (req, res) => {
   res.json(rows);
 });
 
-// Admin: Approve or reject advocate
+// ADMIN: APPROVE OR REJECT ADVOCATE
 app.post("/api/admin/advocates/:userId/decision", auth, allow("ADMIN"), (req, res) => {
   const status = String(req.body.status || "").toUpperCase();
 
@@ -289,13 +311,18 @@ app.post("/api/admin/advocates/:userId/decision", auth, allow("ADMIN"), (req, re
   `).run(status, req.params.userId);
 
   if (result.changes === 0) {
-    return res.status(404).json({ error: "Advocate profile not found" });
+    return res.status(404).json({
+      error: "Advocate profile not found"
+    });
   }
 
-  res.json({ message: "Advocate profile updated", status });
+  res.json({
+    message: "Advocate profile updated",
+    status
+  });
 });
 
-// Admin: View all enquiries
+// ADMIN: VIEW ENQUIRIES
 app.get("/api/admin/enquiries", auth, allow("ADMIN"), (req, res) => {
   const rows = db.prepare(`
     SELECT e.id, e.subject, e.message, e.status, e.created_at,
@@ -308,12 +335,14 @@ app.get("/api/admin/enquiries", auth, allow("ADMIN"), (req, res) => {
   res.json(rows);
 });
 
-// Admin: Update enquiry status
+// ADMIN: UPDATE ENQUIRY STATUS
 app.post("/api/admin/enquiries/:id/status", auth, allow("ADMIN"), (req, res) => {
   const status = String(req.body.status || "").toUpperCase();
 
   if (!["PENDING", "IN_PROGRESS", "RESOLVED", "REJECTED"].includes(status)) {
-    return res.status(400).json({ error: "Invalid enquiry status" });
+    return res.status(400).json({
+      error: "Invalid enquiry status"
+    });
   }
 
   const result = db.prepare(`
@@ -321,12 +350,18 @@ app.post("/api/admin/enquiries/:id/status", auth, allow("ADMIN"), (req, res) => 
   `).run(status, req.params.id);
 
   if (result.changes === 0) {
-    return res.status(404).json({ error: "Enquiry not found" });
+    return res.status(404).json({
+      error: "Enquiry not found"
+    });
   }
 
-  res.json({ message: "Enquiry status updated", status });
+  res.json({
+    message: "Enquiry status updated",
+    status
+  });
 });
 
+// HEALTH CHECK
 app.get("/api/health", (req, res) => {
   res.json({
     status: "ok",
@@ -334,7 +369,7 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Send OTP through AWS SNS.
+// SEND OTP THROUGH AWS SNS
 app.post("/api/auth/send-otp", otpLimiter, async (req, res) => {
   try {
     const phone = String(req.body.phone || "");
@@ -363,7 +398,9 @@ app.post("/api/auth/send-otp", otpLimiter, async (req, res) => {
       attempts=0
     `).run(phone, codeHash, expiresAt);
 
-    res.json({ message: "OTP sent if SMS delivery is enabled." });
+    res.json({
+      message: "OTP sent if SMS delivery is enabled."
+    });
   } catch (error) {
     console.error("OTP delivery failed:", error.message);
     res.status(503).json({
@@ -372,7 +409,7 @@ app.post("/api/auth/send-otp", otpLimiter, async (req, res) => {
   }
 });
 
-// Verify OTP and create/login client or advocate account.
+// VERIFY OTP AND CREATE/LOGIN USER
 app.post("/api/auth/verify-otp", async (req, res) => {
   try {
     const phone = String(req.body.phone || "");
@@ -381,11 +418,15 @@ app.post("/api/auth/verify-otp", async (req, res) => {
     const role = String(req.body.role || "CLIENT");
 
     if (!validPhone(phone) || !/^\d{6}$/.test(code)) {
-      return res.status(400).json({ error: "Invalid phone or OTP format" });
+      return res.status(400).json({
+        error: "Invalid phone or OTP format"
+      });
     }
 
     if (!["CLIENT", "ADVOCATE"].includes(role)) {
-      return res.status(400).json({ error: "Invalid account role" });
+      return res.status(400).json({
+        error: "Invalid account role"
+      });
     }
 
     const record = db.prepare(
@@ -393,7 +434,9 @@ app.post("/api/auth/verify-otp", async (req, res) => {
     ).get(phone);
 
     if (!record || Date.now() > record.expires_at || record.attempts >= 5) {
-      return res.status(400).json({ error: "OTP expired or unavailable" });
+      return res.status(400).json({
+        error: "OTP expired or unavailable"
+      });
     }
 
     const valid = await bcrypt.compare(code, record.code_hash);
@@ -402,11 +445,16 @@ app.post("/api/auth/verify-otp", async (req, res) => {
       db.prepare(
         "UPDATE otp_codes SET attempts=attempts+1 WHERE phone=?"
       ).run(phone);
-      return res.status(400).json({ error: "Incorrect OTP" });
+
+      return res.status(400).json({
+        error: "Incorrect OTP"
+      });
     }
 
     if (!name || name.length > 100) {
-      return res.status(400).json({ error: "Valid name is required" });
+      return res.status(400).json({
+        error: "Valid name is required"
+      });
     }
 
     const existing = db.prepare(
@@ -429,18 +477,25 @@ app.post("/api/auth/verify-otp", async (req, res) => {
 
     if (existing) {
       user = existing;
-      db.prepare("UPDATE users SET verified=1 WHERE id=?").run(user.id);
+      db.prepare(
+        "UPDATE users SET verified=1 WHERE id=?"
+      ).run(user.id);
     } else {
       const id = crypto.randomUUID();
+
       db.prepare(`
         INSERT INTO users(id,name,phone,role,verified,created_at)
         VALUES(?,?,?,?,1,?)
       `).run(id, name, phone, role, new Date().toISOString());
 
-      user = db.prepare("SELECT * FROM users WHERE id=?").get(id);
+      user = db.prepare(
+        "SELECT * FROM users WHERE id=?"
+      ).get(id);
     }
 
-    db.prepare("DELETE FROM otp_codes WHERE phone=?").run(phone);
+    db.prepare(
+      "DELETE FROM otp_codes WHERE phone=?"
+    ).run(phone);
 
     const token = jwt.sign(
       { sub: user.id, role: user.role },
@@ -457,13 +512,16 @@ app.post("/api/auth/verify-otp", async (req, res) => {
         verified: true
       }
     });
+
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Authentication failed" });
+    console.error("OTP verification error:", error);
+    res.status(500).json({
+      error: "Authentication failed"
+    });
   }
 });
 
-// Advocate submits profile for admin verification.
+// ADVOCATE SUBMITS PROFILE
 app.post("/api/advocates/profile", auth, allow("ADVOCATE"), (req, res) => {
   const barCouncil = String(req.body.barCouncil || "").trim();
   const enrollmentNumber = String(req.body.enrollmentNumber || "").trim();
@@ -472,7 +530,9 @@ app.post("/api/advocates/profile", auth, allow("ADVOCATE"), (req, res) => {
   if (!barCouncil || !enrollmentNumber || !practiceArea ||
       barCouncil.length > 200 || enrollmentNumber.length > 100 ||
       practiceArea.length > 200) {
-    return res.status(400).json({ error: "Valid profile fields are required" });
+    return res.status(400).json({
+      error: "Valid profile fields are required"
+    });
   }
 
   db.prepare(`
@@ -486,16 +546,20 @@ app.post("/api/advocates/profile", auth, allow("ADVOCATE"), (req, res) => {
     verification_status='PENDING'
   `).run(req.user.sub, barCouncil, enrollmentNumber, practiceArea);
 
-  res.status(201).json({ status: "PENDING" });
+  res.status(201).json({
+    status: "PENDING"
+  });
 });
 
-// Client submits an enquiry.
+// CLIENT SUBMITS ENQUIRY
 app.post("/api/enquiries", auth, allow("CLIENT"), (req, res) => {
   const subject = String(req.body.subject || "").trim();
   const message = String(req.body.message || "").trim();
 
   if (!subject || !message || subject.length > 150 || message.length > 5000) {
-    return res.status(400).json({ error: "Valid subject and message required" });
+    return res.status(400).json({
+      error: "Valid subject and message required"
+    });
   }
 
   const id = crypto.randomUUID();
@@ -505,10 +569,13 @@ app.post("/api/enquiries", auth, allow("CLIENT"), (req, res) => {
     VALUES(?,?,?,?,?)
   `).run(id, req.user.sub, subject, message, new Date().toISOString());
 
-  res.status(201).json({ id, status: "PENDING" });
+  res.status(201).json({
+    id,
+    status: "PENDING"
+  });
 });
 
-// User can view only their own enquiries.
+// CLIENT VIEWS OWN ENQUIRIES
 app.get("/api/enquiries", auth, allow("CLIENT"), (req, res) => {
   const rows = db.prepare(`
     SELECT id,subject,status,created_at
@@ -519,10 +586,82 @@ app.get("/api/enquiries", auth, allow("CLIENT"), (req, res) => {
   res.json(rows);
 });
 
-app.use((req, res) => {
-  res.status(404).json({ error: "API route not found" });
+// ==========================================
+// THE INDIAN ADVOCATES - OPENAI AI ASSISTANT
+// ==========================================
+
+app.post("/api/legal-assistant", aiLimiter, async (req, res) => {
+  try {
+    if (!openai) {
+      return res.status(503).json({
+        error: "AI service is not configured."
+      });
+    }
+
+    const question = String(req.body.question || "").trim();
+
+    if (!question || question.length > 3000) {
+      return res.status(400).json({
+        error: "Question is required and must be under 3000 characters."
+      });
+    }
+
+    const response = await openai.responses.create({
+      model: process.env.OPENAI_MODEL || "gpt-5.5",
+
+      instructions: `
+You are the AI Legal Information Assistant for The Indian Advocates.
+
+Your role:
+1. Provide general legal information, not personalized legal advice.
+2. Focus on Indian law when the question concerns India.
+3. Explain legal concepts in simple English or Hindi, matching the user's language.
+4. Never invent laws, section numbers, judgments, case citations or court decisions.
+5. Mention when a law or legal position needs current verification.
+6. Encourage users to consult a qualified advocate for case-specific advice.
+7. Do not claim to be a lawyer or represent the user in court.
+8. Do not request confidential information, passwords, OTPs or unnecessary personal details.
+9. For urgent arrest, bail or safety matters, advise contacting a qualified local advocate or appropriate emergency services.
+10. Clearly state when you are uncertain.
+11. Do not treat your answer as a substitute for official legal sources.
+
+Keep answers clear, useful and reasonably concise.
+      `,
+
+      input: question,
+      max_output_tokens: 700
+    });
+
+    const answer = response.output_text;
+
+    if (!answer) {
+      return res.status(502).json({
+        error: "AI could not generate an answer. Please try again."
+      });
+    }
+
+    return res.json({ answer });
+
+  } catch (error) {
+    console.error(
+      "AI Assistant request failed:",
+      error.status || error.name || "Unknown error"
+    );
+
+    return res.status(500).json({
+      error: "AI Assistant is temporarily unavailable. Please try again."
+    });
+  }
 });
 
+// 404 HANDLER
+app.use((req, res) => {
+  res.status(404).json({
+    error: "API route not found"
+  });
+});
+
+// START SERVER
 app.listen(PORT, () => {
   console.log(`The Indian Advocates API listening on port ${PORT}`);
 });
